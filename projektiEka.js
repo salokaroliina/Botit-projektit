@@ -8,8 +8,8 @@ function projektiEka()
   var sposti = document.getElementById('email').value;
   // Hain valintapainikkeille tiedon getElementsByName-toiminnolla. Valueta ei tarvita
   var kone = document.getElementsByName('radio');
-  var sivu = document.getElementsByName('radioToka');
-  var aine = document.getElementsByName('laatikko');
+  var sivu = document.getElementsByName('check');
+  var aine = document.getElementById('pudotus');
   var teksti = document.getElementById('palaute').value;
   // Tarkistetaan syötetyt tiedot
   // Jos etunimen pituus on alle 2, alert-ikkuna pyytää antamaan etunimen
@@ -77,28 +77,21 @@ function projektiEka()
     alert("Et ole antanut mielipidettäsi sivustani");
     return false;
   }
-  /* Luodaan muuttuja aineVastaus, jonka oletusarvoksi annetaan "false",
-  sillä mitään ei ole vielä valittu */
-  var aineVastaus = false
-  // for-loop
-  /*Oletusarvo on 0, joten looppi käy läpi valintapainikkeita yksi kerrallaan,
-  kunnes se löytää yhden valitun painikkeen*/
-  for (var k = 0; k < aine.length; k++)
-  {
-    /* Jos jotakin on valittu, aineVastauksen arvoksi annetaan "true",
-    ja ohjelma jatkaa eteenpäin */
-    if(aine[k].checked == true)
-  {
-    aineVastaus = true;
-  }
-  }
-  /* Jos mitään ei ole valittu, sivuVastauksen arvo pysyy "false"na,
-  ja alert-ikkuna pyytää valitsemaan lempiaineesi koulussa*/
-    if(aineVastaus == false)
-  {
-    alert("Et ole valinnut lempiainettasi Keudassa");
-    return false;
-  }
+
+  // Luodaan muuttuja "valinta" jonka oletusarvo on "false"
+  // luodaan muuttuja ainevalinta, jolle haetaan tiedot pudotusvalikosta
+  var valinta = false;
+  var aineValinta = aine.options[aine.selectedIndex].value;
+    // jos ei ole valittu ainetta (oletuksena "valitse"), ohjelma avaa alert-ikkunan ja pyytää antamaan lempiaineen
+    if (aineValinta == "Valitse")
+    {
+      alert("Et ole valinnut lempiainettasi Keudassa");
+      return false;
+    }
+    // Jos valinta on tehty, ohjelma jatkaa eteenpäin
+    else {
+      aineValinta == true;
+    }
 
   /* Jos palautekentässä ei ole vähintään 10 merkkiä, ohjelma avaa alert-ikkunan ja
   pyytää vähintään 10 merkin palautetta */
@@ -108,7 +101,9 @@ function projektiEka()
     return false;
   }
   // Jos palaute on yli 10 merkkiä pitkä, sivusto kiittää palautteesta
-  else {
+  else
+  {
     alert("Kiitos palautteestasi!");
   }
+
 }
