@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<style>
+textarea {
+  resize: none;
+}
+</style>
+<body>
+<h1 style="color:Black;">Ota yhteyttä</h1>
+
+<form action="/action_page.php">
+  <label for="fname">Nimi:</label><br>
+  <input type="text" id="fname" name="fname" value=""><br>
+<label for="fname">Sukunimi:</label><br>
+  <input type="text" id="fname" Sukunimi="fname" value=""><br>
+  <label for="lname">Sähköposti:</label><br>
+  <input type="text" id="lname" name="lname" value=""><br><br> 
+  </form>
+<form>
+<h3>Millainen koneen käyttäjä olet?</h3>
+<input type="radio" id="vastaus1" name="radio" value="himopelaaja">
+  <label for="himopelaaja">himopelaaja</label><br>
+  <input type="radio" id="vastaus2" name="radio" value="käytän opiskeluun">
+  <label for="käytän opiskeluun">käytän opiskeluun</label><br>
+  <input type="radio" id="vastaus3" name="radio" value="en käytä konetta">
+  <label for="en käytä konetta">en käytä konetta</label>
+</form> 
+  <h3>Mitä mieltä olet sivustani tähän asti</h3>
+<form>
+  <input type="radio" id="Todella hienot" name="Todella hienot" value="Todella hieot">
+  <label for="Todella hienot">Todella hienot</label><br>
+  <input type="radio" id="Ammattimaisesti tehty" name="Ammattimaisesti tehty" value="Ammattimaisesti tehty">
+  <label for="Ammattimaisesti tehty">Ammattimaisesti tehty</label><br>
+  <input type="radio" id="Ostan sinulta!" name="Ostan sinulta!" value="Ostan sinulta!">
+  <label for="Ostan sinulta!">Ostan sinulta!</label>
+</form> 
+  <h3>Mikä on lempiaineesi Keudassa</h3>
+<p>
+     <select name="aine" id="pudotus">
+    <option value="Ruoasta">Ruoasta</option>
+    <option value="Ammattiaineista">Ammattiaineista</option>
+    <option value="YTO-aineista">YTO-aineista</option>
+    <option value="Vapaa-ajasta">Vapaa-ajasta</option>
+  </select>
+  </p>
+  <h3>Kerro, miten kehittäisit sivujani</h3>
+<textarea id="palaute" name="tekstipalaute" value="Kerro, miten kehittäisit sivujani"
+rows="4" cols="30">
+  
+  </textarea>
+
+<button>lähetä</button>
+
+</body>
+</html>
