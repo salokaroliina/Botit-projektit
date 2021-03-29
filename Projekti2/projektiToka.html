@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!--Pidetään tiedostojen nimet yhteneväisinä ja selkeinä-->
+    <script type="text/javascript" src="projektiToka.js">
+    </script>
+    <link rel="stylesheet" href="projektiToka.css">
+    <title>ProjektiToka</title>
+  </head>
+  <body>
+    <!--html tunnistaa "wrapperin" automaattisesti.
+    Wrapper keskittää sisällön css:ssä määritellylle leveydelle.
+    Wrapperiin viitataan samalla tavalla kuin muihin classeihin-->
+    <div class="wrapper">
+    <!--Kaikki sisältö on yhden formin sisällä, jonka sisään tulee muita formeja-->
+    <form id="kyselylomake" action="index.html" method="post">
+      <!--Otsikolla sekä kuvauksella on omat id:t joihin viitata-->
+      <h1 id="otsikko">Kyselylomake</h1>
+      <p id="kuvaus">Kuvausteksti</p>
+      <br>
+      <!--Jokaiselle input-alueelle sekä niiden otsikoille on annettu id:t.
+      Placeholder näyttää mitä alueelle kuuluisi kirjoittaa-->
+        <p id="nimisyotto">Nimi: <input id="nimi" type="text" name="tieto" value="" placeholder="Nimi"></p>
+        <p id="emailsyotto">Sähköposti: <input id="email" type="text" name="tieto" value="" placeholder="Sähköposti"></p>
+        <p id="ikasyotto">Ikä: <input id="ika" type="text" name="tieto" value="" placeholder="Ikä"></p>
+        <br>
+        <br>
+        <!--Pudotusvalikko-->
+        <select class="" name="">
+          <!--pienempi form, jolla on oma id-->
+          <form id="pudotus" class="" action="index.html" method="post">
+            <!--Ensimmäinen valinta "valitse" ei ole oikeasti valinta, eikä ohjelma mene eteenpäin jos se on valittuna-->
+            <option value="">--Valitse--</option>
+            <option value="Valinta1">Valinta1</option>
+            <option value=Valinta2"">Valinta2</option>
+            <option value="Valinta3">Valinta3</option>
+          </form>
+          </select>
+          <br>
+          <br>
+          <!--Radio-valinnat. Pystyy valitsemaan vain yhden, ja ohjelma ei mene eteenpäin jos yhtä ei ole valittu-->
+          <form id="radioEka" class="" action="index.html" method="post">
+            <p>Valinta1: <input id="radioEka" type="radio" name="radio" value=""></p>
+            <p>Valinta2: <input id="radioToka" type="radio" name="radio" value=""></p>
+            <p>Valinta3: <input id="radioKolmas" type="radio" name="radio" value=""></p>
+          </form>
+          <br>
+          <!--checkbox-valinnat. Monivalinta, voi valita yhden tai kaikki. Ohjelma vaatii vähintään yhden valinnan-->
+          <form id="checkToka" class="" action="index.html" method="post">
+            <p>Valinta1: <input id="boxEka" type="checkbox" name="" value=""></p>
+            <p>Valinta1: <input id="boxToka" type="checkbox" name="" value=""></p>
+            <p>Valinta1: <input id="boxKolmas" type="checkbox" name="" value=""></p>
+          </form>
+          <!--Tekstialue johon voi kirjoittaa vapaamuotoisesti tietyin vaatimuksin ja rajoituksin.
+          Voidaan määrittää kirjainten minimi- ja maksimimäärä-->
+          <div class="palautelaatikko">
+          <p>Muuta palautetta:</p>
+          <textarea id="palaute" name="teksti" rows="10" cols="50"></textarea>
+        </div>
+        <!--Nappi jota painamalla tiedot menisivät eteenpäin.
+        Nappia painamalla lomakeToka()-funktio käynnistyy ja käy läpi kaikki ylläolevat tiedot
+        ja tarkistaa ovatko ne määriteltyjen ehtojen mukaiset -->
+        <button id="laheta" type="submit" name="button" onclick="lomakeToka()">Lähetä</button>
+    </form>
+    </div>
+  </body>
+</html>
