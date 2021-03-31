@@ -1,0 +1,35 @@
+/*Bodyn taustaväri on hento vaaleanpunainen */
+body{
+  background-color: #ffedfe;
+}
+/*wrapper keskittää sisältöalueen keskelle */
+.wrapper{
+  /*leveys 30 koko sivun leveydestä%*/
+  width:30%;
+  /*automaattinen marginaali molemmille puolille*/
+  margin: auto;
+  /*20px tila reunojen ja sisällön välillä*/
+  padding: 20px;
+  /*Teksti keskitetty keskelle */
+  text-align: center;
+  /*Taustaväriksi on asetettu liukuväri violetin ja vaaleanpunaisen sävyillä*/
+  background: rgb(255,210,252);
+  background: linear-gradient(0deg, rgba(255,210,252,1) 0%, rgba(240,120,225,1) 38%, rgba(222,85,255,1) 61%, rgba(187,50,255,1) 100%);
+}
+/*Määritelty fontti ja fontin koko suurimmalle osalle tekstistä */
+p,label,input,select,textarea{
+  font-family: monospace;
+  font-size: 16px;
+}
+/*Määritelty lähetysnapin fontiksi monospace */
+#laheta{
+  font-family: monospace;
+}
+/*Määritelty h1-otsikolle fontiksi Google Fontsista haettu Orbitron */
+h1{
+  font-family: Orbitron;
+}
+/*Nimi, email ja ikä -tiedot näkyvät blockina, eli ne pysyvät siististi allekkain */
+.tiedot, label{
+display: block;
+}

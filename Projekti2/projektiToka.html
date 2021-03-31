@@ -6,6 +6,9 @@
     <script type="text/javascript" src="projektiToka.js">
     </script>
     <link rel="stylesheet" href="projektiToka.css">
+    <!--Haettu Google Fontseista fonti otsikkoa varten. Fonttiin viitataan CSS:ä normaalisti fontin nimellä -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <title>ProjektiToka</title>
   </head>
   <body>
@@ -19,15 +22,21 @@
       <h1 id="otsikko">Kyselylomake</h1>
       <p id="kuvaus">Kuvausteksti</p>
       <br>
+        <article class="tiedot">
       <!--Jokaiselle input-alueelle sekä niiden otsikoille on annettu id:t.
       Placeholder näyttää mitä alueelle kuuluisi kirjoittaa-->
-        <p id="nimisyotto">Nimi: <input id="nimi" type="text" name="tieto" value="" placeholder="Nimi"></p>
-        <p id="emailsyotto">Sähköposti: <input id="email" type="text" name="tieto" value="" placeholder="Sähköposti"></p>
-        <p id="ikasyotto">Ikä: <input id="ika" type="text" name="tieto" value="" placeholder="Ikä"></p>
+        <label for="nimi" id="nimisyotto">Nimi: </label>
+          <input id="nimi" type="text" name="tieto" value="" placeholder="Nimi">
+        <label for="email" id="emailsyotto">Sähköposti: </label>
+          <input id="email" type="text" name="tieto" value="" placeholder="Sähköposti">
+        <label for="ika" id="ikasyotto">Ikä: </label>
+          <input id="ika" type="text" name="tieto" value="" placeholder="Ikä">
+      </article>
         <br>
         <br>
+        <label for="pudotus">Otsikko</label>
         <!--Pudotusvalikko-->
-        <select class="" name="">
+        <select id="valinnatEka" class="" name="">
           <!--pienempi form, jolla on oma id-->
           <form id="pudotus" class="" action="index.html" method="post">
             <!--Ensimmäinen valinta "valitse" ei ole oikeasti valinta, eikä ohjelma mene eteenpäin jos se on valittuna-->
@@ -39,6 +48,7 @@
           </select>
           <br>
           <br>
+          <label for="radioEka">Otsikko</label>
           <!--Radio-valinnat. Pystyy valitsemaan vain yhden, ja ohjelma ei mene eteenpäin jos yhtä ei ole valittu-->
           <form id="radioEka" class="" action="index.html" method="post">
             <p>Valinta1: <input id="radioEka" type="radio" name="radio" value=""></p>
@@ -46,18 +56,21 @@
             <p>Valinta3: <input id="radioKolmas" type="radio" name="radio" value=""></p>
           </form>
           <br>
+          <label for="checkToka">Otsikko</label>
           <!--checkbox-valinnat. Monivalinta, voi valita yhden tai kaikki. Ohjelma vaatii vähintään yhden valinnan-->
           <form id="checkToka" class="" action="index.html" method="post">
             <p>Valinta1: <input id="boxEka" type="checkbox" name="" value=""></p>
             <p>Valinta1: <input id="boxToka" type="checkbox" name="" value=""></p>
             <p>Valinta1: <input id="boxKolmas" type="checkbox" name="" value=""></p>
           </form>
+          <br>
           <!--Tekstialue johon voi kirjoittaa vapaamuotoisesti tietyin vaatimuksin ja rajoituksin.
           Voidaan määrittää kirjainten minimi- ja maksimimäärä-->
           <div class="palautelaatikko">
           <p>Muuta palautetta:</p>
           <textarea id="palaute" name="teksti" rows="10" cols="50"></textarea>
         </div>
+        <br>
         <!--Nappi jota painamalla tiedot menisivät eteenpäin.
         Nappia painamalla lomakeToka()-funktio käynnistyy ja käy läpi kaikki ylläolevat tiedot
         ja tarkistaa ovatko ne määriteltyjen ehtojen mukaiset -->
