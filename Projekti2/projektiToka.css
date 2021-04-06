@@ -33,3 +33,23 @@ h1{
 .tiedot, label{
 display: block;
 }
+/*radio-valintojen otsikon keskitys suunnilleen keskelle */
+#radiolabel{
+  margin-right: -20%;
+}
+/*radio-valintojen keskitys siistiksi jonoksi */
+.radiovalinta{
+  text-align: right;
+  margin-right: auto;
+  padding-right: 40%;
+}
+/*check-valintojen otsikon keskitys suunnilleen keskelle */
+#checklabel{
+  margin-right: -10%;
+}
+/*check-valintojen keskitys siistiksi jonoksi */
+.checkvalinta{
+  text-align: right;
+  margin-right: auto;
+  padding-right: 40%;
+}

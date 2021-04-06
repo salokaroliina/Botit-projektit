@@ -20,7 +20,7 @@
     <form id="kyselylomake" action="index.html" method="post">
       <!--Otsikolla sekä kuvauksella on omat id:t joihin viitata-->
       <h1 id="otsikko">Kyselylomake</h1>
-      <p id="kuvaus">Kuvausteksti</p>
+      <p id="kuvaus">Kesäinen kysely</p>
       <br>
         <article class="tiedot">
       <!--Jokaiselle input-alueelle sekä niiden otsikoille on annettu id:t.
@@ -34,42 +34,48 @@
       </article>
         <br>
         <br>
-        <label for="pudotus">Otsikko</label>
+        <article class="pudotusvalikko">
+        <label for="pudotus">Vietän kesäloman...</label>
         <!--Pudotusvalikko-->
         <select id="valinnatEka" class="" name="">
           <!--pienempi form, jolla on oma id-->
           <form id="pudotus" class="" action="index.html" method="post">
             <!--Ensimmäinen valinta "valitse" ei ole oikeasti valinta, eikä ohjelma mene eteenpäin jos se on valittuna-->
             <option value="">--Valitse--</option>
-            <option value="Valinta1">Valinta1</option>
-            <option value=Valinta2"">Valinta2</option>
-            <option value="Valinta3">Valinta3</option>
+            <option value="Valinta1">Yksin</option>
+            <option value=Valinta2"">Perheen / kavereiden kanssa</option>
+            <option value="Valinta3">En vielä tiedä</option>
           </form>
           </select>
+          </article>
           <br>
           <br>
-          <label for="radioEka">Otsikko</label>
+          <article class="radiovalinta">
+          <label id="radiolabel" for="radioEka">Olen kesällä mieluiten...</label>
           <!--Radio-valinnat. Pystyy valitsemaan vain yhden, ja ohjelma ei mene eteenpäin jos yhtä ei ole valittu-->
           <form id="radioEka" class="" action="index.html" method="post">
-            <p>Valinta1: <input id="radioEka" type="radio" name="radio" value=""></p>
-            <p>Valinta2: <input id="radioToka" type="radio" name="radio" value=""></p>
-            <p>Valinta3: <input id="radioKolmas" type="radio" name="radio" value=""></p>
+            <p>Kotona: <input id="radioYksi" type="radio" name="radio" value=""></p>
+            <p>Mökillä: <input id="radioToka" type="radio" name="radio" value=""></p>
+            <p>Ulkomailla: <input id="radioKolmas" type="radio" name="radio" value=""></p>
           </form>
+          </article>
           <br>
-          <label for="checkToka">Otsikko</label>
+          <article class="checkvalinta">
+          <label id="checklabel" for="checkToka">Kesässä on parasta</label>
           <!--checkbox-valinnat. Monivalinta, voi valita yhden tai kaikki. Ohjelma vaatii vähintään yhden valinnan-->
           <form id="checkToka" class="" action="index.html" method="post">
-            <p>Valinta1: <input id="boxEka" type="checkbox" name="" value=""></p>
-            <p>Valinta1: <input id="boxToka" type="checkbox" name="" value=""></p>
-            <p>Valinta1: <input id="boxKolmas" type="checkbox" name="" value=""></p>
+            <p>Aurinko: <input id="boxEka" type="checkbox" name="" value=""></p>
+            <p>Vapaa-aika: <input id="boxToka" type="checkbox" name="" value=""></p>
+            <p>Kesäherkut: <input id="boxKolmas" type="checkbox" name="" value=""></p>
           </form>
+          </article>
           <br>
           <!--Tekstialue johon voi kirjoittaa vapaamuotoisesti tietyin vaatimuksin ja rajoituksin.
           Voidaan määrittää kirjainten minimi- ja maksimimäärä-->
-          <div class="palautelaatikko">
-          <p>Muuta palautetta:</p>
+          <article class="palautelaatikko">
+          <p>Kerro mitä muuta kesä tuo mieleesi:</p>
           <textarea id="palaute" name="teksti" rows="10" cols="50"></textarea>
-        </div>
+        </article>
         <br>
         <!--Nappi jota painamalla tiedot menisivät eteenpäin.
         Nappia painamalla lomakeToka()-funktio käynnistyy ja käy läpi kaikki ylläolevat tiedot
