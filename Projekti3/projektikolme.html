@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!--Javascriptin kutsuminen-->
+    <script type="text/javascript" <script src="projektikolme.js"></script>
+    <!--Css:n kutsuminen -->
+    <link rel="stylesheet" href="projektikolme.css">
+    </script>
+    <!--Sivun nimi-->
+    <title>Projekti 3</title>
+  </head>
+  <body>
+    <!--Html tunnistaa wrapperin automaattisesti.
+    Wrapper keskittää sisällön halutulle leveydelle.
+    Wrapperia kutsutaan kuten muita classeja-->
+    <div class="wrapper">
+      <!--h1-tasoinen otsikko jolla on oma id-->
+      <h1 id="otsikko">Arvauspeli</h1>
+      <!--p-tasoinen teksti, joka selittää ohjelman toiminnan.
+        P:lle on annettu myös oma id-->
+      <p id="kuvaus">Syötä numero 1-10 väliltä. Ohjelma arpoo satunnaisen luvun 1-10 väliltä ja kertoo,
+      onko syöttämäsi luku suurempi vai pienempi kuin koneen arpoma. <br> <!--br pakottaa rivivaihdon-->
+      Jos luku on sama kuin koneen arpoma, voitat. <br>
+      Sinulla on käytösssäsi 3 arvausta kunnes peli päättyy.</p>
+      <br>
+      <!--Teksti tiedonsyöttökentälle-->
+      <label for="numeroSyotto">Syötä luku 1-10 väliltä</label>
+      <!--Tiedonsyöttökenttä, jolle on annettu id. Javascript hakee tiedonsyöttökentästä tiedot id:n avulla-->
+      <input id="numeroSyotto" type="text" name="" value="">
+      <!--Painonappi, jota painamalla ohjelma käynnistyy.
+      Onclick viittaa Javascript-funktioon, joka käynnistyy napista-->
+      <button type="submit" name="button" onclick="pelaa()">Arvaa!</button>
+      <br>
+      <!--Domiin tulee näkyviin voitot sekä tappiot.
+      Javascript osaa antaa domiin tiedot id:iden perusteella-->
+      <p id="voitot">Voitot</p>
+      <p id="tappiot">Tappiot</p>
+    </div><!--wrapper päättyy-->
+  </body>
+</html>
