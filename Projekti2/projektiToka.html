@@ -39,9 +39,9 @@
         <!--Pudotusvalikko-->
         <select id="valinnatEka" class="" name="">
           <!--pienempi form, jolla on oma id-->
-          <form id="pudotus" class="" action="index.html" method="post">
+          <form id="pudotusEka" class="" action="index.html" method="post">
             <!--Ensimmäinen valinta "valitse" ei ole oikeasti valinta, eikä ohjelma mene eteenpäin jos se on valittuna-->
-            <option value="">--Valitse--</option>
+            <option value="Valitse">--Valitse--</option>
             <option value="Valinta1">Yksin</option>
             <option value=Valinta2"">Perheen / kavereiden kanssa</option>
             <option value="Valinta3">En vielä tiedä</option>
@@ -53,10 +53,10 @@
           <article class="radiovalinta">
           <label id="radiolabel" for="radioEka">Olen kesällä mieluiten...</label>
           <!--Radio-valinnat. Pystyy valitsemaan vain yhden, ja ohjelma ei mene eteenpäin jos yhtä ei ole valittu-->
-          <form id="radioEka" class="" action="index.html" method="post">
-            <p>Kotona: <input id="radioYksi" type="radio" name="radio" value=""></p>
-            <p>Mökillä: <input id="radioToka" type="radio" name="radio" value=""></p>
-            <p>Ulkomailla: <input id="radioKolmas" type="radio" name="radio" value=""></p>
+          <form id="valinnatEka" class="" action="index.html" method="post">
+            <p>Kotona: <input id="radioYksi" type="radio" name="radioEka" value=""></p>
+            <p>Mökillä: <input id="radioToka" type="radio" name="radioEka" value=""></p>
+            <p>Ulkomailla: <input id="radioKolmas" type="radio" name="radioEka" value=""></p>
           </form>
           </article>
           <br>
@@ -64,9 +64,9 @@
           <label id="checklabel" for="checkToka">Kesässä on parasta</label>
           <!--checkbox-valinnat. Monivalinta, voi valita yhden tai kaikki. Ohjelma vaatii vähintään yhden valinnan-->
           <form id="checkToka" class="" action="index.html" method="post">
-            <p>Aurinko: <input id="boxEka" type="checkbox" name="" value=""></p>
-            <p>Vapaa-aika: <input id="boxToka" type="checkbox" name="" value=""></p>
-            <p>Kesäherkut: <input id="boxKolmas" type="checkbox" name="" value=""></p>
+            <p>Aurinko: <input id="boxEka" type="checkbox" name="checkToka" value=""></p>
+            <p>Vapaa-aika: <input id="boxToka" type="checkbox" name="checkToka" value=""></p>
+            <p>Kesäherkut: <input id="boxKolmas" type="checkbox" name="checkToka" value=""></p>
           </form>
           </article>
           <br>

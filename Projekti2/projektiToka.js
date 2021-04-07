@@ -1,15 +1,15 @@
 // Koodin tekijä Simo Särkiranta
-function projektiToka()
+function lomakeToka() // OHJELMA HERJASI JOS FUNKTION NIMI OLI SAMA KUIN TIEDOSTON NIMI, MUUTIN SAMAKSI KUIN HTML:SSÄ -K
 {
   // Luodaan muuttujat ja haetaan niille tiedot html-tiedostosta
   var nimi = document.getElementById('nimi').value;
   var sposti = document.getElementById('email').value;
   var ika = document.getElementById('ika').value;
   // Hain valintapainikkeille tiedon getElementsByName-toiminnolla. Valueta ei tarvita
-  var valintaEka = document.getElementById('pudotus');
-  var radioEka = document.getElementsByName('radioEka');
-  var checkToka = document.getElementsByName('checkToka');
-  var palaute = document.getElementById('palaute').value;
+  var pudotus = document.getElementById('valinnatEka'); // VAIHDOIN MUUTTUJIEN NIMET LYHYIKSI SEKÄ ERI NIMISIKSI KUIN ID:T JA NAMET JOSTA NIIHIN OLI HAETTU TIEDOT -K
+  var radio = document.getElementsByName('radioEka');
+  var check = document.getElementsByName('checkToka');
+  var teksti = document.getElementById('palaute').value;
   // Tarkistetaan syötetyt tiedot
   // Jos nimen pituus on alle 2, alert-ikkuna pyytää antamaan etunimen
   if (nimi.length < 2)
@@ -26,16 +26,16 @@ function projektiToka()
     return false;
   }
   // Jos ikä on laitettu väärin, alert-ikkuna pyytää laittamaan ijän.
-  if (ika.length < 0)
+  if (ika.length < 1) // OHJELMA HERJASI TÄSTÄ JOS VERTASI 0:AAN, VAIHDOIN LUVUN 1:EEN -K
   {
     alert("Anna ikäsi");
     // Jos tiedot on oikein, mitään ei tapahdu ja ohjelma siirtyy seuraavaan kohtaan
     return false;
   }
-  // Luodaan muuttuja "valintaEka" jonka oletusarvo on "false"
+  // Luodaan muuttuja "valinta" jonka oletusarvo on "false"
   // luodaan muuttuja valintaEka, jolle haetaan tiedot pudotusvalikosta
-  var valintaEka = false;
-  var valintaEka = aine.options[valintaEka.selectedIndex].value;
+  var valinta = false; // MUUTIN MUUTTUJAN NIMEN, SILLÄ SE OLI SAMA KUIN ALEMPANA LUOTU MUUTTUJA -K
+  var valintaEka = pudotus.options[pudotus.selectedIndex].value; // TÄHÄN OLI JÄÄNYT AIEMMAN PROJEKTIN NIMET, MUUTIN NE TÄMÄN PROJEKTIN TIEDOIKSI -K
     // jos ei ole valittu miten viettää kesäloman (oletuksena "valitse"), ohjelma avaa alert-ikkunan ja pyytää antamaan Miten vietät kesäloman.
     if (valintaEka == "Valitse")
     {
@@ -47,52 +47,53 @@ function projektiToka()
       valintaEka == true;
     }
 
-  /* Luodaan muuttuja radioEka, jonka oletusarvoksi annetaan "false",
+  /* Luodaan muuttuja radioValinta, jonka oletusarvoksi annetaan "false",
   sillä mitään ei ole vielä valittu */
-  var radioEka = false;
+  var radioValinta = false; // VAIHDOIN TÄHÄN NIMEN RADIOVALINTA, SILLÄ OHJELMA HERJAA JOS SAMA NIMI TOISTUU ERI MERKITYKSISSÄ -K
   // for-loop
   /*Oletusarvo on 0, joten looppi käy läpi valintapainikkeita yksi kerrallaan,
   kunnes se löytää yhden valitun painikkeen*/
-  for (var i = 0; i < radioEka.length; i++)
+  for (var i = 0; i < radio.length; i++) // VAIHDOIN VERRATTAVAN TERMIN RADIOKSI, SILLÄ RADIOEKA:N ARVO ON FALSE -K
   {
     /* Jos jotakin on valittu, radioEka arvoksi annetaan "true",
     ja ohjelma jatkaa eteenpäin */
-    if(radioEka[i].checked == true)
+    if(radio[i].checked == true) // VAIHDOIN MYÖS TÄHÄN OIKEAN TERMIN -K
   {
-    radioEka = true;
+    radioValinta = true;
   }
   }
     /* Jos mitään ei ole valittu, radioEka arvo pysyy "false"na,
     ja alert-ikkuna pyytää valitsemaan olet mieluiten kesälomalla*/
-    if (pudotus == false)
+    if (radioValinta == false) // TÄHÄN OLI JÄÄNYT TERMI EDELLISEN PROJEKTIN KOODISTA -K
   {
     alert("Et ole kertonut miten olet kesällä mieluiten");
     return false;
   }
+
   /* Luodaan muuttuja checkToka, jonka oletusarvoksi annetaan "false",
   sillä mitään ei ole vielä valittu */
-  var checkToka = false;
+  var checkValinta = false; // VAIHDOIN TÄHÄN CHECKVALINTA, SILLÄ OHJELMA HERJAA JOS SAMA NIMI TOISTUU ERI MERKITYKSISSÄ -K
   // for-loop
   /*Oletusarvo on 0, joten looppi käy läpi valintapainikkeita yksi kerrallaan,
   kunnes se löytää yhden valitun painikkeen*/
-  for (var j = 0; j < checkToka.length; j++)
+  for (var j = 0; j < check.length; j++)  // VAIHDOIN TÄHÄN PELKÄN CHECK, SILLÄ OHJELMA HERJAA JOS SAMA NIMI TOISTUU ERI MERKITYKSISSÄ -K
   {
     /* Jos jotakin on valittu, checkToka arvoksi annetaan "true",
     ja ohjelma jatkaa eteenpäin */
-    if(checkToka[j].checked == true)
+    if(check[j].checked == true) // VAIHDOIN TÄHÄN MYÖS CHECK VASTAAMAAN YLEMPÄÄ LOOPPIA -K
   {
-    checkToka = true;
+    checkValinta = true; // VAIHDOIN TÄHÄN MYÖS CHECKVALINNAN VASTAAMAAN ALKUPERÄISTÄ MUUTTUJAA -K
   }
   }
   /* Jos mitään ei ole valittu, checkToka arvo pysyy "false"na,
   ja alert-ikkuna pyytää valitsemaan mielipiteen sivusta*/
-    if(checkToka == false)
+    if(checkValinta == false) // MYÖS TÄHÄN VAIHDETTU CHECKVALINTA
   {
     alert("Et ole kertonut mikä on kesässä parasta");
     return false;
   }
 
-    }
+// TÄHÄN OLI JÄÄNYT YLIMÄÄRÄINEN { -MERKKI JOSTA OHJELMA HERJASI -K
 
   /* Jos ei ole kertonut mitä kesä tuo mieleen vähintää 15 kirjaimella niin ohjelma avaa alert-ikkunan ja
   pyytää vähintään 15 merkin palautetta */
