@@ -11,19 +11,6 @@ function lomakeToka() // OHJELMA HERJASI JOS FUNKTION NIMI OLI SAMA KUIN TIEDOST
   var radio = document.getElementsByName('radioEka');
   var check = document.getElementsByName('checkToka');
   var teksti = document.getElementById('palaute').value;
-  // Sijoitetaan sähköpostin tarkistusfunktio heti pääfunktion sekä muuttujien alle
-  function emailIsValid (sposti) {
-    // tarkastetaan löytyykö muuttuja spostista seuraavat ominaisuudet
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(sposti)
-  }
-  // jos tiedot ovat oikein, ohjelma jatkaa eteenpäin
-  if(emailIsValid(sposti))
-  {
-    // jos tiedot eivät ole oikein, ohjelma avaa ikkunan ja pyytää antamaan oikean sähköpostiosoitteen
-  } else{
-    alert("Anna oikea sähköpostiosoitteesi");
-    return false;
-  }
   // Tarkistetaan syötetyt tiedot
   // Jos nimen pituus on alle 2, alert-ikkuna pyytää antamaan etunimen
   if (nimi.length < 2)
@@ -39,6 +26,19 @@ function lomakeToka() // OHJELMA HERJASI JOS FUNKTION NIMI OLI SAMA KUIN TIEDOST
     // Jos tiedot on oikein, mitään ei tapahdu ja ohjelma siirtyy seuraavaan kohtaan
     return false;
   }
+      // Sijoitetaan sähköpostin tarkistusfunktio pääfunktion sisään
+      function emailIsValid (sposti) {
+        // tarkastetaan löytyykö muuttuja spostista seuraavat ominaisuudet
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(sposti)
+      }
+      // jos tiedot ovat oikein, ohjelma jatkaa eteenpäin
+      if(emailIsValid(sposti))
+      {
+        // jos tiedot eivät ole oikein, ohjelma avaa ikkunan ja pyytää antamaan oikean sähköpostiosoitteen
+      } else{
+        alert("Anna oikea sähköpostiosoitteesi");
+        return false;
+      }
   // Jos ikä on laitettu väärin, alert-ikkuna pyytää laittamaan ijän.
   if (ika.length < 1) // OHJELMA HERJASI TÄSTÄ JOS VERTASI 0:AAN, VAIHDOIN LUVUN 1:EEN -K
   {
