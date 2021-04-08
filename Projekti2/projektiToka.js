@@ -1,6 +1,7 @@
 // Koodin tekijä Simo Särkiranta
 function lomakeToka() // OHJELMA HERJASI JOS FUNKTION NIMI OLI SAMA KUIN TIEDOSTON NIMI, MUUTIN SAMAKSI KUIN HTML:SSÄ -K
 {
+
   // Luodaan muuttujat ja haetaan niille tiedot html-tiedostosta
   var nimi = document.getElementById('nimi').value;
   var sposti = document.getElementById('email').value;
@@ -10,6 +11,19 @@ function lomakeToka() // OHJELMA HERJASI JOS FUNKTION NIMI OLI SAMA KUIN TIEDOST
   var radio = document.getElementsByName('radioEka');
   var check = document.getElementsByName('checkToka');
   var teksti = document.getElementById('palaute').value;
+  // Sijoitetaan sähköpostin tarkistusfunktio heti pääfunktion sekä muuttujien alle
+  function emailIsValid (sposti) {
+    // tarkastetaan löytyykö muuttuja spostista seuraavat ominaisuudet
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(sposti)
+  }
+  // jos tiedot ovat oikein, ohjelma jatkaa eteenpäin
+  if(emailIsValid(sposti))
+  {
+    // jos tiedot eivät ole oikein, ohjelma avaa ikkunan ja pyytää antamaan oikean sähköpostiosoitteen
+  } else{
+    alert("Anna oikea sähköpostiosoitteesi");
+    return false;
+  }
   // Tarkistetaan syötetyt tiedot
   // Jos nimen pituus on alle 2, alert-ikkuna pyytää antamaan etunimen
   if (nimi.length < 2)
@@ -107,5 +121,4 @@ function lomakeToka() // OHJELMA HERJASI JOS FUNKTION NIMI OLI SAMA KUIN TIEDOST
   {
     alert("Kiitos palautteestasi!");
   }
-
-}
+  }

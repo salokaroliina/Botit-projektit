@@ -28,7 +28,7 @@
         <label for="nimi" id="nimisyotto">Nimi: </label>
           <input id="nimi" type="text" name="tieto" value="" placeholder="Nimi">
         <label for="email" id="emailsyotto">Sähköposti: </label>
-          <input id="email" type="text" name="tieto" value="" placeholder="Sähköposti">
+          <input id="email" type="email" name="tieto" value="" placeholder="Sähköposti">
         <label for="ika" id="ikasyotto">Ikä: </label>
           <input id="ika" type="text" name="tieto" value="" placeholder="Ikä">
       </article>
@@ -64,9 +64,9 @@
           <label id="checklabel" for="checkToka">Kesässä on parasta</label>
           <!--checkbox-valinnat. Monivalinta, voi valita yhden tai kaikki. Ohjelma vaatii vähintään yhden valinnan-->
           <form id="checkToka" class="" action="index.html" method="post">
-            <p>Aurinko: <input id="boxEka" type="checkbox" name="checkToka" value=""></p>
-            <p>Vapaa-aika: <input id="boxToka" type="checkbox" name="checkToka" value=""></p>
-            <p>Kesäherkut: <input id="boxKolmas" type="checkbox" name="checkToka" value=""></p>
+            <p>Aurinko: <input id="boxEka" type="checkbox" name="checkToka" value="aurinko"></p>
+            <p>Vapaa-aika: <input id="boxToka" type="checkbox" name="checkToka" value="vapaaAika"></p>
+            <p>Kesäherkut: <input id="boxKolmas" type="checkbox" name="checkToka" value="kesaherkut"></p>
           </form>
           </article>
           <br>
