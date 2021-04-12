@@ -1,0 +1,25 @@
+h1 {
+  text-align: center;
+}
+
+.wrapper{
+  background: linear-gradient(#ad63ce, #bc7ed8, #8b46a9);
+  max-width: 600px;
+  width: 30%;
+  padding-top: 5px;
+  padding-right: 150px;
+  padding-left: 150px;
+  padding-bottom: 20px;
+  margin: auto;
+  border-radius: 100px;
+
+}
+
+body {
+  background-color: #8c3ab2;
+  font-family: 'Courgette', cursive;
+  font-size: 20px;
+  
+
+}
+</body>
