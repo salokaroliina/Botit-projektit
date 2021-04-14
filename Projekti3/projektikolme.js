@@ -1,3 +1,9 @@
+// Työnjako ja osallistujat:
+// Html: Karoliina Salo
+// Css: Niko Särkiranta
+// JS: Kaur Sarv
+// Niko Jokinen ei ollut paikalla eikä osallistunut
+
 var tappiot = 0;
 var voitot = 0;
 
