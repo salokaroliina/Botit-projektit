@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <!-- unna lisäsi divin näytölle ja classit buttoneille -->
     <meta charset="utf-8">
     <script type="text/javascript" src="laskin.js">
     </script>
-
+    <link href="style.css" rel="stylesheet">
     <title>laskin</title>
   </head>
   <body>
-<table border="2">
+<table>
           <tr>
-              <td colspan="4" id="naytto">0</td>
+              <th colspan="4"><div id="naytto">0</div></th>
           </tr>
           <tr>
-              <td colspan="2"><button onclick="laskutoimitus(this);">AC</button></td>
-              <td><button onclick="laskutoimitus(this);">C</button></td>
-              <td><button onclick="laskutoimitus(this);">/</button></td>
+              <td colspan="2"><button id="AC" class="oranssi" onclick="laskutoimitus(this);">AC</button></td>
+              <td><button class="oranssi" onclick="laskutoimitus(this);">C</button></td>
+              <td><button class="harmaa" onclick="laskutoimitus(this);">/</button></td>
           </tr>
           <tr>
-              <td><button onclick="laskutoimitus(this);">7</button></td>
-              <td><button onclick="laskutoimitus(this);">8</button></td>
-              <td><button onclick="laskutoimitus(this);">9</button></td>
-              <td><button onclick="laskutoimitus(this);">*</button></td>
+              <td><button class="vaalea" onclick="laskutoimitus(this);">7</button></td>
+              <td><button class="vaalea" onclick="laskutoimitus(this);">8</button></td>
+              <td><button class="vaalea" onclick="laskutoimitus(this);">9</button></td>
+              <td><button class="harmaa" onclick="laskutoimitus(this);">*</button></td>
           </tr>
           <tr>
-              <td><button onclick="laskutoimitus(this);">4</button></td>
-              <td><button onclick="laskutoimitus(this);">5</button></td>
-              <td><button onclick="laskutoimitus(this);">6</button></td>
-              <td><button onclick="laskutoimitus(this);">-</button></td>
+              <td><button class="vaalea" onclick="laskutoimitus(this);">4</button></td>
+              <td><button class="vaalea" onclick="laskutoimitus(this);">5</button></td>
+              <td><button class="vaalea" onclick="laskutoimitus(this);">6</button></td>
+              <td><button class="harmaa" onclick="laskutoimitus(this);">-</button></td>
           </tr>
           <tr>
-              <td><button onclick="laskutoimitus(this);">1</button></td>
-              <td><button onclick="laskutoimitus(this);">2</button></td>
-              <td><button onclick="laskutoimitus(this);">3</button></td>
-              <td><button onclick="laskutoimitus(this);">+</button></td>
+              <td><button class="vaalea" onclick="laskutoimitus(this);">1</button></td>
+              <td><button class="vaalea" onclick="laskutoimitus(this);">2</button></td>
+              <td><button class="vaalea" onclick="laskutoimitus(this);">3</button></td>
+              <td><button class="harmaa" onclick="laskutoimitus(this);">+</button></td>
           </tr>
           <tr>
-              <td colspan="2"><button onclick="laskutoimitus(this);">0</button></td>
-              <td><button onclick="laskutoimitus(this);">.</button></td>
-              <td><button onclick="laskutoimitus(this);">=</button></td>
+              <td colspan="2"><button id="nolla" class="vaalea" onclick="laskutoimitus(this);">0</button></td>
+              <td><button class="vaalea" onclick="laskutoimitus(this);">.</button></td>
+              <td><button class="harmaa" onclick="laskutoimitus(this);">=</button></td>
           </tr>
       </table>
     </body>
