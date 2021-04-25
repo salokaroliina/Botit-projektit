@@ -1,0 +1,60 @@
+body{
+  /*määritellään bodylle taustaväriksi liukuväri rgb-väreillä*/
+  background: rgb(255,237,254);
+  background: linear-gradient(0deg, rgba(255,237,254,1) 0%, rgba(240,120,225,1) 38%, rgba(222,85,255,1) 61%, rgba(187,50,255,1) 100%);
+  /*määritellään korkeudeksi 1200 pikseliä */
+  height: 1200px;
+}
+
+/*wrapper on div class, joka on määritelty html:ssä
+wrapper on sisältöalue, jossa kaikki käytettävät elementit sijaitsevat*/
+.wrapper{
+  /*sisältöalueen leveys on 1200 px*/
+  width: 1200px;
+  /*wrapperin ansiosta marginaali voidaan määrittää automaattiseksi, sillä
+  wrapper keskittää sisältöalueen automaattisesti*/
+  margin: auto;
+  /*korkeus määräytyy sisällön mukaan*/
+  height: auto;
+  /*sisältöalueen väri on määritelty rgb-värein*/
+  background-color: rgb(255, 225, 255);
+  /*sisältö on keskitetty sisältöalueen keskelle */
+  text-align: center;
+  /*tyhjä tila sisällön ja reunojen välillä: ylä, oikea, pohja, vasen*/
+  padding: 5px 50px 75px 50px;
+  /*sisältöalueen reunat on pyöristetyt*/
+  border-radius: 20px;
+}
+
+/*määritellään ohjelman h1 ja p -tason tekstien fonteiksi
+Google fontsista haettu fontti*/
+h1,p{
+  font-family: 'Goudy Bookletter 1911', serif;
+}
+
+/*kasvatettiin p-tason tekstin koko 18:aa pikseliin*/
+p{
+  font-size: 18px;
+}
+
+button{
+  /*annettiin buttonille sama fontti kuin muullekin tekstille*/
+  font-family: 'Goudy Bookletter 1911', serif;
+  /*kasvatettiin buttonin tekstin koko 18:aan pikseliin*/
+  font-size: 18px;
+  /*buttonin reunat ovat pyöristetyt */
+  border-radius: 15px;
+  /*buttonin väri määriteliin rgb-väreillä*/
+  background-color: rgb(255, 170, 255);
+}
+
+input{
+  /*tiedonsyöttöalueen leveys on 400px */
+  width: 400px;
+  /*-,,- korkeus on 30px */
+  height: 30px;
+  /*fontin koko kasvatettiin 20:een pikseliin */
+  font-size: 20px;
+  /*pyöristettiin reunat */
+  border-radius: 10px;
+}
