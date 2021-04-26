@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <script type="text/javascript" src="tehtavalisa.js">
-    </script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="tehtavalista.css">
@@ -14,9 +12,10 @@
     <h1>Tehtävälista</h1>
     <p>Syötä tehtävä alla olevaan kenttään</p>
     <input type="text" id="tekstikentta" value="">
-    <button type="button" id="nappi">Lisää tehtävä</button>
-    <ul>
-    </ul>
+    <button type="button" id="nappi" onClick="lista('klik')">Lisää tehtävä</button>
+    <ul id="lista"></ul>
     </div>
+    <script type="text/javascript" src="tehtavalista.js">
+    </script>
   </body>
 </html>
