@@ -58,3 +58,17 @@ input{
   /*pyöristettiin reunat */
   border-radius: 10px;
 }
+
+/*teksti-class on tehtävä joka ilmaantuu enterin painalluksen jälkeen*/
+.teksti{
+  /*leveys*/
+  width: 600px;
+  /*korkeus*/
+  height: 30px;
+  /*fontin koko */
+  font-size: 20px;
+  /*pyöristetyt reunat*/
+  border-radius: 5px;
+  /*taustaväri*/
+  background-color: rgb(218, 188, 251);
+}
