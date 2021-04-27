@@ -59,16 +59,29 @@ input{
   border-radius: 10px;
 }
 
-/*teksti-class on tehtävä joka ilmaantuu enterin painalluksen jälkeen*/
-.teksti{
+/* li(list item) on tehtävä joka ilmaantuu enterin painalluksen jälkeen*/
+li{
   /*leveys*/
-  width: 600px;
+  width: 800px;
   /*korkeus*/
-  height: 30px;
-  /*fontin koko */
-  font-size: 20px;
+  height: 40px;
   /*pyöristetyt reunat*/
   border-radius: 5px;
+  /*margin auto keskittää palkin keskelle*/
+  margin: auto;
+  /*margin-top tekee 15px korkuisen välin palkin yläpuolelle */
+  margin-top: 15px;
+  /*poistetaan listan tyyli, eli list itemin vasemmalla puolella oleva merkki*/
+  list-style: none;
+  /*lisätään tilaa tekstin ja laatikon reunojen väliin*/
+  padding-top: 10px;
+  padding-left: 10px;
+  /*teksti on keskitetty vasemmalle */
+  text-align: left;
+  /*fontti on sama kuin muissa ohjelman tekstielementeissä */
+  font-family: 'Goudy Bookletter 1911', serif;
+  /*fontin koko on 20px */
+  font-size: 20px;
   /*taustaväri*/
   background-color: rgb(218, 188, 251);
 }
