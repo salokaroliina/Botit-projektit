@@ -85,3 +85,10 @@ li{
   /*taustaväri*/
   background-color: rgb(218, 188, 251);
 }
+.valmis {
+	background: #b451df;
+	color: #7e0089;
+}
+.delete {
+	display: none;
+}
