@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Muistipeli</title>
+  </head>
+  <body>
+    <!--wrapper keskittää sisällön automaattisesti -->
+    <div class="wrapper">
+      <!--html ja css tunnistaa nav-tagin navigaatiopalkiksi -->
+      <nav>
+        <!--tarvittavat linkit-->
+        <a href="index.html">Etusivu</a>
+        <a href="muistipeli.html">Muistipeli</a>
+      </nav>
+      <!--alue pudotusvalikolle -->
+      <div id="valikko">
+        <!--nimi pudotusvalikolle -->
+        <label for="peli">Valitse peli:</label>
+        <!--pudotusvalikko -->
+        <select id="peli" name="peli">
+          <!--pelivaihtoehdot-->
+          <option id="eka">4x4</option>
+          <option id="toka">4x6</option>
+          <option id="kolmas">6x6</option>
+        </select>
+      </div>
+      <!--alue korteille, jotka tulevat javascriptista ja css:stä -->
+      <div id="lauta">
+      </div>
+      <!--ajannäyttö -->
+      <p id="aika">Aika:</p>
+      <!--pisteet-->
+      <p id="pisteytys">Pisteet:</p>
+
+    </div>
+  </body>
+</html>
