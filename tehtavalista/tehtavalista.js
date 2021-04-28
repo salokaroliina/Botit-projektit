@@ -34,13 +34,14 @@ function luoListaElementti()
 	function crossOut() {
 		li.classList.toggle("valmis");
 	}
-  
+
 	li.addEventListener("click",crossOut);
 
 //tehdään poisto nappi
 	var poisto = document.createElement("button");
 	poisto.appendChild(document.createTextNode("x"));
 	li.appendChild(poisto);
+  poisto.setAttribute("id", "poistoo"); //unna heitti tän tähän
 	poisto.addEventListener("click", poistaTehtava);
 
 
