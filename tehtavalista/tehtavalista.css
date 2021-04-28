@@ -37,7 +37,7 @@ p{
   font-size: 18px;
 }
 
-button{
+#nappi{
   /*annettiin buttonille sama fontti kuin muullekin tekstille*/
   font-family: 'Goudy Bookletter 1911', serif;
   /*kasvatettiin buttonin tekstin koko 18:aan pikseliin*/
@@ -85,10 +85,19 @@ li{
   /*taustaväri*/
   background-color: rgb(218, 188, 251);
 }
+
+/*Simon tekemät muutokset*/
 .valmis {
 	background: #b451df;
 	color: #7e0089;
 }
 .delete {
 	display: none;
+}
+
+#poistoo{
+  float: right;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: rgb(255, 170, 255);
 }
