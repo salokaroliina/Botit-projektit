@@ -13,16 +13,16 @@
         <a href="index.html">Etusivu</a>
         <a href="muistipeli.html">Muistipeli</a>
       </nav>
-      <!--alue pudotusvalikolle -->
-      <div id="valikko">
+
         <!--nimi pudotusvalikolle -->
         <label for="peli">Valitse peli:</label>
         <!--pudotusvalikko -->
-        <select id="peli" name="peli">
+        <select id="peli" onchange="luoPakka(this.value)">
           <!--pelivaihtoehdot-->
-          <option id="eka">4x4</option>
-          <option id="toka">4x6</option>
-          <option id="kolmas">6x6</option>
+          <option disabled selected value>Valitse peli</option>
+          <option value="16" id="eka">4x4</option>
+          <option value="24" id="toka">4x6</option>
+          <option value="36" id="kolmas">6x6</option>
         </select>
       </div>
       <!--alue korteille, jotka tulevat javascriptista ja css:stä -->
