@@ -39,9 +39,52 @@ const kortit = [
 let pakka = [];
 let valitut = [];
 let parit = [];
+let klikattu = 0;
 
-function luoPakka4x4() {
-  for(let i=0;i<16;i++) {
+function tyhjenna() {
+  const poistaKortti = document.getElementsByClassName('kortti');
+  while(poistaKortti.length>0) {
+    poistaKortti[0].parentNode.removeChild(poistaKortti[0]);
+  }
+  if (document.getElementById('eka') !== null) {
+    document.getElementById('eka').id = 'lauta';
+  }
+  if (document.getElementById('toka') !== null) {
+    document.getElementById('toka').id = 'lauta';
+  }
+  if (document.getElementById('kolmas') !== null) {
+    document.getElementById('kolmas').id = 'lauta';
+  }
+  pakka = [];
+  valitut = [];
+  parit = [];
+  klikattu = 0;
+  console.log(pakka);
+}
+
+function luoPakka(x) {
+  console.log(x);
+  tyhjenna();
+  let lautaKoko = document.getElementById('lauta');
+  switch(x) {
+    case '16':
+      lautaKoko.id = 'eka';
+      break;
+    case '24':
+      lautaKoko.id = 'toka';
+      break;
+    case '36':
+      lautaKoko.id = 'kolmas';
+      break;
+  }
+  /*if(x==16) {
+    lautaKoko.id = 'eka';
+  } else if (x==24) {
+    lautaKoko.id = 'toka';
+  } else if (x==36) {
+    lautaKoko.id = 'kolmas';
+  }*/
+  for(let i=0;i<x;i++) {
     pakka.push(kortit[i]);
   }
   let temp;
@@ -51,16 +94,33 @@ function luoPakka4x4() {
     pakka[i] = pakka[rando];
     pakka[rando] = temp;
   }
+  luoLauta(x);
 }
 
-function tyhjenna() {
-  pakka = [];
-  console.log(pakka);
-}
 
-function luoLauta() {
-  for(let i=0;i<16;i++) {
-    let lauta = document.getElementById('eka');
+
+function luoLauta(y) {
+  console.log(y);
+  for(let i=0;i<pakka.length;i++) {
+    switch(y) {
+      case '16':
+        var lauta = document.getElementById('eka');
+        break;
+      case '24':
+        var lauta = document.getElementById('toka');
+        break;
+      case '36':
+        var lauta = document.getElementById('kolmas');
+        break;
+    }
+  /*  if (y == 16) {
+      var lauta = document.getElementById('eka');
+    } else if(y==24) {
+      var lauta = document.getElementById('toka');
+    } else if(y==36) {
+      var lauta = document.getElementById('kolmas');
+    }*/
+    console.log(lauta);
     //let kortti = document.createElement('div');
     let kortti = document.createElement('img');
     kortti.setAttribute('src', 'img/card_back.jpg');
@@ -75,18 +135,25 @@ function luoLauta() {
 
 function kaanna() {
   let valittu = this.id;
+  klikattu++;
+  if(klikattu===1) {
+    console.log('TÖÖT');
+  }
   valitut.push(this.dataset.pari);
   valitut.push(this.id);
   this.setAttribute('src', pakka[valittu].kuva);
 
   document.getElementById(valittu).removeEventListener('click', kaanna)
 
+  //Tarkistaa jos on käännetty kaksi korttia
   if (valitut.length === 4) {
+    //Kääntämättömien korttien esto
     for(let i=0;i<pakka.length;i++) {
       if (document.getElementById(i) !== null) {
       document.getElementById(i).removeEventListener('click', kaanna);
       }
     }
+    //Aloittaa ajastimen joka katsoo tuliko pari
     setTimeout(function() {
       if (valitut[0] === valitut[2]) {
         alert("voitit töttöröö");
@@ -104,6 +171,7 @@ function kaanna() {
         valitut = [];
       }
       console.log(pakka[valittu].kuva)
+      //Sallii taas kääntämättömät kortit
       for(let i=0;i<pakka.length;i++) {
         if (document.getElementById(i) !== null) {
         document.getElementById(i).addEventListener('click', kaanna);
@@ -117,7 +185,6 @@ function kaanna() {
 
 function testi() {
   console.log(pakka);
-  document.getElementsByClassName('klikattu').innerHTML = 'tuut';
   document.getElementById(21).id += 'string';
 }
 
