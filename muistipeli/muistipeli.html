@@ -2,6 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <script type="text/javascript" src="muistipeli.js">
+    </script>
+    <link rel="stylesheet" href="muistipeli.css">
     <title>Muistipeli</title>
   </head>
   <body>
@@ -13,18 +16,16 @@
         <a href="index.html">Etusivu</a>
         <a href="muistipeli.html">Muistipeli</a>
       </nav>
-
         <!--nimi pudotusvalikolle -->
         <label for="peli">Valitse peli:</label>
         <!--pudotusvalikko -->
         <select id="peli" onchange="luoPakka(this.value)">
           <!--pelivaihtoehdot-->
           <option disabled selected value>Valitse peli</option>
-          <option value="16" id="eka">4x4</option>
-          <option value="24" id="toka">4x6</option>
-          <option value="36" id="kolmas">6x6</option>
+          <option value="16">4x4</option>
+          <option value="24">4x6</option>
+          <option value="36">6x6</option>
         </select>
-      </div>
       <!--alue korteille, jotka tulevat javascriptista ja css:stä -->
       <div id="lauta">
       </div>
