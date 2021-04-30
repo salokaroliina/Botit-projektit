@@ -35,11 +35,20 @@ const kortit = [
               {pari: 'Q', kuva: 'img/ph17.jpg'},
               {pari: 'R', kuva: 'img/ph18.jpg'},
               {pari: 'R', kuva: 'img/ph18.jpg'}
-            ];
+                                              ];
 let pakka = [];
 let valitut = [];
 let parit = [];
 let klikattu = 0;
+let fail = 0;
+let time = 0;
+let h = 0;
+let m = 0;
+let s = 0;
+let retryNappi = '';
+
+let cheat = '<table border="1">';
+let cheatOn = 0;
 
 function tyhjenna() {
   //Poistetaan kortit laudalta
@@ -61,12 +70,28 @@ function tyhjenna() {
   valitut = [];
   parit = [];
   klikattu = 0;
+  fail = 0;
+  time = 0;
+  h = 0;
+  m = 0;
+  s = 0;
+  clearInterval(aika);
+  document.getElementById('aika').innerHTML = 'Aikaa kulunut:';
+  document.getElementById('cheat').innerHTML = '';
+  document.getElementById('pisteytys').innerHTML = '';
+  cheat = '<table border="1">';
+  cheatOn = 0;
+  retryNappi = '';
   console.log(pakka);
+  console.log('cheat?'+cheatOn);
 }
 
+
 function luoPakka(x) {
+  document.getElementById('peli').selectedIndex = 0;
   console.log(x);
   tyhjenna();
+  retryNappi = '<button type="button" id="uudestaan" onClick="luoPakka(\'' + x + '\')">Yritä uudelleen?</button>';
 
   //Määritellään laudan koko
   let lautaKoko = document.getElementById('lauta');
@@ -117,7 +142,7 @@ function luoLauta(y) {
         break;
     }
 
-    console.log(lauta);
+    //console.log(lauta);
     //let kortti = document.createElement('div');
 
     //Korttien luonti laudalle
@@ -130,17 +155,23 @@ function luoLauta(y) {
     kortti.addEventListener('click', kaanna);
     lauta.appendChild(kortti);
   }
+
 }
 
 function kaanna() {
   let valittu = this.id;
   klikattu++;
   if(klikattu===1) {
-    console.log('TÖÖT');
+    //console.log('TÖÖT');
+    aika = setInterval(ajastin, 1000);
   }
   //Haetaan kortin tunnistustiedot
   valitut.push(this.dataset.pari);
   valitut.push(this.id);
+
+  if(cheatOn===1) {
+    document.getElementById(this.id+'c').classList.add('cheats1');
+  }
 
   //Kortin kääntö
   this.setAttribute('src', pakka[valittu].kuva);
@@ -150,52 +181,113 @@ function kaanna() {
 
   //Tarkistaa jos on käännetty kaksi korttia
   if (valitut.length === 4) {
-    
-    //Kääntämättömien korttien esto
-    for(let i=0;i<pakka.length;i++) {
-      if (document.getElementById(i) !== null) {
-      document.getElementById(i).removeEventListener('click', kaanna);
-      }
-    }
 
-    //Aloittaa ajastimen joka katsoo tuliko pari
-    setTimeout(function() {
+      //Jos on pari
       if (valitut[0] === valitut[2]) {
-        alert("voitit töttöröö");
+
+        //Note to self:
+        //Katso myöhemmin tarviiko tätä
         parit.push(valitut[1]);
         parit.push(valitut[3]);
+
+        if(cheatOn===1) {
+          document.getElementById(valitut[1]+'c').classList.add('cheats2');
+          document.getElementById(valitut[3]+'c').classList.add('cheats2');
+        }
 
         //Vaihdetaan korttien ID ettei myöhemmät loopit enää koske niihin
         document.getElementById(valitut[1]).id += 'match';
         document.getElementById(valitut[3]).id += 'match';
-        console.log(parit);
+        //console.log(parit);
         valitut = [];
-      } else {
-        alert("hävisit");
 
-        //Korttien kääntö takaisin
-        document.getElementById(valitut[3]).setAttribute('src', 'img/card_back.jpg');
-        document.getElementById(valitut[1]).setAttribute('src', 'img/card_back.jpg');
-
-        valitut = [];
-      }
-      console.log(pakka[valittu].kuva)
-
-      //Sallii taas kääntämättömät kortit
-      for(let i=0;i<pakka.length;i++) {
-        if (document.getElementById(i) !== null) {
-        document.getElementById(i).addEventListener('click', kaanna);
+        if (parit.length === pakka.length) {
+          document.getElementById('pisteytys').innerHTML = 'VOITTO! ' + retryNappi;
+          clearInterval(aika);
         }
+
+      } else {
+        fail++;
+        console.log(fail);
+
+
+
+        //Kääntämättömien korttien esto
+        for(let i=0;i<pakka.length;i++) {
+          if (document.getElementById(i) !== null) {
+          document.getElementById(i).removeEventListener('click', kaanna);
+          }
+        }
+
+        /*Aloittaa ajastimen joka vapauttaa kääntämättömät kortit
+        ja kääntää valitut kortit takaisin kuluneen ajan jälkeen*/
+        setTimeout(function() {
+
+          //Korttien kääntö takaisin
+          document.getElementById(valitut[3]).setAttribute('src', 'img/card_back.jpg');
+          document.getElementById(valitut[1]).setAttribute('src', 'img/card_back.jpg');
+
+          if(cheatOn===1) {
+            document.getElementById(valitut[1]+'c').classList.remove('cheats1');
+            document.getElementById(valitut[3]+'c').classList.remove('cheats1');
+          }
+
+          valitut = [];
+          //Sallii taas kääntämättömät kortit
+          for(let i=0;i<pakka.length;i++) {
+            if (document.getElementById(i) !== null) {
+            document.getElementById(i).addEventListener('click', kaanna);
+            }
+          }
+      }, 700)
       }
-    }, 700)
-  } else {
+      //console.log(pakka[valittu].kuva)
+
 
   }
 }
 
+function ajastin() {
+  time++;
+  s++;
+  if(s===60) {
+    m++;
+    s = 0;
+    if(m===60) {
+      h++;
+      m = 0;
+    }
+  }
+  if (m===0 && h===0){
+    document.getElementById('aika').innerHTML = 'Aikaa kulunut: ' + s;
+  } else if (h===0) {
+    document.getElementById('aika').innerHTML = 'Aikaa kulunut: ' + m + '.' + s;
+  } else {
+    document.getElementById('aika').innerHTML = 'Aikaa kulunut: ' + h + '???' + m + '.' + s;
+  }
+}
+
+
+function cheats() {
+  if (pakka.length==16) {
+    for(let i=0;i<pakka.length;i+=4) {
+      cheat += '<tr><td id="' +i+ 'c">' + pakka[i].pari + '</td><td id="' +(i+1)+ 'c">' + pakka[i+1].pari + '</td><td id="' +(i+2)+ 'c">' + pakka[i+2].pari + '</td><td id="' +(i+3)+ 'c">' + pakka[i+3].pari + '</td></tr>';
+    }
+  } else {
+    for(let i=0;i<pakka.length;i+=6) {
+      cheat += '<tr><td id="' +i+ 'c">' + pakka[i].pari + '</td><td id="' +(i+1)+ 'c">' + pakka[i+1].pari + '</td><td id="' +(i+2)+ 'c">' + pakka[i+2].pari + '</td><td id="' +(i+3)+ 'c">' + pakka[i+3].pari + '</td><td id="' +(i+4)+ 'c">' + pakka[i+4].pari + '</td><td id="' +(i+5)+ 'c">' + pakka[i+5].pari + '</td></tr>';
+    }
+  }
+  cheatOn = 1;
+  document.getElementById('cheat').innerHTML =  cheat + '</table>';
+}
+
+
+let hhh = 0;
 function testi() {
   console.log(pakka);
-  document.getElementById(21).id += 'string';
+  hhh += 'string'+(2+2)+'string';
+  console.log(hhh);
 }
 
 function vapautus() {
