@@ -76,7 +76,7 @@ function tyhjenna() {
   m = 0;
   s = 0;
   clearInterval(aika);
-  document.getElementById('aika').innerHTML = 'Aikaa kulunut:';
+  document.getElementById('aika').innerHTML = '';
   document.getElementById('cheat').innerHTML = '';
   document.getElementById('pisteytys').innerHTML = '';
   cheat = '<table border="1">';
@@ -169,6 +169,7 @@ function kaanna() {
   valitut.push(this.dataset.pari);
   valitut.push(this.id);
 
+  //Tarkistaa onko huijaus päällä
   if(cheatOn===1) {
     document.getElementById(this.id+'c').classList.add('cheats1');
   }
@@ -185,11 +186,12 @@ function kaanna() {
       //Jos on pari
       if (valitut[0] === valitut[2]) {
 
-        //Note to self:
+        //NOTE TO SELF
         //Katso myöhemmin tarviiko tätä
         parit.push(valitut[1]);
         parit.push(valitut[3]);
 
+        //Onko huijaus
         if(cheatOn===1) {
           document.getElementById(valitut[1]+'c').classList.add('cheats2');
           document.getElementById(valitut[3]+'c').classList.add('cheats2');
@@ -227,6 +229,7 @@ function kaanna() {
           document.getElementById(valitut[3]).setAttribute('src', 'img/card_back.jpg');
           document.getElementById(valitut[1]).setAttribute('src', 'img/card_back.jpg');
 
+          //Huijaus??
           if(cheatOn===1) {
             document.getElementById(valitut[1]+'c').classList.remove('cheats1');
             document.getElementById(valitut[3]+'c').classList.remove('cheats1');
@@ -259,11 +262,11 @@ function ajastin() {
     }
   }
   if (m===0 && h===0){
-    document.getElementById('aika').innerHTML = 'Aikaa kulunut: ' + s;
+    document.getElementById('aika').innerHTML = s;
   } else if (h===0) {
-    document.getElementById('aika').innerHTML = 'Aikaa kulunut: ' + m + '.' + s;
+    document.getElementById('aika').innerHTML = m + '.' + s;
   } else {
-    document.getElementById('aika').innerHTML = 'Aikaa kulunut: ' + h + '???' + m + '.' + s;
+    document.getElementById('aika').innerHTML = h + '???' + m + '.' + s;
   }
 }
 
