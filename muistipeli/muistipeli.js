@@ -272,17 +272,19 @@ function ajastin() {
 
 
 function cheats() {
-  if (pakka.length==16) {
-    for(let i=0;i<pakka.length;i+=4) {
-      cheat += '<tr><td id="' +i+ 'c">' + pakka[i].pari + '</td><td id="' +(i+1)+ 'c">' + pakka[i+1].pari + '</td><td id="' +(i+2)+ 'c">' + pakka[i+2].pari + '</td><td id="' +(i+3)+ 'c">' + pakka[i+3].pari + '</td></tr>';
+  if (cheatOn===0) {
+    if (pakka.length==16) {
+      for(let i=0;i<pakka.length;i+=4) {
+        cheat += '<tr><td id="' +i+ 'c">' + pakka[i].pari + '</td><td id="' +(i+1)+ 'c">' + pakka[i+1].pari + '</td><td id="' +(i+2)+ 'c">' + pakka[i+2].pari + '</td><td id="' +(i+3)+ 'c">' + pakka[i+3].pari + '</td></tr>';
+      }
+    } else {
+      for(let i=0;i<pakka.length;i+=6) {
+        cheat += '<tr><td id="' +i+ 'c">' + pakka[i].pari + '</td><td id="' +(i+1)+ 'c">' + pakka[i+1].pari + '</td><td id="' +(i+2)+ 'c">' + pakka[i+2].pari + '</td><td id="' +(i+3)+ 'c">' + pakka[i+3].pari + '</td><td id="' +(i+4)+ 'c">' + pakka[i+4].pari + '</td><td id="' +(i+5)+ 'c">' + pakka[i+5].pari + '</td></tr>';
+      }
     }
-  } else {
-    for(let i=0;i<pakka.length;i+=6) {
-      cheat += '<tr><td id="' +i+ 'c">' + pakka[i].pari + '</td><td id="' +(i+1)+ 'c">' + pakka[i+1].pari + '</td><td id="' +(i+2)+ 'c">' + pakka[i+2].pari + '</td><td id="' +(i+3)+ 'c">' + pakka[i+3].pari + '</td><td id="' +(i+4)+ 'c">' + pakka[i+4].pari + '</td><td id="' +(i+5)+ 'c">' + pakka[i+5].pari + '</td></tr>';
-    }
+    cheatOn = 1;
+    document.getElementById('cheat').innerHTML =  cheat + '</table>';
   }
-  cheatOn = 1;
-  document.getElementById('cheat').innerHTML =  cheat + '</table>';
 }
 
 
