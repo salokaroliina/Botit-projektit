@@ -47,14 +47,15 @@ let valitut = [];
 let parit = [];
 let klikattu = 0;
 let tulos = '';
-let fail = 0;
-      //let pisteet = 0;
-      //let time = 0;
+let yritykset = 0;
+    //let pisteet = 0;
+    //let time = 0;
 let h = 0;
 let m = 0;
 let s = 0;
 let retryNappi = '';
 let cheat = '';
+
 
 function tyhjenna() {
   //Poistetaan kortit laudalta
@@ -80,14 +81,16 @@ function tyhjenna() {
   parit = [];
   klikattu = 0;
   tulos = '';
-  fail = 0;
+  yritykset = 0;
       //pisteet = 0;
       //time = 0;
   h = 0;
   m = 0;
   s = 0;
+
   clearInterval(aika);
-      //  document.getElementById('pisteytys').innerHTML = pisteet;
+
+      //document.getElementById('pisteytys').innerHTML = pisteet;
   document.getElementById('aika').innerHTML = '';
   document.getElementById('cheat').innerHTML = '';
   document.getElementById('voitto').innerHTML = '';
@@ -165,7 +168,6 @@ function luoLauta(y) {
 
   //Luodaan cheatti taulukko
   cheats();
-
 }
 
 
@@ -202,7 +204,7 @@ function kaanna() {
         parit.push(valitut[1]);
         parit.push(valitut[3]);
 
-            /*  if (klikattu===2) {
+              /*if (klikattu===2) {
                 pisteet+=50;
                 //console.log(pisteet);
                 pisteetShow.classList.toggle('pistePlus');
@@ -239,43 +241,43 @@ function kaanna() {
           //Tarkastetaan pakan koko sekä yritysten määrä ja annetaan tuomio niiden mukaan
           //Tuomio voi olla ehkä liian ankara?
           if(pakka.length===16) {
-            if(fail===0) {
+            if(yritykset===0) {
               tulos = '<b>HUIJARI!!!</b>';
-            } else if(fail<8) {
+            } else if(yritykset<8) {
               tulos = '<b>Loistava!!!</b>';
-            } else if(fail<10) {
+            } else if(yritykset<10) {
               tulos = '<b>Hyvä!</b>';
-            } else if(fail<12) {
+            } else if(yritykset<12) {
               tulos = '<b>OK.</b>';
-            } else if(fail<14) {
+            } else if(yritykset<14) {
               tulos = '<b>eh...</b>';
             } else {
               tulos = 'hyi';
             }
           } else if(pakka.length===24) {
-            if(fail===0) {
+            if(yritykset===0) {
               tulos = '<b>HUIJARI!!!</b>';
-            } else if(fail<18) {
+            } else if(yritykset<18) {
               tulos = '<b>Loistava!!!</b>';
-            } else if(fail<21) {
+            } else if(yritykset<21) {
               tulos = '<b>Hyvä!</b>';
-            } else if(fail<24) {
+            } else if(yritykset<24) {
               tulos = '<b>OK.</b>';
-            } else if(fail<27) {
+            } else if(yritykset<27) {
               tulos = '<b>eh...</b>';
             } else {
               tulos = 'hyi';
             }
           } else if(pakka.length===36) {
-            if(fail===0) {
+            if(yritykset===0) {
               tulos = '<b>HUIJARI!!!</b>';
-            } else if(fail<31) {
+            } else if(yritykset<31) {
               tulos = '<b>Loistava!!!</b>';
-            } else if(fail<36) {
+            } else if(yritykset<36) {
               tulos = '<b>Hyvä!</b>';
-            } else if(fail<41) {
+            } else if(yritykset<41) {
               tulos = '<b>OK.</b>';
-            } else if(fail<46) {
+            } else if(yritykset<46) {
               tulos = '<b>eh...</b>';
             } else {
               tulos = 'hyi';
@@ -295,17 +297,16 @@ function kaanna() {
           //Ajastimen pysäytys
           clearInterval(aika);
         }
-
       } else { //Jos EI ollut pari
 
         //Yritys laskuri
-        fail++;
+        yritykset++;
         //Tämä console.log on edelleen hyödyllinen testausta varten
         //Joten se saa jäädä
-        console.log(fail);
+        console.log(yritykset);
 
               //En ollut ehtinyt määritellä vanhaan pisteytykseen että se katsoisin pakan koon
-              /*if (pisteet>0 && fail%3===0) {
+              /*if (pisteet>0 && yritykset%3===0) {
                 pisteet-=2;
                 pisteetShow.innerHTML = '-' + pisteet;
                 pisteetShow.classList.toggle('pisteMiinus');
@@ -348,8 +349,6 @@ function kaanna() {
           }
         }, 700); //Aika minkä jälkeen tuo kaikki tapahtuu
       }
-
-
   }
 }
 
@@ -359,6 +358,7 @@ function ajastin() {
       //  const pisteetShow = document.getElementById('pisteytys');
       //time++;
   s++;
+
   //Nostetaan minuutti-muuttujaa yhdellä jos sekunti-muuttujan arvo on 60
   //ja nollataan sekunit
   if(s===60) {
@@ -371,7 +371,8 @@ function ajastin() {
       m = 0;
     }
   }
-        /*  if (pisteet>0){
+
+          /*if (pisteet>0){
             if (time%10===0) {
               if(pisteet<5) {
                 switch(pisteet) {
@@ -405,6 +406,7 @@ function ajastin() {
                 }, 400);
             }
         }*/
+
   //Kirjoitetaan aika näytölle
   if (m===0 && h===0){
     document.getElementById('aika').innerHTML = s;
@@ -433,7 +435,7 @@ function cheats() {
 
 //Cheattitaulun näkyvyyden muutos
 function cheatToggle() {
-  //Tarkistetaan että onko cheattiTaulua olemassa
+  //Tarkistetaan onko cheattiTaulua olemassa
   if(pakka.length>0) {
     document.getElementById('cheatTable').classList.toggle('hideTable');
   }
