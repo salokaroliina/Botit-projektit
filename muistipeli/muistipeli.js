@@ -355,7 +355,7 @@ function kaanna() {
 
 //Funktio joka tulee setIntervalin sisään
 function ajastin() {
-      //  const pisteetShow = document.getElementById('pisteytys');
+      //const pisteetShow = document.getElementById('pisteytys');
       //time++;
   s++;
 
