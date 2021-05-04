@@ -1,10 +1,14 @@
 /*hyvin simppelit muotoilut cheatille. tähän saa vapaasti kajota jos huvittaa
 sanokaa jos haluutte cheat taululle id:n tai lisää classeja?*/
 
-.cheats1 {
+.cheatValittu {
   background-color: #f99;
 }
 
-.cheats2 {
+.cheatPari {
   background-color: #000;
+}
+
+.hideTable {
+  display: none;
 }

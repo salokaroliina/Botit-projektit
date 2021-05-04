@@ -1,3 +1,9 @@
+//Olen jättänyt tiimin pyynnöstä kommentteihin scrapatun pisteytys kokeilun
+//Se oli söpö
+//Mutta sen saaminen järkeväksi olisi ollut liian hankalaa tämän hetkisillä taidoilla
+//Kaikki vanhaan pisteytykseen liittyvä on sisennetty luettavuuden takia
+
+//Listataan kaikki käytettävät kortit
 const kortit = [
               {pari: 'A', kuva: 'img/ph1.jpg'},
               {pari: 'A', kuva: 'img/ph1.jpg'},
@@ -40,15 +46,15 @@ let pakka = [];
 let valitut = [];
 let parit = [];
 let klikattu = 0;
+let tulos = '';
 let fail = 0;
-let time = 0;
+      //let pisteet = 0;
+      //let time = 0;
 let h = 0;
 let m = 0;
 let s = 0;
 let retryNappi = '';
-
-let cheat = '<table border="1">';
-let cheatOn = 0;
+let cheat = '';
 
 function tyhjenna() {
   //Poistetaan kortit laudalta
@@ -56,6 +62,7 @@ function tyhjenna() {
   while(poistaKortti.length>0) {
     poistaKortti[0].parentNode.removeChild(poistaKortti[0]);
   }
+
   //Vaihdetaan laudan id takaisin defaultiksi
   if (document.getElementById('eka') !== null) {
     document.getElementById('eka').id = 'lauta';
@@ -66,31 +73,36 @@ function tyhjenna() {
   if (document.getElementById('kolmas') !== null) {
     document.getElementById('kolmas').id = 'lauta';
   }
+
+  //Arvojen resettaus
   pakka = [];
   valitut = [];
   parit = [];
   klikattu = 0;
+  tulos = '';
   fail = 0;
-  time = 0;
+      //pisteet = 0;
+      //time = 0;
   h = 0;
   m = 0;
   s = 0;
   clearInterval(aika);
+      //  document.getElementById('pisteytys').innerHTML = pisteet;
   document.getElementById('aika').innerHTML = '';
   document.getElementById('cheat').innerHTML = '';
-  document.getElementById('pisteytys').innerHTML = '';
-  cheat = '<table border="1">';
-  cheatOn = 0;
+  document.getElementById('voitto').innerHTML = '';
+  cheat = '<table border="1" id="cheatTable" class="hideTable">';
   retryNappi = '';
-  console.log(pakka);
-  console.log('cheat?'+cheatOn);
 }
 
 
 function luoPakka(x) {
+  //Pakotetaan valikko default arvoon
   document.getElementById('peli').selectedIndex = 0;
-  console.log(x);
+
   tyhjenna();
+
+  //Luodaan yritä uudelleen-nappi joka käyttää valitun pakan kokoa
   retryNappi = '<button type="button" id="uudestaan" onClick="luoPakka(\'' + x + '\')">Yritä uudelleen?</button>';
 
   //Määritellään laudan koko
@@ -111,7 +123,8 @@ function luoPakka(x) {
   for(let i=0;i<x;i++) {
     pakka.push(kortit[i]);
   }
-  //Pakan sekoitus
+
+  //Pakan sekoitus käyttäen Fisher-Yates shufflea
   let temp;
   for(let i=pakka.length-1;i>0;i--) {
     let rando = Math.floor(Math.random()*(i+1));
@@ -119,60 +132,59 @@ function luoPakka(x) {
     pakka[i] = pakka[rando];
     pakka[rando] = temp;
   }
+
   //Kutsutaan kortit näytölle
   luoLauta(x);
 }
 
 
-
 function luoLauta(y) {
-  console.log(y);
-  for(let i=0;i<pakka.length;i++) {
-
-    //Etsitään laudan koko
-    switch(y) {
-      case '16':
-        var lauta = document.getElementById('eka');
-        break;
-      case '24':
-        var lauta = document.getElementById('toka');
-        break;
-      case '36':
-        var lauta = document.getElementById('kolmas');
-        break;
-    }
-
-    //console.log(lauta);
-    //let kortti = document.createElement('div');
-
-    //Korttien luonti laudalle
-    let kortti = document.createElement('img');
-    kortti.setAttribute('src', 'img/card_back.jpg');
-    //kortti.appendChild(img);
-    kortti.classList.add('kortti');
-    kortti.dataset.pari = pakka[i].pari;
-    kortti.id = i;
-    kortti.addEventListener('click', kaanna);
-    lauta.appendChild(kortti);
+  //Määritellään laudan koko
+  switch(y) {
+    case '16':
+      var lauta = document.getElementById('eka');
+      break;
+    case '24':
+      var lauta = document.getElementById('toka');
+      break;
+    case '36':
+      var lauta = document.getElementById('kolmas');
+      break;
   }
+
+  //Korttien luonti laudalle
+  for(let i=0;i<pakka.length;i++) {
+    let kortti = document.createElement('img'); //Kortti-elementin luonti
+    kortti.setAttribute('src', 'img/card_back.jpg'); //Asetetaan kuvaksi kortin selkä
+    kortti.classList.add('kortti'); //Lisätään kortille classi
+    kortti.dataset.pari = pakka[i].pari; //Lisätään kortin dataan pari-tieto
+    kortti.id = i; //Kortin uniikki id
+    kortti.addEventListener('click', kaanna); //Lisätään korttiin kääntö funktio
+    lauta.appendChild(kortti); //Viimeiseksi lyödään kortti laudalle
+  }
+
+  //Luodaan cheatti taulukko
+  cheats();
 
 }
 
+
 function kaanna() {
+        //const pisteetShow = document.getElementById('pisteytys');
   let valittu = this.id;
   klikattu++;
+
+  //Ajastimen aloitus ensimmäisestä klikkauksesta
   if(klikattu===1) {
-    //console.log('TÖÖT');
     aika = setInterval(ajastin, 1000);
   }
-  //Haetaan kortin tunnistustiedot
+
+  //Haetaan kortin tunnistustiedot ja työnnetään valitut-listaan
   valitut.push(this.dataset.pari);
   valitut.push(this.id);
 
-  //Tarkistaa onko huijaus päällä
-  if(cheatOn===1) {
-    document.getElementById(this.id+'c').classList.add('cheats1');
-  }
+    //Valitun kortin cheattisolun highlightaus
+    document.getElementById(this.id+'c').classList.add('cheatValittu');
 
   //Kortin kääntö
   this.setAttribute('src', pakka[valittu].kuva);
@@ -186,81 +198,214 @@ function kaanna() {
       //Jos on pari
       if (valitut[0] === valitut[2]) {
 
-        //NOTE TO SELF
-        //Katso myöhemmin tarviiko tätä
+        //Siirretään parit listaan
         parit.push(valitut[1]);
         parit.push(valitut[3]);
 
-        //Onko huijaus
-        if(cheatOn===1) {
-          document.getElementById(valitut[1]+'c').classList.add('cheats2');
-          document.getElementById(valitut[3]+'c').classList.add('cheats2');
-        }
+            /*  if (klikattu===2) {
+                pisteet+=50;
+                //console.log(pisteet);
+                pisteetShow.classList.toggle('pistePlus');
+                pisteetShow.innerHTML = '<b>' + '+' + pisteet + '</b>';
+                setTimeout(function() {
+                  pisteetShow.classList.toggle('pistePlus');
+                  pisteetShow.innerHTML = pisteet;
+                }, 400);
 
-        //Vaihdetaan korttien ID ettei myöhemmät loopit enää koske niihin
+              } else {
+                pisteet+=10;
+                pisteetShow.classList.toggle('pistePlus');
+                pisteetShow.innerHTML = '+' + pisteet;
+                setTimeout(function() {
+                  pisteetShow.classList.toggle('pistePlus');
+                  pisteetShow.innerHTML = pisteet;
+                }, 400);
+              }*/
+
+          //Muutetaan valitun parin cheattisolut mustiksi
+          document.getElementById(valitut[1]+'c').classList.add('cheatPari');
+          document.getElementById(valitut[3]+'c').classList.add('cheatPari');
+
+        //Vaihdetaan parin ID:t ettei myöhemmät loopit enää koske niihin
         document.getElementById(valitut[1]).id += 'match';
         document.getElementById(valitut[3]).id += 'match';
-        //console.log(parit);
+
+        //Tyhjennetään valitut kortit pois
         valitut = [];
 
+        //Jos kaikille on löytynyt pari
         if (parit.length === pakka.length) {
-          document.getElementById('pisteytys').innerHTML = 'VOITTO! ' + retryNappi;
+
+          //Tarkastetaan pakan koko sekä yritysten määrä ja annetaan tuomio niiden mukaan
+          //Tuomio voi olla ehkä liian ankara?
+          if(pakka.length===16) {
+            if(fail===0) {
+              tulos = '<b>HUIJARI!!!</b>';
+            } else if(fail<8) {
+              tulos = '<b>Loistava!!!</b>';
+            } else if(fail<10) {
+              tulos = '<b>Hyvä!</b>';
+            } else if(fail<12) {
+              tulos = '<b>OK.</b>';
+            } else if(fail<14) {
+              tulos = '<b>eh...</b>';
+            } else {
+              tulos = 'hyi';
+            }
+          } else if(pakka.length===24) {
+            if(fail===0) {
+              tulos = '<b>HUIJARI!!!</b>';
+            } else if(fail<18) {
+              tulos = '<b>Loistava!!!</b>';
+            } else if(fail<21) {
+              tulos = '<b>Hyvä!</b>';
+            } else if(fail<24) {
+              tulos = '<b>OK.</b>';
+            } else if(fail<27) {
+              tulos = '<b>eh...</b>';
+            } else {
+              tulos = 'hyi';
+            }
+          } else if(pakka.length===36) {
+            if(fail===0) {
+              tulos = '<b>HUIJARI!!!</b>';
+            } else if(fail<31) {
+              tulos = '<b>Loistava!!!</b>';
+            } else if(fail<36) {
+              tulos = '<b>Hyvä!</b>';
+            } else if(fail<41) {
+              tulos = '<b>OK.</b>';
+            } else if(fail<46) {
+              tulos = '<b>eh...</b>';
+            } else {
+              tulos = 'hyi';
+            }
+          }
+
+          //Laudan himmennys
+          let korttiFade = document.getElementsByClassName('kortti');
+
+          for(let f=0; f<pakka.length; f++) {
+            korttiFade[f].style.opacity = 0.7;
+          }
+
+          //Tulostetaan voitto-viesti ja tulos näkyviin
+          document.getElementById('voitto').innerHTML = '<b>VOITTO!</b>' + '<br>' + 'Tuloksesi: ' + tulos + '<br>' + retryNappi;
+
+          //Ajastimen pysäytys
           clearInterval(aika);
         }
 
-      } else {
+      } else { //Jos EI ollut pari
+
+        //Yritys laskuri
         fail++;
+        //Tämä console.log on edelleen hyödyllinen testausta varten
+        //Joten se saa jäädä
         console.log(fail);
 
+              //En ollut ehtinyt määritellä vanhaan pisteytykseen että se katsoisin pakan koon
+              /*if (pisteet>0 && fail%3===0) {
+                pisteet-=2;
+                pisteetShow.innerHTML = '-' + pisteet;
+                pisteetShow.classList.toggle('pisteMiinus');
 
+                setTimeout(function() {
+                  pisteetShow.innerHTML = pisteet;
+                  pisteetShow.classList.toggle('pisteMiinus');
+                }, 400);
+              }*/
 
         //Kääntämättömien korttien esto
+        //Olisi varmaan ollut helpompi tapa tehdä tämä
+        //Mutta tähän päädyin sen aikaisilla taidoilla
         for(let i=0;i<pakka.length;i++) {
-          if (document.getElementById(i) !== null) {
-          document.getElementById(i).removeEventListener('click', kaanna);
+          if (document.getElementById(i) !== null) { //tarkastaa että kyseinen ID on olemassa
+          document.getElementById(i).removeEventListener('click', kaanna);  //Kääntö-funktion poisto
           }
         }
 
         /*Aloittaa ajastimen joka vapauttaa kääntämättömät kortit
-        ja kääntää valitut kortit takaisin kuluneen ajan jälkeen*/
+        ja kääntää valitut kortit nurin kuluneen ajan jälkeen*/
         setTimeout(function() {
 
-          //Korttien kääntö takaisin
+          //Korttien kääntö nurin
           document.getElementById(valitut[3]).setAttribute('src', 'img/card_back.jpg');
           document.getElementById(valitut[1]).setAttribute('src', 'img/card_back.jpg');
 
-          //Huijaus??
-          if(cheatOn===1) {
-            document.getElementById(valitut[1]+'c').classList.remove('cheats1');
-            document.getElementById(valitut[3]+'c').classList.remove('cheats1');
-          }
+            //Poistetaan highlightaus korttien cheattisoluista
+            document.getElementById(valitut[1]+'c').classList.remove('cheatValittu');
+            document.getElementById(valitut[3]+'c').classList.remove('cheatValittu');
 
+          //Poistetaan kortit valitut-listalta
           valitut = [];
+
           //Sallii taas kääntämättömät kortit
           for(let i=0;i<pakka.length;i++) {
-            if (document.getElementById(i) !== null) {
-            document.getElementById(i).addEventListener('click', kaanna);
+            if (document.getElementById(i) !== null) { //ID:n olemassaolon tarkastus
+            document.getElementById(i).addEventListener('click', kaanna); //Lisätään kääntö-funktio takaisin
             }
           }
-      }, 700)
+        }, 700); //Aika minkä jälkeen tuo kaikki tapahtuu
       }
-      //console.log(pakka[valittu].kuva)
 
 
   }
 }
 
+
+//Funktio joka tulee setIntervalin sisään
 function ajastin() {
-  time++;
+      //  const pisteetShow = document.getElementById('pisteytys');
+      //time++;
   s++;
+  //Nostetaan minuutti-muuttujaa yhdellä jos sekunti-muuttujan arvo on 60
+  //ja nollataan sekunit
   if(s===60) {
     m++;
     s = 0;
+    //Jos minuutteja on 60 nostetaan tunteja yhdellä ja nollataan minuutit
+    //Tämä on turhake tähän tehtävään, mutta tein huvin ja harjoituksen vuoksi
     if(m===60) {
       h++;
       m = 0;
     }
   }
+        /*  if (pisteet>0){
+            if (time%10===0) {
+              if(pisteet<5) {
+                switch(pisteet) {
+                  case 4:
+                    pisteet-=4;
+                    break;
+                  case 3:
+                    pisteet-=3;
+                    break;
+                  case 2:
+                    pisteet-=2;
+                    break;
+                  case 1:
+                    pisteet-=1;
+                    break;
+                }
+              } else {
+                pisteet-=5;
+              }
+              pisteetShow.innerHTML = '-' + pisteet;
+              document.getElementById('aika').classList.toggle('pisteMiinus');
+              pisteetShow.classList.toggle('pisteMiinus');
+
+              setTimeout(function() {
+                document.getElementById('aika').classList.toggle('pisteMiinus');
+                }, 300);
+
+                setTimeout(function() {
+                  pisteetShow.classList.toggle('pisteMiinus');
+                  pisteetShow.innerHTML = pisteet;
+                }, 400);
+            }
+        }*/
+  //Kirjoitetaan aika näytölle
   if (m===0 && h===0){
     document.getElementById('aika').innerHTML = s;
   } else if (h===0) {
@@ -271,8 +416,8 @@ function ajastin() {
 }
 
 
+//Cheattitaulun luonti
 function cheats() {
-  if (cheatOn===0) {
     if (pakka.length==16) {
       for(let i=0;i<pakka.length;i+=4) {
         cheat += '<tr><td id="' +i+ 'c">' + pakka[i].pari + '</td><td id="' +(i+1)+ 'c">' + pakka[i+1].pari + '</td><td id="' +(i+2)+ 'c">' + pakka[i+2].pari + '</td><td id="' +(i+3)+ 'c">' + pakka[i+3].pari + '</td></tr>';
@@ -282,19 +427,14 @@ function cheats() {
         cheat += '<tr><td id="' +i+ 'c">' + pakka[i].pari + '</td><td id="' +(i+1)+ 'c">' + pakka[i+1].pari + '</td><td id="' +(i+2)+ 'c">' + pakka[i+2].pari + '</td><td id="' +(i+3)+ 'c">' + pakka[i+3].pari + '</td><td id="' +(i+4)+ 'c">' + pakka[i+4].pari + '</td><td id="' +(i+5)+ 'c">' + pakka[i+5].pari + '</td></tr>';
       }
     }
-    cheatOn = 1;
     document.getElementById('cheat').innerHTML =  cheat + '</table>';
+}
+
+
+//Cheattitaulun näkyvyyden muutos
+function cheatToggle() {
+  //Tarkistetaan että onko cheattiTaulua olemassa
+  if(pakka.length>0) {
+    document.getElementById('cheatTable').classList.toggle('hideTable');
   }
-}
-
-
-let hhh = 0;
-function testi() {
-  console.log(pakka);
-  hhh += 'string'+(2+2)+'string';
-  console.log(hhh);
-}
-
-function vapautus() {
-
 }
