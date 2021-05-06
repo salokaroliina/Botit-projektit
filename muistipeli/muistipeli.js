@@ -244,43 +244,49 @@ function kaanna() {
             if(yritykset===0) {
               tulos = '<b>HUIJARI!!!</b>';
             } else if(yritykset<8) {
-              tulos = '<b>Loistava!!!</b>';
+              tulos = '&#9733;&#9733;&#9733;&#9733;&#9733;';
             } else if(yritykset<10) {
-              tulos = '<b>Hyvä!</b>';
+              tulos = '&#9733;&#9733;&#9733;&#9733;&#9734;';
             } else if(yritykset<12) {
-              tulos = '<b>OK.</b>';
+              tulos = '&#9733;&#9733;&#9733;&#9734;&#9734;';
             } else if(yritykset<14) {
-              tulos = '<b>eh...</b>';
+              tulos = '&#9733;&#9733;&#9734;&#9734;&#9734;';
+            } else if(yritykset<16){
+              tulos = '&#9733;&#9734;&#9734;&#9734;&#9734;';
             } else {
-              tulos = 'hyi';
+              tulos = '&#9734;&#9734;&#9734;&#9734;&#9734;';
             }
           } else if(pakka.length===24) {
             if(yritykset===0) {
               tulos = '<b>HUIJARI!!!</b>';
             } else if(yritykset<18) {
-              tulos = '<b>Loistava!!!</b>';
+              tulos = '&#9733;&#9733;&#9733;&#9733;&#9733;';
             } else if(yritykset<21) {
-              tulos = '<b>Hyvä!</b>';
+              tulos = '&#9733;&#9733;&#9733;&#9733;&#9734;';
             } else if(yritykset<24) {
-              tulos = '<b>OK.</b>';
+              tulos = '&#9733;&#9733;&#9733;&#9734;&#9734;';
             } else if(yritykset<27) {
-              tulos = '<b>eh...</b>';
+              tulos = '&#9733;&#9733;&#9734;&#9734;&#9734;';
+            } else if(yritykset<30) {
+              tulos = '&#9733;&#9734;&#9734;&#9734;&#9734;';
             } else {
-              tulos = 'hyi';
+              tulos = '&#9734;&#9734;&#9734;&#9734;&#9734;';
             }
           } else if(pakka.length===36) {
             if(yritykset===0) {
               tulos = '<b>HUIJARI!!!</b>';
             } else if(yritykset<31) {
-              tulos = '<b>Loistava!!!</b>';
+              tulos = '&#9733;&#9733;&#9733;&#9733;&#9733;';
             } else if(yritykset<36) {
-              tulos = '<b>Hyvä!</b>';
+              tulos = '&#9733;&#9733;&#9733;&#9733;&#9734;';
             } else if(yritykset<41) {
-              tulos = '<b>OK.</b>';
+              tulos = '&#9733;&#9733;&#9733;&#9734;&#9734;';
             } else if(yritykset<46) {
-              tulos = '<b>eh...</b>';
+              tulos = '&#9733;&#9733;&#9734;&#9734;&#9734;';
+            } else if(yritykset<51) {
+              tulos = '&#9733;&#9734;&#9734;&#9734;&#9734;';
             } else {
-              tulos = 'hyi';
+              tulos = '&#9734;&#9734;&#9734;&#9734;&#9734;';
             }
           }
 
