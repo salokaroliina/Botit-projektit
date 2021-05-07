@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="tiedontallennus.js">
+    </script>
+    <link rel="stylesheet" href="tiedontallennus.css">
+    <title></title>
+  </head>
+  <body>
+<div class="wrapper">
+  <h1>Lomake</h1>
+    <div id="tiedot">
+      <form action="/action_page.php">
+        <label for="etunimi">Etunimi:</label><br>
+        <input type="text" id="etunimi" value="" min="3" max="15"><br>
+        <label for="sukunimi">Sukunimi:</label><br>
+        <input type="text" id="sukunimi" value="" min="3" max="15"><br>
+        <label for="osoite">Osoite:</label><br>
+        <input type="text" id="osoite" value="" min="5"><br>
+        <label for="Postinumero">Postinumero:</label><br>
+        <input type="text" id="postinumero" value="" min="5" max="5"><br>
+        <label for="postitoimipaikka">Postitoimipaikka:</label><br>
+        <input type="text" id="postitoimipaikka" value="" min="2"><br>
+        <label for="puhelinnumero">Puhelinnumero:</label><br>
+        <input type="text" id="puhelinnumero" value="" min="7" max="12"><br>
+        <label for="sahkpoposti">Sähköposti:</label><br>
+        <input type="text" id="sahkpoposti" value=""><br>
+      </form>
+      <br>
+      <button type="button" name="button" onclick="tiedonTallennus()">Lähetä</button>
+    </div>
+</div>
+
+
+  </body>
+</html>
