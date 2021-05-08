@@ -28,6 +28,7 @@ function pelaa(){
         if(kerrat >= 4 || voitto == 1) {
           if (kerrat >= 4) {
             alert("Käytit kaikki kerrat!");
+            alert("Päivitä sivu pelataksesi uudestaan");
           }
           else {
             alert("Olet jo voittanut!");
