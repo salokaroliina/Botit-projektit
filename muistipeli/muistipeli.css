@@ -1,0 +1,29 @@
+body{
+  background:#1023c9;
+}
+
+.wrapper{
+  width: 900px;
+  margin: auto;
+  height: auto;
+  background-color: rgb(255, 225, 255);
+  text-align: center;
+  padding: 10px 50px 75px 50px;
+  border-radius: 10px;
+}
+
+h1,p{
+  font-family: 'Goudy Bookletter 1911', serif;
+}
+
+p{
+  font-size: 20px;
+}
+table{
+  border-collapse: collapse;
+  width: 50%;
+}
+img{
+  height: 215px;
+  margin-bottom: -10px;
+}
