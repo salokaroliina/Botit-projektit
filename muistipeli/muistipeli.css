@@ -1,0 +1,44 @@
+body{
+  background:#1023c9;
+}
+
+.wrapper{
+  width: 690px;
+  margin: auto;
+  height: auto;
+  background-color: rgb(255, 225, 255);
+  text-align: center;
+  padding: 5px 50px 65px 50px;
+  border-radius: 20px;
+}
+
+
+h1,p{
+  font-family: 'Goudy Bookletter 1911', serif;
+}
+
+p{
+  font-size: 20px;
+}
+
+img{
+height: 100px
+}
+
+ id-eka{
+  width: 400px
+  height 400px
+}
+
+#eka{
+  width: 400px
+  height 400px
+}
+#toka{
+  width: 600px
+  height 400px
+}
+#kolmas{
+  width: 600px
+  height 600px
+}
