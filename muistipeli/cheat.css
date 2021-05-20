@@ -43,3 +43,8 @@ td {
   height: 25px;
   margin: 0;
 }
+
+#huijari {
+  color: #f00;
+  font-weight: bold;
+}
