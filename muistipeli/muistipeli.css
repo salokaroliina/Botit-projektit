@@ -1,0 +1,32 @@
+body{
+  background:#1023c9;
+}
+
+.wrapper{
+  width: 600px;
+  margin: auto;
+  height: auto;
+  background-color:#ffff;
+  text-align: center;
+  padding: 5px 10px 50px 10px;
+  border-radius: 20px;
+}
+h1,p{
+  font-family: 'Goudy Bookletter 1911', serif;
+}
+
+p{
+  font-size: 20px;
+}
+#eka{
+  width: 400px;
+  height: 400px;
+}
+#toka{
+  width: 600px;
+  height: 400px;
+}
+#kolmas{
+  width: 600px;
+  height: 600px;
+}
