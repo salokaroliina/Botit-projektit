@@ -1,46 +1,55 @@
-/*Siivoan ja lisään kommenteja tähän myöhemmin*/
-
+/*Nollaus*/
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+/*Mustamaalaus muotoilu*/
+::selection {
+  background-color: #00ff20;
+  color: #114718;
+}
+
 body {
   background-color: #0D1612;
-  background-image: url("bg.png");
   color: #004A09;
   font-family: 'Black Ops One';
   font-size: 18px;
 }
 
+/*Kääritään wrappereiden sisältö nätisti*/
 .wrapper {
-  border: 2px solid #002a18;
-  border-collapse: collapse;
-  border-radius: 17px;
-  box-shadow: inset 0 0 57px 2px #003920,
-              0 0 50px 2px #009555;
-  background-color: #000;
-  width: 900px;
-  height: 600px;
+  display: flex;
+  width: 1300px;
   margin: auto;
   margin-top: 50px;
-  padding-top: 50px;
-  text-align: center;
-}
-
-#tiedot {
- width: 700px;
- border: 1px solid #000;
- border-collapse: collapse;
- margin: auto;
+  justify-content: space-between;
 }
 
 h1 {
   font-family: 'Black Ops One';
   font-size: 50px;
+  color: #004A09;
   text-shadow: 2px 2px #002B05;
   margin-bottom: 20px;
+}
+
+#tiedot,
+#varasto {
+  border: 2px solid #002a18;
+  border-collapse: collapse;
+  border-radius: 17px;
+  box-shadow: inset 0 0 57px 2px #003920, /*Laatikon sisälle pieni hehkumis-efekti*/
+              0 0 50px 2px #009555; /*Hehkumis-efekti laatikon ulkopuolelle*/
+  background-color: #000;
+  padding-top: 50px;
+  text-align: center;
+}
+
+#tiedot {
+  width: 700px;
+  height: 600px;
 }
 
 table {
@@ -50,13 +59,15 @@ table {
 table, tr, td {
   margin: auto;
   text-align: right;
-  /*border: 2px solid #fff;
-  border-collapse: collapse;*/
 }
 
 td {
   height: 43px;
-/*  width: 200px;*/
+}
+
+th {
+  font-size: 30px;
+  color: #000;
 }
 
 input {
@@ -71,43 +82,123 @@ input {
   box-shadow: 0 0 8px 2px #009555;
   width: 170px;
   margin-right: 30px;
+  margin-left: 10px;
   padding: 3px;
-/*  margin-left: 10px;*/
 }
 
+/*Otetaan pois se ruma outline jos input on focusattuna*/
 input:focus {
   outline: none;
+}
+
+/*Inputeille highlightaus jos joku kohta väärin*/
+.highlight {
+  border-color: #f00;
+  background-color: #f00;
+  box-shadow: 0 0 8px 2px #f00;
+  color: #520606;
+}
+
+#varasto {
+  font-family: 'VT323';
+  font-weight: bolder;
+  font-size: 20px;
+  /*Hehkuva teksti*/
+  text-shadow: 0 0 5px #1A8227,
+               0 0 10px #1A8227,
+               0 0 20px #1A8227,
+               0 0 30px #1A8227,
+               0 0 40px #1A8227,
+               0 0 50px #1A8227,
+               0 0 60px #1A8227;
+  color: #fff;
+  width: 500px;
+  height: 600px;
+}
+
+/*Virheilmoituslistan muotoilu*/
+li {
+  list-style-type: none;
+  text-shadow: 0 0 5px #f00,
+               0 0 10px #f00,
+               0 0 20px #f00,
+               0 0 30px #f00,
+               0 0 40px #f00,
+               0 0 50px #f00,
+               0 0 60px #f00;
+}
+
+/*Ylikirjoitetaan default taulukkomuotoilut pois varastotaululta*/
+#tiedotTaulu,
+#tiedotTauluFade {
+  width: 315px;
+}
+
+#tiedotTaulu td, th,
+#tiedotTauluFade td, th {
+  width: auto;
+  height:auto;
+  text-align: left;
+}
+
+/*Häivytys-animaatio varastotaululle*/
+.fade {
+  animation: fadeAnim 2s;
+}
+@keyframes fadeAnim {
+  0%{ opacity: 1;}
+  100%{ opacity: 0;}
+}
+
+/*Listapalkkien käärijä*/
+#listaTahan {
+  flex-wrap: wrap;
+  flex-direction: row; /*<---TÄLLÄ SAIN ASIAT VIIMEIN SIISTISTI VIEREKKÄIN*/
+  justify-content: flex-start;
+}
+
+.listaPalkki {
+  border: 3px solid #004A09;
+  border-collapse: collapse;
+  border-radius: 3px;
+  box-shadow: 0 0 7px 2px #0a3321;
+  font-weight: bolder;
+  color: #349A41;
+  height: 36px;
+  width: 305px;
+  text-align: center;
+  padding: 0;
+  line-height: 34px;
+  margin: 0 10px 10px 0;
+}
+
+/*Epätoivoinen yritys keskittää listapalkin teksti vertikaalisesti*/
+span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
 }
 
 button {
   font-family: 'Archivo Black';
   font-size: 17px;
-  /*text-shadow: 1.5px 1.5px #5A5F65;*/
-  /*color: #171522;*/
   color: #349A41;
   background-color: #000;
-  /*background-color: #3F4348;*/
-  /*background-image: linear-gradient(#797E84, #3F4348);*/
-  /*border: 1.7px solid #1E2123;*/
   border: 3px solid #004A09;
   border-radius: 2px;
-  /*border-top-color: #62616B;
-  border-right-color: #1E212;
-  border-bottom-color: #1E212;
-  border-left-color: #62616B;*/
-  /*box-shadow: 2px 2px 0 #1E2123,
-              2px 0 #1E2123,
-              0 2px #1E2123,
-              0 0 0 2px #62616B;*/
-  /*box-shadow: 1px 0px 10px #fff inset, -3px -3px 10px #000 inset;*/
+  box-shadow: 0 0 2 1 #004A09;
   width: 100px;
   height: 40px;
   margin-top: 15px;
   float: right;
 }
+button:focus {
+  outline: none;
+}
 
-button:hover {
-  animation: bounce .3s;
+/*Lisätään napeille ja listapalkeille efektiä jos hoveraa niiden päältä*/
+button:hover,
+.listaPalkki:hover {
   background-color: #349A41;
   border: 0;
   box-shadow: 0 0 10px 2px #6ce4a8;
@@ -115,14 +206,31 @@ button:hover {
   /*border-radius: 20px;*/
 }
 
-button:active {
-  transform: scale(0.97);
+/*Efekti pohjaan painetuille palkeille ja napeille*/
+button:active,
+.listaPalkki:active {
   background-color: #fff;
   box-shadow: 0 0 15px 2px #fff,
               0 0 5px 2px #fff;
   color: #c5fee1
 }
 
+/*Lisätään pieni animaatio jos hoveraa napin päältä*/
+button:hover {
+  animation: bounce .3s;
+}
 @keyframes bounce {
   to { transform: scale(1.1); }
+}
+
+/*Lisätään efekti pohjaan painetulle napille*/
+button:active {
+  transform: scale(0.9);
+}
+
+.poistoNappi {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  margin: 0;
 }

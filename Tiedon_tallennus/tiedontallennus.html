@@ -2,8 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="tiedontallennus.js">
-    </script>
+
     <link rel="stylesheet" href="tiedontallennus.css">
     <!--Lisätty fontteja -unna-->
     <link href='https://fonts.googleapis.com/css?family=VT323|Archivo Black|Black Ops One' rel='stylesheet'>
@@ -11,46 +10,52 @@
   </head>
   <body>
 <div class="wrapper">
-  <h1>Lomake</h1>
+
     <div id="tiedot">
+      <h1>Lomake</h1>
       <table>
         <tr>
           <td><label for="etunimi">Etunimi:</label></td>
-          <td><input type="text" id="etunimi" value=""></td>
+          <td><input type="text" id="etunimi" value="" min="3" max="15"></td>
         </tr>
         <tr>
           <td><label for="sukunimi">Sukunimi:</label><br></td>
-          <td><input type="text" id="sukunimi" value=""></td>
+          <td><input type="text" id="sukunimi" value="" min="3" max="15"></td>
         </tr>
         <tr>
           <td><label for="osoite">Osoite:</label></td>
-          <td><input type="text" id="osoite" value=""></td>
+          <td><input type="text" id="osoite" value="" min="5"></td>
         </tr>
         <tr>
-          <td><label for="postinumero">Postinumero:</label></td>
-          <td><input type="text" id="postinumero" value=""></td>
+          <td><label for="Postinumero">Postinumero:</label></td>
+          <td><input type="text" id="postinumero" value="" min="5" max="5"></td>
         </tr>
         <tr>
           <td><label for="postitoimipaikka">Postitoimipaikka:</label></td>
-          <td><input type="text" id="postitoimipaikka" value=""></td>
+          <td><input type="text" id="postitoimipaikka" value="" min="2"></td>
         </tr>
         <tr>
           <td><label for="puhelinnumero">Puhelinnumero:</label></td>
-          <td><input type="text" id="puhelinnumero" value=""></td>
+          <td><input type="text" id="puhelinnumero" value="" min="7" max="12"></td>
         </tr>
         <tr>
-        <td><label for="sahkoposti">Sähköposti:</label></td>
+        <td><label for="sahkpoposti">Sähköposti:</label></td>
           <td><input type="text" id="sahkoposti" value=""></td>
         </tr>
         <tr>
-          <td colspan="2"><button type="button" name="button" onclick="tiedonTallennus()">Listaa</button></td>
+          <td colspan="2"><button type="button" name="button" onclick="tiedonTallennus('klik')">Lähetä</button>
+          </td>
         </tr>
       </table>
-      <div id="varasto">
-      </div>
     </div>
+  <div id="varasto"><h1>Tiedot</h1></div>
+<br>
+</div>
+<div class="wrapper" id="listaTahan">
+  <div id="storageLista"></div>
 </div>
 
-
+<script type="text/javascript" src="tiedontallennus.js">
+</script>
   </body>
 </html>
