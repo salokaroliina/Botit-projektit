@@ -1,14 +1,45 @@
-/*hyvin simppelit muotoilut cheatille. tähän saa vapaasti kajota jos huvittaa
-sanokaa jos haluutte cheat taululle id:n tai lisää classeja?*/
+#cheat {
+  position: absolute;
+  z-index: 1;
+  top: 130px;
+  left: 103%;
+}
+
+table {
+  table-layout: fixed;
+  border: 4px solid #4c8bff;
+  border-collapse: collapse;
+}
+
+.slim {
+  width: 100px;
+}
+
+.wide {
+  width: 150px;
+}
+
+td {
+  background-color: #fff;
+  border: 2px solid #4c8bff;
+  border-collapse: collapse;
+}
 
 .cheatValittu {
-  background-color: #f99;
+  background-color: #9abaf7;
 }
 
 .cheatPari {
-  background-color: #000;
+  background-color: #cfe0fe;
+  color: #cfe0fe;
 }
 
 .hideTable {
   display: none;
+}
+
+#cheatNappi {
+  width: 80px;
+  height: 25px;
+  margin: 0;
 }

@@ -94,7 +94,7 @@ function tyhjenna() {
   document.getElementById('aika').innerHTML = '';
   document.getElementById('cheat').innerHTML = '';
   document.getElementById('voitto').innerHTML = '';
-  cheat = '<table border="1" id="cheatTable" class="hideTable">';
+  cheat = '';
   retryNappi = '';
 }
 
@@ -242,7 +242,7 @@ function kaanna() {
           //Tuomio voi olla ehkä liian ankara?
           if(pakka.length===16) {
             if(yritykset===0) {
-              tulos = '<b>HUIJARI!!!</b>';
+              tulos = '<span id="huijari">HUIJARI!!!</span>';
             } else if(yritykset<8) {
               tulos = '&#9733;&#9733;&#9733;&#9733;&#9733;';
             } else if(yritykset<10) {
@@ -258,7 +258,7 @@ function kaanna() {
             }
           } else if(pakka.length===24) {
             if(yritykset===0) {
-              tulos = '<b>HUIJARI!!!</b>';
+              tulos = '<span id="huijari">HUIJARI!!!</span>';
             } else if(yritykset<18) {
               tulos = '&#9733;&#9733;&#9733;&#9733;&#9733;';
             } else if(yritykset<21) {
@@ -274,7 +274,7 @@ function kaanna() {
             }
           } else if(pakka.length===36) {
             if(yritykset===0) {
-              tulos = '<b>HUIJARI!!!</b>';
+              tulos = '<span id="huijari">HUIJARI!!!</span>';
             } else if(yritykset<31) {
               tulos = '&#9733;&#9733;&#9733;&#9733;&#9733;';
             } else if(yritykset<36) {
@@ -298,7 +298,7 @@ function kaanna() {
           }
 
           //Tulostetaan voitto-viesti ja tulos näkyviin
-          document.getElementById('voitto').innerHTML = '<b>VOITTO!</b>' + '<br>' + 'Tuloksesi: ' + tulos + '<br>' + retryNappi;
+          document.getElementById('voitto').innerHTML = '<div id="voittoteksti">VOITTO!</div>Tuloksesi: ' + tulos + '<br>' + retryNappi;
 
           //Ajastimen pysäytys
           clearInterval(aika);
@@ -427,10 +427,12 @@ function ajastin() {
 //Cheattitaulun luonti
 function cheats() {
     if (pakka.length==16) {
+      cheat = '<table id="cheatTable" class="slim hideTable">';
       for(let i=0;i<pakka.length;i+=4) {
         cheat += '<tr><td id="' +i+ 'c">' + pakka[i].pari + '</td><td id="' +(i+1)+ 'c">' + pakka[i+1].pari + '</td><td id="' +(i+2)+ 'c">' + pakka[i+2].pari + '</td><td id="' +(i+3)+ 'c">' + pakka[i+3].pari + '</td></tr>';
       }
     } else {
+      cheat = '<table id="cheatTable" class="wide hideTable">';
       for(let i=0;i<pakka.length;i+=6) {
         cheat += '<tr><td id="' +i+ 'c">' + pakka[i].pari + '</td><td id="' +(i+1)+ 'c">' + pakka[i+1].pari + '</td><td id="' +(i+2)+ 'c">' + pakka[i+2].pari + '</td><td id="' +(i+3)+ 'c">' + pakka[i+3].pari + '</td><td id="' +(i+4)+ 'c">' + pakka[i+4].pari + '</td><td id="' +(i+5)+ 'c">' + pakka[i+5].pari + '</td></tr>';
       }
