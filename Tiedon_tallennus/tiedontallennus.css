@@ -159,7 +159,6 @@ li {
 
 .listaPalkki {
   border: 3px solid #004A09;
-  border-collapse: collapse;
   border-radius: 3px;
   box-shadow: 0 0 7px 2px #0a3321;
   font-weight: bolder;
@@ -221,6 +220,18 @@ button:hover {
 }
 @keyframes bounce {
   to { transform: scale(1.1); }
+}
+
+/*Animaatio palkille jos käyttäjä lähettää lomakkeen samoilla etu- ja sukunimellä*/
+.palkkiAnim {
+  animation: bounce .3s,
+             flash 1s;
+}
+@keyframes flash {
+  0% {border-color: #00ff99;
+      box-shadow: 0 0 9px 3px #84ecc2;}
+  100% {border-color: #004A09;
+        box-shadow: 0 0 7px 2px #0a3321;}
 }
 
 /*Lisätään efekti pohjaan painetulle napille*/
