@@ -51,3 +51,21 @@ p{
   top: 15px;
   right: 103%;
 }
+#voitto {
+  width: 220px;
+  border-radius: 20px;
+  background-color: #fff;
+  position: absolute;
+  z-index: 1;
+  top: 40%;
+  left: 50%;
+  margin-left: -110px;
+}
+#voittoteksti {
+  margin-top: 15px;
+  font-weight: bold;
+}
+#huijari {
+  color: #f00;
+  font-weight: bold;
+}
