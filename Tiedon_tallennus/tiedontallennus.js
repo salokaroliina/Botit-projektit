@@ -160,6 +160,7 @@ function tiedonTallennus(event) {
 
             //Aloittaa 2sec ajastimen jonka jälkeen se poistaa tiedot taulun näytöltä
             setTimeout(function() {
+              //Tarkastaa että näytöllä oleva taulu on merkattu häivytettäväksi
               if(document.getElementById('tiedotTauluFade')) {
                 tulosta.innerHTML = '<h1>Tiedot</h1';
               }
