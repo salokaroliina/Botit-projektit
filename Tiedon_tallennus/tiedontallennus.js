@@ -7,8 +7,6 @@
 //avaimella tietoja ja luo uuden listapalkin.
 //Listapalkit ei tarkista onko näytöllä jo oleva taulu sama vai eri mitä haetaan
 //eli jos klikkaat eriä palkkia niin se piilottaa näytöllä olevan taulun.
-//Se että en keksinyt listapalkille parempaa nimeä.
-//hyi.
 
 const etunimi = document.getElementById('etunimi');
 const sukunimi = document.getElementById('sukunimi');
@@ -110,7 +108,7 @@ function tiedonTallennus(event) {
         listaPalkki.addEventListener('click', naytaTiedot); //Funktio tiedon haulle
         listaPalkki.appendChild(span);
         span.appendChild(nimet); //Lisätään teksti spaniin
-                                //Span siksi kun yritin keskittää tekstin vertikaalisesti
+                                //Span tekstin vertikaalisen keskittämisen vuoksi
         listaPalkki.appendChild(poistoNappi); //Liitetään poistonappi diviin
         listaTahan.appendChild(listaPalkki); //Tuodaan palkki ruudulle
 
@@ -123,18 +121,14 @@ function tiedonTallennus(event) {
         puhelinnumero.value = '';
         sahkoposti.value = '';
 
-        //Kattoo jos jollain on häivytys animaatio päällä ja ottaa sen pois
-        //idk onko loppujenlopuksi tarpeellinen
-        //varmaan???
+        //Katsoo jos jollain on häivytys animaatio päällä ja ottaa sen pois
         while(fade.length>0) {
           fade[0].classList.toggle('fade');
         }
 
         //Muuttaa varastosta vedetyn taulukon ID:n
-        //Yritän tällä estää sen että se häivyttää tiedot jos otat ne listasta näkyviin
+        //Tällä estetään että ohjelma häivyttää tiedot jos otat ne listapalkista näkyviin
         //Bugi jos rämppäät nopeesti uudet tiedot lomakkeeseen
-        //Saa nähdä jaksanko alkaa ajatteleen miten se korjataan...
-        //Update: en.
         document.getElementById('tiedotTaulu').id = 'tiedotTauluFade';
 
         //Aloittaa 3sec ajastimen jonka jälkeen se häivyttää tiedot näytöltä
