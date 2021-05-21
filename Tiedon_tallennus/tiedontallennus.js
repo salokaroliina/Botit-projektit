@@ -18,6 +18,7 @@ const sahkoposti = document.getElementById('sahkoposti');
 
 const tulosta = document.getElementById('varasto');
 const listaTahan = document.getElementById('listaTahan');
+const etsiPalkki = document.getElementsByClassName('listaPalkki');
 
 //Julistetaan togglettavat classit
 const highlight = document.getElementsByClassName('highlight');
@@ -48,7 +49,8 @@ function tiedonTallennus(event) {
   //Luodaan avain varastoa varten
   const avain = etunimi.value +' '+ sukunimi.value;
   //Luodaan varastoon tallennettava taulukko
-  const tiedot = '<table id="tiedotTaulu"><tr><th colspan="2">'+etunimi.value+' '+sukunimi.value+
+  //Annetaan lisäksi taulukon dataksi avain naytaTiedot funktiota varten
+  const tiedot = '<table id="tiedotTaulu" data-avain="'+avain+'"><tr><th colspan="2">'+avain+
                   '</th></tr><tr><td>Etunimi</td><td>'+etunimi.value+
                   '</td></tr><tr><td>Sukunimi</td><td>'+sukunimi.value+
                   '</td></tr><tr><td>Osoite</td><td>'+osoite.value+
@@ -64,6 +66,8 @@ function tiedonTallennus(event) {
   const span = document.createElement('span');
   //Poistonappi-nappi
   const poistoNappi = document.createElement('button');
+  //Duplikaatti-palkkien estoa varten
+  let palkkiTarkistus = 'nan';
 
   //Jos painetaan enterii tai klikataan nappii
   if(event.which === 13 || event === 'klik') {
@@ -97,21 +101,45 @@ function tiedonTallennus(event) {
         //Tuodaan taulukko varastosta
         tulosta.innerHTML = '<h1>Tiedot</h1><br>'+localStorage.getItem(avain);
 
-        //Poisto-napin luonti
-        poistoNappi.innerHTML = "X";
-        poistoNappi.addEventListener('click', poisto); //Lisätään poisto-funktio
-        poistoNappi.classList.add('poistoNappi');
-        poistoNappi.dataset.avain = avain; //Data jonka poisto-funktio voi lukea
+        //Katsotaan onko avainta vastaavaa palkkia olemassa
+        if(etsiPalkki) {
+          for(let i=0;i<etsiPalkki.length;i++) {
+            //Jos avainta vastaava palkki löytyy, asetetaan i:n arvo tarkastusmuuttujaan
+            if(etsiPalkki[i].dataset.avain === avain) {
+              palkkiTarkistus = i;
+            }
+          }
+        }
 
-        //Luodaan palkki josta voi tuoda varaston tiedot takaisin näytölle
-        listaPalkki.classList.add('listaPalkki');
-        listaPalkki.dataset.avain = avain; //Data jonka avulla tuodaan tieto näytölle varastosta
-        listaPalkki.addEventListener('click', naytaTiedot); //Funktio tiedon haulle
-        listaPalkki.appendChild(span);
-        span.appendChild(nimet); //Lisätään teksti spaniin
-                                //Span tekstin vertikaalisen keskittämisen vuoksi
-        listaPalkki.appendChild(poistoNappi); //Liitetään poistonappi diviin
-        listaTahan.appendChild(listaPalkki); //Tuodaan palkki ruudulle
+        //Jos tarkastusmuuttuja ei ole numero
+        if(isNaN(palkkiTarkistus)) {
+          console.log('teesti');
+          //Poisto-napin luonti
+          poistoNappi.innerHTML = "X";
+          poistoNappi.addEventListener('click', poisto); //Lisätään poisto-funktio
+          poistoNappi.classList.add('poistoNappi');
+          poistoNappi.dataset.avain = avain; //Data jonka poisto-funktio voi lukea
+
+          //Luodaan palkki josta voi tuoda varaston tiedot takaisin näytölle
+          listaPalkki.classList.add('listaPalkki');
+          listaPalkki.dataset.avain = avain; //Data jonka avulla tuodaan tieto näytölle varastosta
+          listaPalkki.addEventListener('click', naytaTiedot); //Funktio tiedon haulle
+          listaPalkki.appendChild(span);
+          span.appendChild(nimet); //Lisätään teksti spaniin
+                                  //Span tekstin vertikaalisen keskittämisen vuoksi
+          listaPalkki.appendChild(poistoNappi); //Liitetään poistonappi diviin
+          listaTahan.appendChild(listaPalkki); //Tuodaan palkki ruudulle
+        } else {
+          //Jos tarkastusmuuttuja on numero, käytetään sitä hakemaan oikea kohde
+          //elementeistä joiden classina on listaPalkki ja aktivoidaan animaatio class
+          etsiPalkki[palkkiTarkistus].classList.toggle('palkkiAnim');
+          //Otetaan animaatio class pois animaation loputtua
+          setTimeout(function() {
+            while(document.getElementsByClassName('palkkiAnim').length>0) {
+              document.getElementsByClassName('palkkiAnim')[0].classList.toggle('palkkiAnim');
+            }
+          }, 1000);
+        }
 
         //Lomakkeen tyhjennys
         etunimi.value = '';
@@ -140,7 +168,9 @@ function tiedonTallennus(event) {
 
             //Aloittaa 2sec ajastimen jonka jälkeen se poistaa tiedot taulun näytöltä
             setTimeout(function() {
-              tulosta.innerHTML = '<h1>Tiedot</h1';
+              if(document.getElementById('tiedotTauluFade')) {
+                tulosta.innerHTML = '<h1>Tiedot</h1';
+              }
             }, 2000);
           }
         }, 3000);
@@ -330,17 +360,20 @@ function naytaTiedot() {
     //Jos varastossa on dataa matchaava tieto
     //Tämä on tässä koska poistonappi on samassa divissa kuin listapalkki
     //Jos tätä ei ole tässä niin näytölle ilmestyy null kun yrität poistaa tietoa
-    //Ei ole myöskään estoa joka estäisi että voit luoda useamman palkin jolla on
-    //sama varastoavain
-    //Eli on mahdollista että voit yrittää hakea olemassa olevasta palkista jo
-    //poistettua tavaraa varastosta
     if(localStorage.getItem(this.dataset.avain)) {
       //Tuodaan varasto-taulu näytölle
       tulosta.innerHTML = '<h1>Tiedot</h1><br>'+localStorage.getItem(this.dataset.avain);
     }
   } else {
-    //Jos näyöllä on jo taulu, piiloitetaan se
-    tulosta.innerHTML = '<h1>Tiedot</h1>';
+    //Jos näyöllä on jo sama taulu, piiloitetaan se
+    if(this.dataset.avain === document.getElementById('tiedotTaulu').dataset.avain) {
+      tulosta.innerHTML = '<h1>Tiedot</h1>';
+    } else {
+      //Jos on eri taulu, tuodaan uusi taulu esiin
+      if(localStorage.getItem(this.dataset.avain)) {
+        tulosta.innerHTML = '<h1>Tiedot</h1><br>'+localStorage.getItem(this.dataset.avain);
+      }
+    }
   }
 }
 
