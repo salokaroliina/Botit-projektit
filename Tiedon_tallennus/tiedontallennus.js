@@ -1,13 +1,5 @@
 // _(:3」∠)_
 
-//ASIAT JOTKA JÄI VAIVAAMAAN:
-//Näyttää pahalle jos rämpätään nopeesti uudet tiedot lomakkeeseen ennenkuin
-//häivytys animaatio on kulunut loppuun.
-//Kun syötät uudet lomake-tiedot, ohjelma ei tarkasta onko varastossa jo samalla
-//avaimella tietoja ja luo uuden listapalkin.
-//Listapalkit ei tarkista onko näytöllä jo oleva taulu sama vai eri mitä haetaan
-//eli jos klikkaat eriä palkkia niin se piilottaa näytöllä olevan taulun.
-
 const etunimi = document.getElementById('etunimi');
 const sukunimi = document.getElementById('sukunimi');
 const osoite = document.getElementById('osoite');
