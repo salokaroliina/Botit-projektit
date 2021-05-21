@@ -25,6 +25,7 @@ const fade = document.getElementsByClassName('fade');
 
 //Regex nimitarkastukset
 const nameCheck = /^[ a-zA-ZåäöÅÄÖ\-\']+$/;
+const numberCheck = /^[0-9]+$/;
 const addressCheck = /^[ 0-9a-zA-ZåäöÅÄÖ\-\']+$/;
 const emailCheck = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -82,12 +83,12 @@ function tiedonTallennus(event) {
        osoite.value.length>=5 && //Osoite pituus
        addressCheck.test(osoite.value) && //Regex
        postinumero.value.length===5 && //Postinumero pituus
-       !isNaN(postinumero.value) && //Onko postinumero numeroina
+       numberCheck.test(postinumero.value) && //Onko postinumero numeroina
        postitoimipaikka.value.length>=2 && //Postitoimipaikka pituus
        nameCheck.test(postitoimipaikka.value) && //Regex
        puhelinnumero.value.length>=7 && //Puhelinnumero pituus
        puhelinnumero.value.length<=12 &&
-       !isNaN(puhelinnumero.value) && //Puhelinnumero numeroina?
+       numberCheck.test(puhelinnumero.value) && //Puhelinnumero numeroina?
        //sahkoposti.value.match(emailCheck) <-- toi kans toimii regex-testinä
        emailCheck.test(sahkoposti.value)) { //Sähkoposti regex-testi
 
@@ -243,7 +244,7 @@ function tiedonTallennus(event) {
             }
             tulosta.innerHTML += '<li>Postinumeron pitää olla 5 merkkiä</li>';
           }
-          if (isNaN(postinumero.value)) {
+          if (!numberCheck.test(postinumero.value)) {
             if (!postinumero.classList.contains('highlight')) {
               postinumero.classList.toggle('highlight');
             }
@@ -291,7 +292,7 @@ function tiedonTallennus(event) {
             }
             tulosta.innerHTML += '<li>Puhelinnumero voi olla enintään 12 merkkiä</li>';
           }
-          if (isNaN(puhelinnumero.value)) {
+          if (!numberCheck.test(puhelinnumero.value)) {
             if (!puhelinnumero.classList.contains('highlight')) {
               puhelinnumero.classList.toggle('highlight');
             }
