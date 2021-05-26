@@ -3,75 +3,218 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="peli.css">
-    <title>Peli</title>
+    <title>Escape the room</title>
   </head>
   <body>
     <script type="text/javascript" src="peli.js">
     </script>
-<div id="pelialue">
+
+      <!--OVI -->
+      <!--modal avaa objektia klikatessa ruudun jossa on tekstiä
+        sekä x-nappi sulkemista varten-->
+      <div class="modal">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p id="door">The door is locked</p>
+        </div>
+      </div>
+      <!--TIETOKONE(keskusyksikkö) -->
+      <div class="modal">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>The computer is on</p>
+        </div>
+      </div>
+      <!--NÄYTTÖ -->
+      <div class="modal">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>The monitor is on</p>
+          </div>
+      </div>
+      <!--KELLO -->
+      <div class="modal">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>The clock has stopped to 1:00</p>
+        </div>
+      </div>
+      <!--KEHYS -->
+      <div class="modal">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>A picture of my mom</p>
+        </div>
+      </div>
+      <!--RUUKKU-->
+      <div class="modal" id="modal-pot">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>It's a plant</p>
+        </div>
+      </div>
+      <!--KIRJA 1-->
+      <div class="modal">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>The X-files</p>
+        </div>
+      </div>
+      <!--KIRJA 2 -->
+      <!--Kirja 2 antaa vihjeen oven koodista (6174)-->
+      <div class="modal">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>Kapr.... <br><br>
+            The page has too much coffee stains to be readable</p>
+        </div>
+      </div>
+      <!--KIRJA 3 -->
+      <div class="modal">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>Alien technology for dummies</p>
+        </div>
+      </div>
+      <!-- KIRJA 4-->
+      <div class="modal">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>Humans - Are they real?</p>
+        </div>
+      </div>
+      <!--LAATIKKO -->
+      <div class="modal" id="modal-box">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>The box is locked</p>
+        </div>
+      </div>
+      <!--VERHO -->
+      <div class="modal" id="modal-curtain">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>It's a curtain</p>
+        </div>
+      </div>
+      <!--LUKKO(avain)-->
+      <div class="modal" id="modal-lock-key">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>This lock needs a key</p>
+        </div>
+      </div>
+      <!--LUKKO(koodi) -->
+      <div class="modal" id="modal-lock-code">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>This lock needs a code</p>
+        </div>
+      </div>
+      <!--LUKKO(sähkö) -->
+      <div class="modal" id="modal-lock-elec">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>This lock is electrical</p>
+        </div>
+      </div>
+      <!--MUISTIO -->
+      <div class="modal">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>Dear Ufojorma. You locked yourself up again after reading those stories
+          about humans last night. <br>
+          I couldn't find the way to open the door so I went
+          through a window.
+          <br>But you need to get the door open. <br><br>
+          Take care, <br>
+          mom</p>
+        </div>
+      </div>
+      <!--AVAIN-->
+      <div class="modal" id="modal-key">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>It's a key</p>
+        </div>
+      </div>
+      <!--IKKUNA -->
+      <div class="modal">
+        <div class="modal-content">
+          <button class="close" onclick="close(this)">&times;</button>
+          <p>I can't escape through a window</p>
+        </div>
+      </div>
+
+<!--J A T K A  T Ä S T Ä --->
+
+      <!--PELIALUE -->
+    <div id="pelialue">
+    <!--HUONE JA TAUSTAELEMENTIT -->
+    <img src="grafiikka/huone.png" usemap="#room-map">
+    </div>
+
+    <!--TAUSTAELEMENTTIEN HITBOXIT -->
+    <map name="room-map">
+      <area alt="ovi" title="" onclick="" coords="46,112,263,569" shape="rect">
+      <area alt="kehys" title="" onclick="" coords="439,263,480,323" shape="rect">
+      <area alt="kello" title="" onclick="" coords="792,155,41" shape="circle">
+      <area alt="naytto" title="" onclick="" coords="756,319,849,384" shape="rect">
+      <area alt="pc" title="" onclick="" coords="867,292,921,408" shape="rect">
+      <area alt="ikkuna" title="" onclick="" coords="1035,132,1099,370" shape="rect">
+      <area alt="kirja1" title="" onclick="" coords="443,134,458,196" shape="rect">
+      <area alt="kirja2" title="" onclick="" coords="464,130,477,196" shape="rect">
+      <area alt="kirja3" title="" onclick="" coords="483,132,493,196" shape="rect">
+      <area alt="kirja4" title="" onclick="" coords="500,140,515,198" shape="rect">
+    </map>
 
 
-<!--huone ja taustaelementit -->
-<img src="grafiikka/huone.png" usemap="#huone_map">
-<map name="huone">
-  <area alt="ovi" title="" coords="46,112,263,569" shape="rect">
-  <area alt="kehys" title="" coords="439,263,480,323" shape="rect">
-  <area alt="kello" title="" coords="792,155,41" shape="circle">
-  <area alt="naytto" title="" coords="756,319,849,384" shape="rect">
-  <area alt="pc" title="" coords="867,292,921,408" shape="rect">
-  <area alt="ikkuna" title="" coords="1035,132,1099,370" shape="rect">
-  <area alt="kirja1" title="" coords="443,134,458,196" shape="rect">
-  <area alt="kirja2" title="" coords="464,130,477,196" shape="rect">
-  <area alt="kirja3" title="" coords="483,132,493,196" shape="rect">
-  <area alt="kirja4" title="" coords="500,140,515,198" shape="rect">
-</map>
-</div>
 
-<!--erilliset objektit -->
-<img src="grafiikka/avain.png" usemap="#huone-map">
-<map name="image-map">
-    <area alt="avain" title="" coords="46,83,12,4" shape="rect">
-</map>
+    <!--ERILLISET OBJEKTIT -->
+    <img src="grafiikka/avain.png" usemap="#huone-map">
+    <map name="image-map">
+      <area alt="avain" title="" coords="46,83,12,4" shape="rect">
+    </map>
 
-<img src="grafiikka/laatikko.png" usemap="#huone-map">
-<map name="image-map">
-    <area alt="laatikko" title=""coords="107,23,13,109" shape="rect">
-</map>
+    <img src="grafiikka/laatikko.png" usemap="#huone-map">
+    <map name="image-map">
+      <area alt="laatikko" title="" coords="107,23,13,109" shape="rect">
+    </map>
 
-<img src="grafiikka/lukko_avain.png" usemap="#huone-map">
-<map name="image-map">
-    <area alt="lukko_avain" title="" coords="59,14,21,71" shape="rect">
-</map>
+    <img src="grafiikka/lukko_avain.png" usemap="#huone-map">
+    <map name="image-map">
+      <area alt="lukko_avain" title="" coords="59,14,21,71" shape="rect">
+    </map>
 
-<img src="grafiikka/lukko_koodi.png" usemap="#huone-map">
-<map name="image-map">
-    <area alt="lukko_koodi" title="" coords="7,63,45,5" shape="rect">
-</map>
+    <img src="grafiikka/lukko_koodi.png" usemap="#huone-map">
+    <map name="image-map">
+      <area alt="lukko_koodi" title="" coords="7,63,45,5" shape="rect">
+    </map>
 
-<img src="grafiikka/lukko_sahko.png" usemap="#huone-map">
-<map name="image-map">
-    <area alt="lukko_sahko" title="" coords="12,70,50,12" shape="rect">
-</map>
+    <img src="grafiikka/lukko_sahko.png" usemap="#huone-map">
+    <map name="image-map">
+      <area alt="lukko_sahko" title="" coords="12,70,50,12" shape="rect">
+    </map>
 
-<img src="grafiikka/muistilappu.png" usemap="#huone-map">
-<map name="image-map">
-    <area alt="muistilappu" title="" coords="62,1,-1,83" shape="rect">
-</map>
+    <img src="grafiikka/muistilappu.png" usemap="#huone-map">
+    <map name="image-map">
+      <area alt="muistilappu" title="" coords="62,1,-1,83" shape="rect">
+    </map>
 
-<img src="grafiikka/ovi_auki.png" usemap="#huone-map">
-<map name="image-map">
-    <area alt="ovi_auki" title="" coords="26,487,245,28" shape="rect">
-</map>
+    <img src="grafiikka/ovi_auki.png" usemap="#huone-map">
+    <map name="image-map">
+      <area alt="ovi_auki" title="" coords="26,487,245,28" shape="rect">
+    </map>
 
-<img src="grafiikka/ruukku.png" usemap="#huone-map">
-<map name="image-map">
-    <area alt="ruukku.png" title="" coords="69,14,12,111" shape="rect">
-</map>
+    <img src="grafiikka/ruukku.png" usemap="#huone-map">
+    <map name="image-map">
+      <area alt="ruukku.png" title="" coords="69,14,12,111" shape="rect">
+    </map>
 
-<img src="grafiikka/verho.png" usemap="#huone-map">
-<map name="image-map">
-    <area alt="verho" title="" coords="24,484,138,42" shape="rect">
-</map>
+    <img src="grafiikka/verho.png" usemap="#huone-map">
+    <map name="image-map">
+      <area alt="verho" title="" coords="24,484,138,42" shape="rect">
+    </map>
 
   </body>
 </html>
