@@ -35,23 +35,55 @@
   font-size: 20px;
 }
 
+map{
+  cursor: pointer;
+}
+
 #box{
   position: absolute;
   top: 472px;
   left: 812px;
-  cursor: pointer;
 }
 
 #curtain{
   position: absolute;
   top: 78px;
   left: 946px;
-  cursor: pointer;
 }
 
 #pot{
   position: absolute;
   top: 330px;
   left: 500px;
-  cursor: pointer;
+}
+
+#note{
+  position: absolute;
+  top: 200px;
+  left: 130px;
+}
+
+#lock-key{
+  position: absolute;
+  top: 250px;
+  left: 190px;
+}
+
+#lock-code{
+  position: absolute;
+  top: 330px;
+  left: 204px;
+}
+
+#lock-elec{
+  position: absolute;
+  top: 400px;
+  left: 200px;
+}
+
+#door-open{
+  position: absolute;
+  top: 84px;
+  left: 21px;
+  visibility: hidden;
 }
