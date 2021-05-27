@@ -6,9 +6,6 @@
     <title>Escape the room</title>
   </head>
   <body>
-    <script type="text/javascript" src="peli.js">
-    </script>
-
       <!--OVI -->
       <!--modal avaa objektia klikatessa ruudun jossa on tekstiä
         sekä x-nappi sulkemista varten-->
@@ -146,78 +143,68 @@
         </div>
       </div>
 
-<!--J A T K A  T Ä S T Ä --->
 
       <!--PELIALUE -->
     <div id="pelialue">
     <!--HUONE JA TAUSTAELEMENTIT -->
-    <img src="grafiikka/huone.png"  usemap="#room-map">
-    <img src="grafiikka/avain.png" usemap="#huone-map">
-    <img src="grafiikka/laatikko.png" usemap="#huone-map">
-    <img src="grafiikka/lukko_avain.png" usemap="#huone-map">
-    <img src="grafiikka/lukko_avain.png" usemap="#huone-map">
-    <img src="grafiikka/lukko_koodi.png" usemap="#huone-map">
-    <img src="grafiikka/lukko_sahko.png" usemap="#huone-map">
-    <img src="grafiikka/muistilappu.png" usemap="#huone-map">
-    <img src="grafiikka/ovi_auki.png" usemap="#huone-map">
-    <img src="grafiikka/ruukku.png" usemap="#huone-map">
-    <img src="grafiikka/verho.png" usemap="#huone-map">
-
+      <img src="grafiikka/huone.png" id="room" usemap="#room-map">
+      <img src="grafiikka/avain.png" id="key" usemap="#key-map">
+      <img src="grafiikka/laatikko.png" id="box" usemap="#box-map">
+      <img src="grafiikka/lukko_avain.png" id="lock-key" usemap="#lock-key-map">
+      <img src="grafiikka/lukko_koodi.png" id="lock-code" usemap="#lock-code-map">
+      <img src="grafiikka/lukko_sahko.png" id="lock-elec" usemap="#lock-elec-map">
+      <img src="grafiikka/muistilappu.png" id="note" usemap="#note-map">
+      <img src="grafiikka/ovi_auki.png" id="door_open" usemap="#door-open-map">
+      <img src="grafiikka/ruukku.png" id="pot" usemap="#pot-map">
+      <img src="grafiikka/verho.png" id="curtain" usemap="#curtain-map">
     </div>
 
     <!--TAUSTAELEMENTTIEN HITBOXIT -->
     <map name="room-map">
-      <area alt="ovi" title="" onclick="" coords="46,112,263,569" shape="rect">
-      <area alt="kehys" title="" onclick="" coords="439,263,480,323" shape="rect">
-      <area alt="kello" title="" onclick="" coords="792,155,41" shape="circle">
-      <area alt="naytto" title="" onclick="" coords="756,319,849,384" shape="rect">
-      <area alt="pc" title="" onclick="" coords="867,292,921,408" shape="rect">
-      <area alt="ikkuna" title="" onclick="" coords="1035,132,1099,370" shape="rect">
-      <area alt="kirja1" title="" onclick="" coords="443,134,458,196" shape="rect">
-      <area alt="kirja2" title="" onclick="" coords="464,130,477,196" shape="rect">
-      <area alt="kirja3" title="" onclick="" coords="483,132,493,196" shape="rect">
-      <area alt="kirja4" title="" onclick="" coords="500,140,515,198" shape="rect">
+      <area alt="ovi" id="hit-door" onclick="popup(0)" coords="46,112,263,569" shape="rect">
+      <area alt="kehys" id="hit-frame" onclick="popup(1)" coords="439,263,480,323" shape="rect">
+      <area alt="kello" id="hit-clock" onclick="popup(2)" coords="792,155,41" shape="circle">
+      <area alt="naytto" id="hit-monitor" onclick="popup(3)" coords="756,319,849,384" shape="rect">
+      <area alt="pc" id="hit-pc" onclick="popup(4)" coords="867,292,921,408" shape="rect">
+      <area alt="ikkuna" id="hit-window" onclick="popup(5)" coords="1035,132,1099,370" shape="rect">
+      <area alt="kirja1" id="hit-book1" onclick="popup(6)" coords="443,134,458,196" shape="rect">
+      <area alt="kirja2" id="hit-book2" onclick="pop(7)" coords="464,130,477,196" shape="rect">
+      <area alt="kirja3" id="hit-book3" onclick="pop(8)" coords="483,132,493,196" shape="rect">
+      <area alt="kirja4" id="hit-book4" onclick="popup(9)" coords="500,140,515,198" shape="rect">
     </map>
 
+    <!--ERILLISTEN OBJEKTIEN MAPIT -->
 
-
-    <!--ERILLISET OBJEKTIT -->
-
-    <map name="image-map">
-      <area alt="avain" title="" coords="46,83,12,4" shape="rect">
+    <map name="key-map">
+      <area alt="avain" id="hit-key" onclick="popup(10)" coords="46,83,12,4" shape="rect">
+    </map>
+    <map name="box-map">
+      <area alt="laatikko" id="hit-box" onclick="popup(11)" coords="107,23,13,109" shape="rect">
+    </map>
+    <map name="lock-key-map">
+      <area alt="lukko_avain" id="hit-lock-key" onclick="popup(12)" coords="59,14,21,71" shape="rect">
+    </map>
+    <map name="lock-code-map">
+      <area alt="lukko_koodi" id="hit-lock-code" onclick="popup(13)" coords="7,63,45,5" shape="rect">
+    </map>
+    <map name="lock-elec-map">
+      <area alt="lukko_sahko" id="hit-lock-elec" onclick="popup(14)" coords="12,70,50,12" shape="rect">
+    </map>
+    <map name="note-map">
+      <area alt="muistilappu" id="hit-note" onclick="popup(15)" coords="62,1,-1,83" shape="rect">
+    </map>
+    <map name="door-open-map">
+      <area alt="ovi_auki" id="hit-door-open" onclick="popup(16)" coords="26,487,245,28" shape="rect">
+    </map>
+    <map name="pot-map">
+      <area alt="ruukku.png" id="hit-pot" onclick="popup(17)" coords="69,14,12,111" shape="rect">
+    </map>
+    <map name="curtain-map">
+      <area alt="verho" id="hit-curtain" onclick="popup(18)" coords="24,484,138,42" shape="rect">
     </map>
 
-    <map name="image-map">
-      <area alt="laatikko" title="" coords="107,23,13,109" shape="rect">
-    </map>
-
-    <map name="image-map">
-      <area alt="lukko_avain" title="" coords="59,14,21,71" shape="rect">
-    </map>
-
-    <map name="image-map">
-      <area alt="lukko_koodi" title="" coords="7,63,45,5" shape="rect">
-    </map>
-
-    <map name="image-map">
-      <area alt="lukko_sahko" title="" coords="12,70,50,12" shape="rect">
-    </map>
-
-    <map name="image-map">
-      <area alt="muistilappu" title="" coords="62,1,-1,83" shape="rect">
-    </map>
-
-    <map name="image-map">
-      <area alt="ovi_auki" title="" coords="26,487,245,28" shape="rect">
-    </map>
-
-    <map name="image-map">
-      <area alt="ruukku.png" title="" coords="69,14,12,111" shape="rect">
-    </map>
-
-    <map name="image-map">
-      <area alt="verho" title="" coords="24,484,138,42" shape="rect">
-    </map>
+    <script type="text/javascript" src="peli.js">
+    </script>
 
   </body>
 </html>
