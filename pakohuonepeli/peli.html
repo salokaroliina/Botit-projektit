@@ -11,49 +11,49 @@
         sekä x-nappi sulkemista varten-->
       <div class="modal">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p id="door">The door is locked</p>
         </div>
       </div>
       <!--TIETOKONE(keskusyksikkö) -->
       <div class="modal">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>The computer is on</p>
         </div>
       </div>
       <!--NÄYTTÖ -->
       <div class="modal">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>The monitor is on</p>
           </div>
       </div>
       <!--KELLO -->
       <div class="modal">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>The clock has stopped to 1:00</p>
         </div>
       </div>
       <!--KEHYS -->
       <div class="modal">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>A picture of my mom</p>
         </div>
       </div>
       <!--RUUKKU-->
       <div class="modal" id="modal-pot">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>It's a plant</p>
         </div>
       </div>
       <!--KIRJA 1-->
       <div class="modal">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>The X-files</p>
         </div>
       </div>
@@ -61,7 +61,7 @@
       <!--Kirja 2 antaa vihjeen oven koodista (6174)-->
       <div class="modal">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>Kapr.... <br><br>
             The page has too much coffee stains to be readable</p>
         </div>
@@ -69,56 +69,58 @@
       <!--KIRJA 3 -->
       <div class="modal">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>Alien technology for dummies</p>
         </div>
       </div>
       <!-- KIRJA 4-->
       <div class="modal">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>Humans - Are they real?</p>
         </div>
       </div>
       <!--LAATIKKO -->
       <div class="modal" id="modal-box">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>The box is locked</p>
         </div>
       </div>
       <!--VERHO -->
       <div class="modal" id="modal-curtain">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>It's a curtain</p>
         </div>
       </div>
       <!--LUKKO(avain)-->
       <div class="modal" id="modal-lock-key">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>This lock needs a key</p>
         </div>
       </div>
       <!--LUKKO(koodi) -->
       <div class="modal" id="modal-lock-code">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>This lock needs a code</p>
+          <input type="text" name="" value="">
+          <button type="button" name="button">Click!</button>
         </div>
       </div>
       <!--LUKKO(sähkö) -->
       <div class="modal" id="modal-lock-elec">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>This lock is electrical</p>
         </div>
       </div>
       <!--MUISTIO -->
       <div class="modal">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>Dear Ufojorma. You locked yourself up again after reading those stories
           about humans last night. <br>
           I couldn't find the way to open the door so I went
@@ -131,14 +133,14 @@
       <!--AVAIN-->
       <div class="modal" id="modal-key">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>It's a key</p>
         </div>
       </div>
       <!--IKKUNA -->
       <div class="modal">
         <div class="modal-content">
-          <button class="close" onclick="close(this)">&times;</button>
+          <button class="close" onclick="shut(this)">&times;</button>
           <p>I can't escape through a window</p>
         </div>
       </div>
@@ -168,8 +170,8 @@
       <area alt="pc" id="hit-pc" onclick="popup(4)" coords="867,292,921,408" shape="rect">
       <area alt="ikkuna" id="hit-window" onclick="popup(5)" coords="1035,132,1099,370" shape="rect">
       <area alt="kirja1" id="hit-book1" onclick="popup(6)" coords="443,134,458,196" shape="rect">
-      <area alt="kirja2" id="hit-book2" onclick="pop(7)" coords="464,130,477,196" shape="rect">
-      <area alt="kirja3" id="hit-book3" onclick="pop(8)" coords="483,132,493,196" shape="rect">
+      <area alt="kirja2" id="hit-book2" onclick="popup(7)" coords="464,130,477,196" shape="rect">
+      <area alt="kirja3" id="hit-book3" onclick="popup(8)" coords="483,132,493,196" shape="rect">
       <area alt="kirja4" id="hit-book4" onclick="popup(9)" coords="500,140,515,198" shape="rect">
     </map>
 

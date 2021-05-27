@@ -22,3 +22,19 @@ const bookOne = document.getElementById('hit-book1');
 const bookTwo = document.getElementById('hit-book2');
 const bookThree = document.getElementById('hit-book3');
 const bookFour = document.getElementById('hit-book4');
+
+function popup(x) {
+  modal[x].style.display = 'block';
+}
+
+window.onclick = function(event) {
+  for(let i=0;i<modal.length;i++) {
+    if (event.target == modal[i]) {
+      modal[i].style.display = 'none';
+    }
+  }
+}
+
+function shut(button) {
+  button.parentNode.parentNode.style.display = 'none';
+}
