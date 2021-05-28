@@ -167,8 +167,8 @@
       <img src="grafiikka/lukko_sahko.png" id="lock-elec" usemap="#lock-elec-map">
       <img src="grafiikka/muistilappu.png" id="note" usemap="#note-map">
       <img src="grafiikka/ovi_auki.png" id="door-open" usemap="#door-open-map">
-      <img src="grafiikka/verho.png" id="curtain" usemap="#curtain-map">
-      <img src="grafiikka/ruukku.png" id="pot" usemap="#pot-map">
+      <img src="grafiikka/verho.png" id="curtain" onclick="curtainOff()" usemap="#curtain-map">
+      <img src="grafiikka/ruukku.png" id="pot" onclick="movePot()" usemap="#pot-map">
     </div>
 
     <!--TAUSTAELEMENTTIEN HITBOXIT -->
@@ -208,12 +208,12 @@
     <map name="door-open-map">
       <area alt="ovi_auki" id="hit-door-open" onclick="popup(16)" coords="26,487,245,28" shape="rect">
     </map>
-    <map name="curtain-map">
+    <!--<map name="curtain-map">
       <area alt="verho" id="hit-curtain" onclick="popup(17)" coords="24,484,138,42" shape="rect">
-    </map>
-    <map name="pot-map">
+    </map>-->
+    <!--<map name="pot-map">
       <area alt="ruukku" id="hit-pot" onclick="popup(18)" coords="69,14,12,111" shape="rect">
-    </map>
+    </map>-->
 
 
 
