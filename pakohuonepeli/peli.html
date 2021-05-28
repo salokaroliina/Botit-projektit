@@ -15,11 +15,18 @@
           <p id="door">The door is locked</p>
         </div>
       </div>
-      <!--TIETOKONE(keskusyksikkö) -->
+      <!--KEHYS -->
       <div class="modal">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <p>The computer is on</p>
+          <p>A picture of my mom</p>
+        </div>
+      </div>
+      <!--KELLO -->
+      <div class="modal">
+        <div class="modal-content">
+          <button class="close" onclick="shut(this)">&times;</button>
+          <p>The clock has stopped to 1:00</p>
         </div>
       </div>
       <!--NÄYTTÖ -->
@@ -29,25 +36,18 @@
           <p>The monitor is on</p>
           </div>
       </div>
-      <!--KELLO -->
+      <!--TIETOKONE(keskusyksikkö) -->
       <div class="modal">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <p>The clock has stopped to 1:00</p>
+          <p>The computer is on</p>
         </div>
       </div>
-      <!--KEHYS -->
+      <!--IKKUNA -->
       <div class="modal">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <p>A picture of my mom</p>
-        </div>
-      </div>
-      <!--RUUKKU-->
-      <div class="modal" id="modal-pot">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <p>It's a plant</p>
+          <p>I can't escape through a window</p>
         </div>
       </div>
       <!--KIRJA 1-->
@@ -70,7 +70,7 @@
       <div class="modal">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <p>Alien technology for dummies</p>
+          <p>Alien technology for elite</p>
         </div>
       </div>
       <!-- KIRJA 4-->
@@ -80,18 +80,18 @@
           <p>Humans - Are they real?</p>
         </div>
       </div>
+      <!--AVAIN-->
+      <div class="modal" id="modal-key">
+        <div class="modal-content">
+          <button class="close" onclick="shut(this)">&times;</button>
+          <p>It's a key</p>
+        </div>
+      </div>
       <!--LAATIKKO -->
       <div class="modal" id="modal-box">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
           <p>The box is locked</p>
-        </div>
-      </div>
-      <!--VERHO -->
-      <div class="modal" id="modal-curtain">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <p>It's a curtain</p>
         </div>
       </div>
       <!--LUKKO(avain)-->
@@ -130,18 +130,19 @@
           mom</p>
         </div>
       </div>
-      <!--AVAIN-->
-      <div class="modal" id="modal-key">
+      <!--VERHO -->
+      <div class="modal" id="modal-curtain">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <p>It's a key</p>
+          <p>It's a curtain</p>
         </div>
       </div>
-      <!--IKKUNA -->
-      <div class="modal">
+
+      <!--RUUKKU-->
+      <div class="modal" id="modal-pot">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <p>I can't escape through a window</p>
+          <p>It's a plant</p>
         </div>
       </div>
 
@@ -157,8 +158,8 @@
       <img src="grafiikka/lukko_sahko.png" id="lock-elec" usemap="#lock-elec-map">
       <img src="grafiikka/muistilappu.png" id="note" usemap="#note-map">
       <img src="grafiikka/ovi_auki.png" id="door-open" usemap="#door-open-map">
-      <img src="grafiikka/ruukku.png" id="pot" usemap="#pot-map">
       <img src="grafiikka/verho.png" id="curtain" usemap="#curtain-map">
+      <img src="grafiikka/ruukku.png" id="pot" usemap="#pot-map">
     </div>
 
     <!--TAUSTAELEMENTTIEN HITBOXIT -->
@@ -175,7 +176,7 @@
       <area alt="kirja4" id="hit-book4" onclick="popup(9)" coords="500,140,515,198" shape="rect">
     </map>
 
-    <!--ERILLISTEN OBJEKTIEN MAPIT -->
+    <!--ERILLISTEN OBJEKTIEN HITBOXIT -->
 
     <map name="key-map">
       <area alt="avain" id="hit-key" onclick="popup(10)" coords="46,83,12,4" shape="rect">
@@ -198,12 +199,15 @@
     <map name="door-open-map">
       <area alt="ovi_auki" id="hit-door-open" onclick="popup(16)" coords="26,487,245,28" shape="rect">
     </map>
-    <map name="pot-map">
-      <area alt="ruukku.png" id="hit-pot" onclick="popup(17)" coords="69,14,12,111" shape="rect">
-    </map>
     <map name="curtain-map">
-      <area alt="verho" id="hit-curtain" onclick="popup(18)" coords="24,484,138,42" shape="rect">
+      <area alt="verho" id="hit-curtain" onclick="popup(17)" coords="24,484,138,42" shape="rect">
     </map>
+
+    <map name="pot-map">
+      <area alt="ruukku" id="hit-pot" onclick="popup(18)" coords="69,14,12,111" shape="rect">
+    </map>
+
+
 
     <script type="text/javascript" src="peli.js">
     </script>
