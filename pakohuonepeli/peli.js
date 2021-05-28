@@ -23,6 +23,8 @@ const bookTwo = document.getElementById('hit-book2');
 const bookThree = document.getElementById('hit-book3');
 const bookFour = document.getElementById('hit-book4');
 
+const koodi = document.getElementById('lockbutton');
+
 function popup(x) {
   modal[x].style.display = 'block';
 }
@@ -37,4 +39,14 @@ window.onclick = function(event) {
 
 function shut(button) {
   button.parentNode.parentNode.style.display = 'none';
+}
+
+function codeLock()
+{
+  if (koodi.value == '1234') {
+    console.log("Oikein");
+  }
+  else {
+    console.log("Väärin");
+  }
 }
