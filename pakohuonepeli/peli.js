@@ -46,8 +46,7 @@ function shut(button) {
 
 // koodilukko -K
 function codeLock()
-{
-  if (koodi.value == '1234') {
+{  if (koodi.value == '1234') {
     console.log("Oikein");
     lockCode.remove();
   }
@@ -75,6 +74,8 @@ function takeJacket(){
   console.log(inventory);
 }
 
+// klikkaus siirtää ruukkua vasemmalle -K
 function movePot(){
-  pot.classList.toggle('movePot');
+  pot.style.left = '450px';
+  document.getElementById('hit-pot').style.cursor = 'default';
 }
