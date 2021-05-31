@@ -39,6 +39,10 @@ map{
   cursor: pointer;
 }
 
+.uusiclass{
+  cursor: alias;
+}
+
 #box{
   position: absolute;
   top: 472px;
@@ -53,8 +57,24 @@ map{
 
 #pot{
   position: absolute;
-  top: 330px;
-  left: 500px;
+  top: 332px;
+  left: 490px;
+}
+
+.movePot{
+  left: 450px;
+}
+
+#bag{
+  position: absolute;
+  top: 458px;
+  left: 430px;
+}
+
+#jacket{
+  position: absolute;
+  top: 180px;
+  left: 270px;
 }
 
 #note{

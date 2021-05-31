@@ -9,8 +9,10 @@ const box = document.getElementById('box');
 const key = document.getElementById('key');
 const note = document.getElementById('note');
 const doorOpen = document.getElementById('door-open');
-const pot = document.getElementById('pot');
 const curtain = document.getElementById('curtain');
+const bag = document.getElementById('bag');
+const jacket = document.getElementById('jacket');
+const pot = document.getElementById('pot');
 // taustaelementit
 const door = document.getElementById('hit-door');
 const frame = document.getElementById('hit-frame');
@@ -24,6 +26,7 @@ const bookThree = document.getElementById('hit-book3');
 const bookFour = document.getElementById('hit-book4');
 const koodi = document.getElementById('lockbutton');
 
+let inventory = [];
 
 function popup(x) {
   modal[x].style.display = 'block';
@@ -53,16 +56,25 @@ function codeLock()
   }
 }
 
-// klikkaus siirtää ruukkua -K
-// keksi vielä miten ruukun saa klikattua takaisin paikalleen -K
-function movePot(){
-  pot.style.left = '450px';
+// klikkaus siirtää laukun inventoryyn -K
+function takeBag(){
+  bag.remove();
+inventory.push(bag);
+console.log(inventory);
 }
 
-
 // klikkaus poistaa verhon -K
-// keksi miten verhon saa takaisin -K
 function curtainOff(){
   curtain.remove();
-  modal[17].style.display = 'none';
+}
+
+// klikkaus siirtää takin inventoryyn -K
+function takeJacket(){
+  jacket.remove();
+  inventory.push(jacket);
+  console.log(inventory);
+}
+
+function movePot(){
+  pot.classList.toggle('movePot');
 }

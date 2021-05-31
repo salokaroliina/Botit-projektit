@@ -128,6 +128,7 @@
           <br>But you need to get the door open. <br><br>
           Take care, <br>
           mom</p>
+          <p>P.S. Don't forget your bag and jacket!</p>
         </div>
       </div>
 
@@ -147,13 +148,30 @@
         </div>
       </div>
 
+      <!--LAUKKU-->
+      <div class="modal" id="modal-bag">
+        <div class="modal-content">
+          <button class="close" onclick="shut(this)">&times;</button>
+          <p>It's a bag</p>
+        </div>
+      </div>
+
+      <!--TAKKI-->
+      <div class="modal" id="modal-jacket">
+        <div class="modal-content">
+          <p>It's a jacket</p>
+          <button class="close" onclick="shut(this)">&times;</button>
+        </div>
+      </div>
+
       <!--RUUKKU-->
       <div class="modal" id="modal-pot">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <p>It's a plant</p>
+          <p>It's a pot</p>
         </div>
       </div>
+
 
 
       <!--PELIALUE -->
@@ -167,8 +185,10 @@
       <img src="grafiikka/lukko_sahko.png" id="lock-elec" usemap="#lock-elec-map">
       <img src="grafiikka/muistilappu.png" id="note" usemap="#note-map">
       <img src="grafiikka/ovi_auki.png" id="door-open" usemap="#door-open-map">
-      <img src="grafiikka/verho.png" id="curtain" onclick="curtainOff()" usemap="#curtain-map">
-      <img src="grafiikka/ruukku.png" id="pot" onclick="movePot()" usemap="#pot-map">
+      <img src="grafiikka/verho.png" id="curtain" usemap="#curtain-map">
+      <img src="grafiikka/laukku.png" id="bag" usemap="#bag-map">
+      <img src="grafiikka/takki.png" id="jacket" usemap="#jacket-map">
+      <img src="grafiikka/ruukku.png" id="pot" usemap="#pot-map">
     </div>
 
     <!--TAUSTAELEMENTTIEN HITBOXIT -->
@@ -208,13 +228,18 @@
     <map name="door-open-map">
       <area alt="ovi_auki" id="hit-door-open" onclick="popup(16)" coords="26,487,245,28" shape="rect">
     </map>
-    <!--<map name="curtain-map">
-      <area alt="verho" id="hit-curtain" onclick="popup(17)" coords="24,484,138,42" shape="rect">
-    </map>-->
-    <!--<map name="pot-map">
-      <area alt="ruukku" id="hit-pot" onclick="popup(18)" coords="69,14,12,111" shape="rect">
-    </map>-->
-
+    <map name="curtain-map">
+      <area alt="verho" id="hit-curtain" onclick="curtainOff()" coords="24,484,138,42" shape="rect">
+    </map>
+    <map name="bag-map">
+      <area alt="laukku" id="hit-bag" onclick="takeBag()" coords="0,1,109,99" shape="rect">
+    </map>
+    <map name="jacket-map">
+      <area alt="takki" id="hit-jacket" onclick="takeJacket()" coords="0,0,111,204" shape="rect">
+    </map>
+    <map name="pot-map">
+      <area alt="ruukku" id="hit-pot" onclick="movePot()" coords="69,14,12,111" shape="rect">
+    </map>
 
 
     <script type="text/javascript" src="peli.js">
