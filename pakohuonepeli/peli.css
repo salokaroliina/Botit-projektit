@@ -103,3 +103,11 @@ map{
   left: 21px;
   visibility: hidden;
 }
+
+#pc-broken{
+  position: absolute;
+  top: 291px;
+  left: 865px;
+  visibility: hidden;
+
+}

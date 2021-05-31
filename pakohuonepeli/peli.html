@@ -175,6 +175,14 @@
         </div>
       </div>
 
+      <!--PC RIKKI-->
+      <div class="modal" id="modal-pc-broken">
+        <div class="modal-content">
+          <button class="close" onclick="shut(this)">&times;</button>
+          <p>I broke my PC...</p>
+        </div>
+      </div>
+
 
 
       <!--PELIALUE -->
@@ -192,6 +200,7 @@
       <img src="grafiikka/laukku.png" id="bag" usemap="#bag-map">
       <img src="grafiikka/takki.png" id="jacket" usemap="#jacket-map">
       <img src="grafiikka/ruukku.png" id="pot" usemap="#pot-map">
+      <img src="grafiikka/pc_rikki.png" id="pc-broken" usemap="#pc-broken">
     </div>
 
     <!--TAUSTAELEMENTTIEN HITBOXIT -->
@@ -243,7 +252,9 @@
     <map name="pot-map">
       <area alt="ruukku" id="hit-pot" onclick="movePot()" coords="69,14,12,111" shape="rect">
     </map>
-
+    <map name="pc-broken-map">
+    <area alt="" id="hit-pc-broken" onclick="popup(21)" coords="0,0,57,212" shape="rect">
+    </map>
 
     <script type="text/javascript" src="peli.js">
     </script>
