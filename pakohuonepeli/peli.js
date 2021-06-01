@@ -12,7 +12,7 @@ const doorOpen = document.getElementById('door-open');
 const curtain = document.getElementById('curtain');
 const bag = document.getElementById('bag');
 const jacket = document.getElementById('jacket');
-const pot = document.getElementById('pot');
+const pot = document.getElementsByClassName('pot')[0];
 // taustaelementit
 const door = document.getElementById('hit-door');
 const frame = document.getElementById('hit-frame');
@@ -74,8 +74,7 @@ function takeJacket(){
   console.log(inventory);
 }
 
-// klikkaus siirtää ruukkua vasemmalle -K
+// klikkaus siirtää ruukkua edes takaisin -K
 function movePot(){
-  pot.style.left = '450px';
-  document.getElementById('hit-pot').style.cursor = 'default';
+  pot.classList.toggle('movePot');
 }

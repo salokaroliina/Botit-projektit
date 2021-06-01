@@ -54,7 +54,7 @@ map{
   left: 946px;
 }
 
-#pot{
+.pot{
   position: absolute;
   top: 332px;
   left: 490px;
@@ -109,5 +109,8 @@ map{
   top: 291px;
   left: 865px;
   visibility: hidden;
+}
 
+.movePot{
+  left: 450px;
 }
