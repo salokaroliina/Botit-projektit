@@ -40,6 +40,18 @@ map{
   cursor: pointer;
 }
 
+span {
+  cursor: pointer;
+}
+
+.close {
+  float: right;
+  font-weight: bold;
+  font-size: 25px;
+}
+.close:hover {
+  cursor: pointer;
+}
 
 #box{
   position: absolute;
@@ -144,4 +156,10 @@ map{
   top: 100px;
   left: 290px;
   color: black;
+}
+
+#flappyufo {
+  border: 1px solid #000;
+  font-family: 'VT323';
+  font-weight: bold;
 }

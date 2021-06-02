@@ -29,6 +29,8 @@ const bookFour = document.getElementById('hit-book4');
 // fyysiselle inventaariolle ei ollut tarvetta -K
 let inventory = [];
 
+let pcLock = false;
+
 // Unna teki nämä -->
 function popup(x) {
   modal[x].style.display = 'block';

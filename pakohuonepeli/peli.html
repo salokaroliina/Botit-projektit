@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="peli.css">
+    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet'>
     <title>Escape the room</title>
   </head>
-  <body>
+  <body onload="drawDesktop()">
       <!--OVI -->
       <!--modal avaa objektia klikatessa ruudun jossa on tekstiä
         sekä x-nappi sulkemista varten-->
@@ -35,7 +36,8 @@
       <div class="modal">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <p>The monitor is on</p>
+          <canvas width="500" height="400" id="flappyufo"></canvas>
+          <div id="newApproach"></div>
           </div>
       </div>
       <!--TIETOKONE(keskusyksikkö) -->
@@ -296,6 +298,7 @@
 
     <script type="text/javascript" src="peli.js">
     </script>
-
+    <script type="text/javascript" src="flappyufo2.js">
+    </script>
   </body>
 </html>
