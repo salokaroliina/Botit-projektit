@@ -148,12 +148,12 @@
       <!--LUKKO(koodi) -->
       <div class="modal" id="modal-lock-code">
         <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <p id="locked">This lock needs a code</p>
+          <button class="close" onclick="reset(this)">&times;</button>
           <form id="codeinput">
+          <p id="locked">This lock needs a code</p>
             <input id="lockbutton" type="text" maxlength="4">
           </form>
-          <button type="button" onclick="codeLock()">Click!</button>
+          <button id="codebutton" type="button" onclick="codeLock()">Click!</button>
         </div>
       </div>
       <!--LUKKO(sähkö) -->

@@ -51,21 +51,35 @@ function shut(button) {
 
 // koodilukko -K
 function codeLock(){
+  let button = document.getElementById('codebutton');
+  let input = document.getElementById('code');
   // jos koodi on 6174, lukko poistuu ja modaaliin tulee teksti joka kertoo
   // lukon olevan auki
   if (code.value == '6174') {
     //console.log("Oikein");
     lockCode.remove();
     document.getElementById('locked').innerHTML = "The lock opened!";
+    // jos koodi on oikein, nappia ei voi enää käyttää
+    // eikä uutta tekstiä syöttää
+    button.disabled = true;
+    code.disabled = true;
   }
   else {
     // jos koodi on väärin, modaaliin tulee teksti joka kertoo koodin olevan väärä
     //console.log("Väärin");
     document.getElementById('locked').innerHTML = "The code is wrong!";
+    button.disabled = false;
+    code.disabled = false;
   }
     // 'klick' -näppäimen painalluksen jälkeen input-alue tyhjenee
     document.getElementById('codeinput').reset();
-}
+  }
+  // koodilukon teksti muuttuu takaisin alkuperäiseksi x:n painalluksen jälkeen -K
+  function reset(button) {
+    button.parentNode.parentNode.style.display = 'none';
+    document.getElementById('locked').innerHTML = "This lock needs a code";
+  }
+
 
 // klikkaus siirtää laukun inventoryyn -K
 function takeBag(){
