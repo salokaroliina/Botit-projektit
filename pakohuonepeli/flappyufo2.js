@@ -32,7 +32,6 @@ const fuSmash = new Audio();
 const shatter = new Audio();
 const unlockSound = new Audio();
 
-const testiufo = new Image();
 
 desktop.src = 'grafiikka/fu/fudesktop.png';
 titleScreen.src = 'grafiikka/fu/futitlecard.png';
@@ -60,7 +59,6 @@ fuSmash.src = 'sound/fu/hit.mp3.flac';
 shatter.src = 'sound/fu/shatter.wav';
 unlockSound.src = 'sound/UnlockDoor.wav';
 
-testiufo.src = 'testiufo.gif';
 
 let fuExe = {width: 48,
               height: 69,
