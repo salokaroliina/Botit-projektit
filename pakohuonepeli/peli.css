@@ -113,3 +113,35 @@ map{
 .movePot{
   left: 450px;
 }
+
+#soundCred{
+  position: absolute;
+  bottom: 50px;
+  top: 100px;
+  left: 350px;
+  color: black;
+}
+
+#codeCred{
+  position: absolute;
+  bottom: 50px;
+  top: 100px;
+  left: 350px;
+  color: black;
+}
+
+#graphCred{
+  position: absolute;
+  bottom: 50px;
+  top: 100px;
+  left: 340px;
+  color: black;
+}
+
+#botit{
+  position: absolute;
+  bottom: 50px;
+  top: 100px;
+  left: 290px;
+  color: black;
+}
