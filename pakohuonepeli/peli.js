@@ -124,15 +124,15 @@ function dialogi(d) {
     break;
     case 'book5':
       dialogue.innerHTML =
-      'Code credits<br><span class="interact" onclick="popup(10)">Take a closer look</span>';
+      'Code credits<br><span class="interact" onclick="popup(11)">Take a closer look</span>';
     break;
     case 'book6':
       dialogue.innerHTML =
-      'Graphic credits<br><span class="interact" onclick="popup(11)">Take a closer look</span>';
+      'Graphic credits<br><span class="interact" onclick="popup(12)">Take a closer look</span>';
     break;
     case 'book7':
       dialogue.innerHTML =
-      'Sound credits<br><span class="interact" onclick="popup(12)">Take a closer look</span>';
+      'Sound credits<br><span class="interact" onclick="popup(10)">Take a closer look</span>';
     break;
     case 'book8':
       dialogue.innerHTML =
