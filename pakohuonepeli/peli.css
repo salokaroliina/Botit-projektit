@@ -15,7 +15,7 @@ body{
 #pelialue{
   width: 1102px;
   height: 602px;
-  border: 1px solid #fff;
+  border: 1px solid #e1e3d9;
   margin: auto;
   margin-top: 50px;
   position: relative;
@@ -30,10 +30,10 @@ body{
 
   width: 1102px;
   height: 150px;
-  border-top: 2px solid #fff;
-  border-right: 100px solid #fff;
-  border-left: 100px solid #fff;
-  border-bottom: 10px solid #fff;
+  border-top: 2px solid #e1e3d9;
+  border-right: 100px solid #e1e3d9;
+  border-left: 100px solid #e1e3d9;
+  border-bottom: 10px solid #e1e3d9;
   padding: 20px;
   text-align: center;
 }
@@ -61,9 +61,26 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  width: 700px;
+  width: 600px;
   text-align: center;
   font-size: 20px;
+  border: 1px solid #e1e3d9;
+}
+
+.close {
+  float: right;
+  background-color: #e1e3d9;
+  border: 0;
+  width: 35px;
+  height: 35px;
+  font-weight: bold;
+  font-size: 25px;
+  position: absolute;
+  left: 564px;
+  top: 0;
+}
+.close:hover {
+  cursor: pointer;
 }
 
 #momNote {
@@ -75,6 +92,7 @@ body{
   font-family: 'Allura';
   font-size: 30px;
   text-align: left;
+  box-shadow: 2px 2px 10px;
 }
 
 .kuva {
@@ -99,14 +117,6 @@ map{
   color: #000;
 }
 
-.close {
-  float: right;
-  font-weight: bold;
-  font-size: 25px;
-}
-.close:hover {
-  cursor: pointer;
-}
 
 #box{
   position: absolute;
