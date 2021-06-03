@@ -43,14 +43,14 @@ let pcLock = false;
 // Unna teki nämä -->
 function popup(x) {
   modal[x].style.display = 'block';
-  if (x===3 && !monitorChecked) {
+  if (x===2 && !monitorChecked) {
     dialogue.innerHTML = '"Tentacles have the key"...?'
     monitorChecked = true;
   }
-  if(x===17) {
+  if(x===11) {
     dialogue.innerHTML = 'Hmm...';
   }
-  if(x===19) {
+  if(x===12) {
     if(!noteRead) {
       noteRead = true;
     }
@@ -76,25 +76,25 @@ function dialogi(d) {
     break;
     case 'picture':
       dialogue.innerHTML =
-      'There\'s a picture of my mom on the shelf<br><span class="interact" onclick="popup(1)">Take a closer look</span>';
+      'There\'s a picture of my mom on the shelf<br><span class="interact" onclick="popup(0)">Take a closer look</span>';
     break;
     case 'clock':
-      dialogue.innerHTML = 'Our old clock<br><span class="interact" onclick="popup(2)">Take a closer look</span>';
+      dialogue.innerHTML = 'Our old clock<br><span class="interact" onclick="popup(1)">Take a closer look</span>';
     break;
     case 'monitor':
       if (gameState.current === gameState.solved) {
         dialogue.innerHTML =
-        'I really spent too much time on that<br><span class="interact" onclick="popup(3)">Gaze wistfully</span>';
+        'I really spent too much time on that<br><span class="interact" onclick="popup(2)">Gaze wistfully</span>';
       } else if (gameState.current === gameState.extraSolved) {
         dialogue.innerHTML =
-        '...<br><span class="interact" onclick="popup(3)">Mourn</span>';
+        '...<br><span class="interact" onclick="popup(2)">Mourn</span>';
       } else {
         if (!monitorChecked) {
           dialogue.innerHTML =
-          'I\'m in a hurry...<br><span class="interact" onclick="popup(3)">(Maybe just one round)</span>';
+          'I\'m in a hurry...<br><span class="interact" onclick="popup(2)">(Maybe just one round)</span>';
         } else {
           dialogue.innerHTML =
-          'I think I have to beat the game to open a lock?<br><span class="interact" onclick="popup(3)">Play the game (guilt-free)</span>';
+          'I think I have to beat the game to open a lock?<br><span class="interact" onclick="popup(2)">Play the game (guilt-free)</span>';
         }
       }
     break;
@@ -114,35 +114,35 @@ function dialogi(d) {
     break;
     case 'book1':
       dialogue.innerHTML =
-      'Mom\'s true crime book<br><span class="interact" onclick="popup(6)">Take a closer look</span>';
+      'Mom\'s true crime book<br><span class="interact" onclick="popup(3)">Take a closer look</span>';
     break;
     case 'book2':
       dialogue.innerHTML =
-      'Ratty old book<br><span class="interact" onclick="popup(7)">Take a closer look</span>';
+      'Ratty old book<br><span class="interact" onclick="popup(4)">Take a closer look</span>';
     break;
     case 'book3':
       dialogue.innerHTML =
-      'My school book<br><span class="interact" onclick="popup(8)">Take a closer look</span>';
+      'My school book<br><span class="interact" onclick="popup(5)">Take a closer look</span>';
     break;
     case 'book4':
       dialogue.innerHTML =
-      'One of my creepy humanology books<br><span class="interact" onclick="popup(9)">Take a closer look</span>';
+      'One of my creepy humanology books<br><span class="interact" onclick="popup(6)">Take a closer look</span>';
     break;
     case 'book5':
       dialogue.innerHTML =
-      'Code credits<br><span class="interact" onclick="popup(11)">Take a closer look</span>';
+      'Code credits<br><span class="interact" onclick="popup(7)">Take a closer look</span>';
     break;
     case 'book6':
       dialogue.innerHTML =
-      'Graphic credits<br><span class="interact" onclick="popup(12)">Take a closer look</span>';
+      'Graphic credits<br><span class="interact" onclick="popup(8)">Take a closer look</span>';
     break;
     case 'book7':
       dialogue.innerHTML =
-      'Sound credits<br><span class="interact" onclick="popup(10)">Take a closer look</span>';
+      'Sound credits<br><span class="interact" onclick="popup(9)">Take a closer look</span>';
     break;
     case 'book8':
       dialogue.innerHTML =
-      'The gamedev team<br><span class="interact" onclick="popup(13)">Take a closer look</span>';
+      'The gamedev team<br><span class="interact" onclick="popup(10)">Take a closer look</span>';
     break;
 
     case 'key':
@@ -159,7 +159,7 @@ function dialogi(d) {
     break;
     case 'codLock':
       dialogue.innerHTML =
-      'This lock needs a code<br><span class="interact" onclick="popup(17)">Take a closer look</span>';
+      'This lock needs a code<br><span class="interact" onclick="popup(11)">Take a closer look</span>';
     break;
     case 'eleLock':
       dialogue.innerHTML =
@@ -167,7 +167,7 @@ function dialogi(d) {
     break;
     case 'note':
       dialogue.innerHTML =
-      'Theres a note on the door<br><span class="interact" onclick="popup(19)">Take a closer look</span>';
+      'Theres a note on the door<br><span class="interact" onclick="popup(12)">Take a closer look</span>';
     break;
     case 'openDoor':
       dialogue.innerHTML =
