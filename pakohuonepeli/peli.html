@@ -3,26 +3,19 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="peli.css">
-    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=VT323|Allura' rel='stylesheet'>
     <title>Escape the room</title>
   </head>
   <body onload="drawDesktop()">
       <!--OVI -->
       <!--modal avaa objektia klikatessa ruudun jossa on tekstiä
         sekä x-nappi sulkemista varten-->
-      <div class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <p id="door">The door is locked</p>
-        </div>
-      </div>
+
       <!--KEHYS -->
       <div class="modal">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <br><br>
-          <img src="grafiikka/mom.png" id="mompic">
-          <p>A picture of my mom</p>
+          <img src="grafiikka/mom.png" class="kuva">
         </div>
       </div>
       <!--KELLO -->
@@ -30,7 +23,7 @@
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
           <img src="grafiikka/kello.png">
-          <p>The clock has stopped...</p>
+          <p>It's stopped...</p>
         </div>
       </div>
       <!--NÄYTTÖ -->
@@ -41,26 +34,12 @@
           <div id="newApproach"></div>
           </div>
       </div>
-      <!--TIETOKONE(keskusyksikkö) -->
-      <div class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <p>The computer is on</p>
-        </div>
-      </div>
-      <!--IKKUNA -->
-      <div class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <p>I can't escape through a window</p>
-        </div>
-      </div>
+
       <!--KIRJA 1-->
       <div class="modal">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <br><br>
-          <img src="grafiikka/book1.png" alt="">
+          <img src="grafiikka/book1.png" alt="" class= "kuva">
         </div>
       </div>
       <!--KIRJA 2 -->
@@ -77,69 +56,46 @@
       <div class="modal">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <img src="grafiikka/book2.png">
+          <img src="grafiikka/book2.png" class="kuva">
         </div>
       </div>
       <!-- KIRJA 4-->
       <div class="modal">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <img src="grafiikka/book3.png">
+          <img src="grafiikka/book3.png" class="kuva">
         </div>
       </div>
       <!-- KIRJA 5-->
       <div class="modal">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <img src="grafiikka/sivu_tyhja.png">
-          <p id="soundCred">Sound credits:</p>
+          <div id="codeCred" class="credits">Code credits:</div>
         </div>
       </div>
       <!-- KIRJA 6-->
       <div class="modal">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <img src="grafiikka/sivu_tyhja.png">
-          <p id="codeCred">Code credits:</p>
+          <div id="graphCred" class="credits">Graphics credits:</div>
         </div>
       </div>
       <!-- KIRJA 7-->
       <div class="modal">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <img src="grafiikka/sivu_tyhja.png">
-          <p id="graphCred">Graphic credits:</p>
+          <div id="soundCred" class="credits">Sound credits:</div>
         </div>
       </div>
+
       <!-- KIRJA 8-->
       <div class="modal">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
-          <img src="grafiikka/sivu_tyhja.png">
-          <p id="botit">This game was developed by <br>Team Botit <br>2021</p>
+          <div id="botit" class="credits">This game was developed by <br>Team Botit <br>2021</div>
         </div>
         </div>
-      <!--AVAIN-->
-      <div class="modal" id="modal-key">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <p>It's a key</p>
-        </div>
-      </div>
-      <!--LAATIKKO -->
-      <div class="modal" id="modal-box">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <p>The box is locked</p>
-        </div>
-      </div>
-      <!--LUKKO(avain)-->
-      <div class="modal" id="modal-lock-key">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <p>This lock needs a key</p>
-        </div>
-      </div>
+
       <!--LUKKO(koodi) -->
       <div class="modal" id="modal-lock-code">
         <div class="modal-content">
@@ -151,67 +107,21 @@
           <button id="codebutton" type="button" onclick="codeLock()">Click!</button>
         </div>
       </div>
-      <!--LUKKO(sähkö) -->
-      <div class="modal" id="modal-lock-elec">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <p>This lock is electrical</p>
-        </div>
-      </div>
+
       <!--MUISTIO -->
       <div class="modal">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
+          <div id="momNote">
           <p>Dear Ufojorma. You locked yourself up again after reading those stories
           about humans last night. <br>
           I couldn't find the way to open the door so I went
-          through a window.
+          through the window.
           <br>But you need to get the door open. <br><br>
           Take care, <br>
           mom</p>
           <p>P.S. Don't forget your bag and jacket!</p>
         </div>
-      </div>
-      <!--OVI AUKI -->
-      <div class="modal" id="modal-doorOpen">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <p>The door is open!</p>
-        </div>
-      </div>
-      <!--VERHO -->
-      <div class="modal" id="modal-curtain">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <p>It's a curtain</p>
-        </div>
-      </div>
-      <!--LAUKKU-->
-      <div class="modal" id="modal-bag">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <p>It's a bag</p>
-        </div>
-      </div>
-      <!--TAKKI-->
-      <div class="modal" id="modal-jacket">
-        <div class="modal-content">
-          <p>It's a jacket</p>
-          <button class="close" onclick="shut(this)">&times;</button>
-        </div>
-      </div>
-      <!--RUUKKU-->
-      <div class="modal" id="modal-pot">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <p>It's a pot</p>
-        </div>
-      </div>
-      <!--PC RIKKI-->
-      <div class="modal" id="modal-pc-broken">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <p>I broke my PC...</p>
         </div>
       </div>
 
@@ -232,6 +142,10 @@
         <img src="grafiikka/takki.png" id="jacket" usemap="#jacket-map">
         <img src="grafiikka/ruukku.png" class="pot" usemap="#pot-map">
         <img src="grafiikka/pc_rikki.png" id="pc-broken" usemap="#pc-broken-map">
+        <img src="grafiikka/fu/fusmash.png" id="monitor-broken" onclick="dialogi('monitor')">
+        <img src="grafiikka/fu/fudesktop.png" id="monitor-desktop" onclick="dialogi('monitor')">
+        <img src="grafiikka/fu/futitlecard.png" id="monitor-game" onclick="dialogi('monitor')">
+        <img src="grafiikka/fu/fuwin.png" id="monitor-win" onclick="dialogi('monitor')">
       </div>
       <div id="dialogiBoxi">I overslept... I need hurry to school!</div>
     </div>
