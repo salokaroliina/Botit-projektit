@@ -47,9 +47,6 @@ function popup(x) {
     dialogue.innerHTML = '"Tentacles have the key"...?'
     monitorChecked = true;
   }
-  if(x===7) {
-    dialogue.innerHTML = 'That seemed important';
-  }
   if(x===17) {
     dialogue.innerHTML = 'Hmm...';
   }
