@@ -73,7 +73,7 @@ function dialogi(d) {
       'There\'s a picture of my mom on the shelf<br><span class="interact" onclick="popup(1)">Take a closer look</span>';
     break;
     case 'clock':
-      dialogue.innerHTML = 'The clock is stopped at 1:00';
+      dialogue.innerHTML = 'The clock is stopped at 1:00<br><span class="interact" onclick="popup(2)">Take a closer look</span>';
     break;
     case 'monitor':
       if (gameState.current === gameState.solved) {
