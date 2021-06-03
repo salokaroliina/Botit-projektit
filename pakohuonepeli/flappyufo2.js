@@ -508,7 +508,7 @@ function drawGame() {
         monitorGame.style.display = 'none';
         monitorWin.style.display = 'block';
         dialogue.innerHTML =
-        'I heard something unlock<br>Who designed these locks?';
+        'I heard something unlock<br><br>Who designed these locks?';
       }, 1500);
     }, 2550);
   }
