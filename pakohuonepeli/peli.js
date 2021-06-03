@@ -28,6 +28,10 @@ const bookThree = document.getElementById('hit-book3');
 const bookFour = document.getElementById('hit-book4');
 //dialogiboxi -u
 const dialogue = document.getElementById('dialogiBoxi');
+const monitorDesktop = document.getElementById('monitor-desktop');
+const monitorGame = document.getElementById('monitor-game');
+const monitorWin = document.getElementById('monitor-win');
+const monitorBroken = document.getElementById('monitor-broken');
 // inventaario on pelissä vain array -K
 // fyysiselle inventaariolle ei ollut tarvetta -K
 let inventory = [];
@@ -48,6 +52,11 @@ function popup(x) {
   }
   if(x===17) {
     dialogue.innerHTML = 'Hmm...';
+  }
+  if(x===19) {
+    if(!noteRead) {
+      noteRead = true;
+    }
   }
 }
 
@@ -88,7 +97,7 @@ function dialogi(d) {
           'I\'m in a hurry...<br><span class="interact" onclick="popup(3)">(Maybe just one round)</span>';
         } else {
           dialogue.innerHTML =
-          'I think I have tho beat the game to open a lock?<br><span class="interact" onclick="popup(3)">Play the game (guilt-free)</span>';
+          'I think I have to beat the game to open a lock?<br><span class="interact" onclick="popup(3)">Play the game (guilt-free)</span>';
         }
       }
     break;
@@ -162,9 +171,6 @@ function dialogi(d) {
     case 'note':
       dialogue.innerHTML =
       'Theres a note on the door<br><span class="interact" onclick="popup(19)">Take a closer look</span>';
-      if(!noteRead) {
-        noteRead = true;
-      }
     break;
     case 'openDoor':
       dialogue.innerHTML =
@@ -214,7 +220,7 @@ function takeBag(){
   inventory.push(bag);
   //console.log(inventory);
   dialogue.innerHTML =
-  'Can\t forget to take this with me!';
+  'Can\'t forget to take this with me!';
 }
 
 // klikkaus poistaa verhon -K

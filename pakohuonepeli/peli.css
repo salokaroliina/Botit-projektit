@@ -7,6 +7,8 @@
 body{
   background-color: #000;
   color: #d6f172;
+  font-family: 'VT323';
+  font-size: 25px;
 }
 
 /* -K*/
@@ -25,7 +27,9 @@ body{
 
 #dialogiBoxi {
   margin: auto;
+
   width: 1102px;
+  height: 150px;
   border-top: 2px solid #fff;
   border-right: 100px solid #fff;
   border-left: 100px solid #fff;
@@ -62,7 +66,18 @@ body{
   font-size: 20px;
 }
 
-#mompic {
+#momNote {
+  background-color: #e5e5e2;
+  width: 400px;
+  height: 500px;
+  margin: auto;
+  padding: 20px;
+  font-family: 'Allura';
+  font-size: 30px;
+  text-align: left;
+}
+
+.kuva {
   border: 2px solid #000;
 }
 
@@ -72,6 +87,16 @@ map{
 
 .interact {
   cursor: pointer;
+  display: inline-block;
+  margin-top: 17px;
+  color: #fff;
+  font-weight: bold;
+}
+.interact:hover {
+  color: #c9ff00;
+}
+#solutions {
+  color: #000;
 }
 
 .close {
@@ -154,7 +179,7 @@ map{
 .movePot{
   left: 450px;
 }
-
+/*
 #soundCred{
   position: absolute;
   bottom: 50px;
@@ -185,6 +210,45 @@ map{
   top: 100px;
   left: 290px;
   color: black;
+}
+*/
+#monitor-desktop {
+  position: absolute;
+  cursor: pointer;
+  top: 321px;
+  left: 759px;
+  width: 88px;
+  height: 63px;
+}
+
+#monitor-game {
+  position: absolute;
+  cursor: pointer;
+  top: 321px;
+  left: 759px;
+  width: 88px;
+  height: 63px;
+  display: none
+}
+
+#monitor-win {
+  position: absolute;
+  cursor: pointer;
+  top: 321px;
+  left: 759px;
+  width: 88px;
+  height: 63px;
+  display: none
+}
+
+#monitor-broken {
+  position: absolute;
+  cursor: pointer;
+  top: 321px;
+  left: 759px;
+  width: 88px;
+  height: 63px;
+  display: none;
 }
 
 #flappyufo {

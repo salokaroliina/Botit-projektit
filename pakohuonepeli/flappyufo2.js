@@ -347,6 +347,7 @@ let gameStarted = false;
 let goOn = false;
 let firstTimeOpen = true;
 let gameEnd = false;
+let didWeWin = false;
 let thoughts = false;
 
 
@@ -381,6 +382,8 @@ cvs.addEventListener('dblclick', function(e) {
         drawGame();
         titleTune.play();
         gameState.current = gameState.title;
+        monitorDesktop.style.display = 'none';
+        monitorGame.style.display = 'block';
         gameStarted = true;
       }
 
@@ -477,6 +480,8 @@ function newApproach() {
   thinkingThoughts.innerHTML = '';
   pcSolutions.style.display = 'block';
   dialogue.innerHTML = '...';
+  monitorGame.style.display = 'none';
+  monitorBroken.style.display = 'block';
   gameState.current = gameState.extraSolved;
   setTimeout(function() {
     unlockSound.play();
@@ -496,7 +501,7 @@ function drawGame() {
   if (tries === 5 && !thoughts) {
     thoughts = true;
     thinkingThoughts.innerHTML =
-    '<span onclick="newApproach()" class="interact">Perhaps I should try another approach...?</span>';
+    '<span onclick="newApproach()" class="interact" id="solutions">Perhaps I should try another approach...?</span>';
   }
   if (gameState.current === gameState.desktop) {
     ctx.clearRect(0, 0, cvs.width, cvs.height);
@@ -584,7 +589,7 @@ function drawGame() {
   if (gameState.current === gameState.solved) {
     if(thoughts) {
       thinkingThoughts.innerHTML = '';
-    }
+      }
     bgMusic.pause();
     victorySong.play();
     gameEnd = true;
@@ -609,6 +614,8 @@ function drawGame() {
         unlockSound.play();
         pcLock = true;
         lockElec.style.display = 'none';
+        monitorGame.style.display = 'none';
+        monitorWin.style.display = 'block';
         dialogue.innerHTML = 'Who designed these locks?';
       }, 1500);
     }, 2550);
