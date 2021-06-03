@@ -21,7 +21,7 @@
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
           <br><br>
-          <img src="grafiikka/mom.png">
+          <img src="grafiikka/mom.png" id="mompic">
           <p>A picture of my mom</p>
         </div>
       </div>
@@ -29,6 +29,7 @@
       <div class="modal">
         <div class="modal-content">
           <button class="close" onclick="shut(this)">&times;</button>
+          <p>The clock has stopped to 1:00</p>
           <img src="grafiikka/kello.png">
           <p>The clock has stopped...</p>
         </div>
@@ -215,65 +216,68 @@
         </div>
       </div>
 
-
+    <div id="pelialueContainer">
       <!--PELIALUE -->
-    <div id="pelialue">
-    <!--HUONE JA TAUSTAELEMENTIT -->
-      <img src="grafiikka/huone.png" id="room" usemap="#room-map">
-      <img src="grafiikka/avain.png" id="key" usemap="#key-map">
-      <img src="grafiikka/laatikko.png" id="box" usemap="#box-map">
-      <img src="grafiikka/lukko_avain.png" id="lock-key" usemap="#lock-key-map">
-      <img src="grafiikka/lukko_koodi.png" id="lock-code" usemap="#lock-code-map">
-      <img src="grafiikka/lukko_sahko.png" id="lock-elec" usemap="#lock-elec-map">
-      <img src="grafiikka/muistilappu.png" id="note" usemap="#note-map">
-      <img src="grafiikka/ovi_auki.png" id="door-open" usemap="#door-open-map">
-      <img src="grafiikka/verho.png" id="curtain" usemap="#curtain-map">
-      <img src="grafiikka/laukku.png" id="bag" usemap="#bag-map">
-      <img src="grafiikka/takki.png" id="jacket" usemap="#jacket-map">
-      <img src="grafiikka/ruukku.png" class="pot" usemap="#pot-map">
-      <img src="grafiikka/pc_rikki.png" id="pc-broken" usemap="#pc-broken">
+      <div id="pelialue">
+      <!--HUONE JA TAUSTAELEMENTIT -->
+        <img src="grafiikka/huone.png" id="room" usemap="#room-map">
+        <img src="grafiikka/avain.png" id="key" usemap="#key-map">
+        <img src="grafiikka/laatikko.png" id="box" usemap="#box-map">
+        <img src="grafiikka/lukko_avain.png" id="lock-key" usemap="#lock-key-map">
+        <img src="grafiikka/lukko_koodi.png" id="lock-code" usemap="#lock-code-map">
+        <img src="grafiikka/lukko_sahko.png" id="lock-elec" usemap="#lock-elec-map">
+        <img src="grafiikka/muistilappu.png" id="note" usemap="#note-map">
+        <img src="grafiikka/ovi_auki.png" id="door-open" usemap="#door-open-map">
+        <img src="grafiikka/verho.png" id="curtain" usemap="#curtain-map">
+        <img src="grafiikka/laukku.png" id="bag" usemap="#bag-map">
+        <img src="grafiikka/takki.png" id="jacket" usemap="#jacket-map">
+        <img src="grafiikka/ruukku.png" class="pot" usemap="#pot-map">
+        <img src="grafiikka/pc_rikki.png" id="pc-broken" usemap="#pc-broken-map">
+      </div>
+      <div id="dialogiBoxi">I overslept... I need hurry to school!</div>
     </div>
+
 
     <!--TAUSTAELEMENTTIEN HITBOXIT -->
     <map name="room-map">
-      <area alt="ovi" id="hit-door" onclick="popup(0)" coords="46,112,263,569" shape="rect">
-      <area alt="kehys" id="hit-frame" onclick="popup(1)" coords="439,263,480,323" shape="rect">
-      <area alt="kello" id="hit-clock" onclick="popup(2)" coords="792,155,41" shape="circle">
-      <area alt="naytto" id="hit-monitor" onclick="popup(3)" coords="756,319,849,384" shape="rect">
-      <area alt="pc" id="hit-pc" onclick="popup(4)" coords="867,292,921,408" shape="rect">
-      <area alt="ikkuna" id="hit-window" onclick="popup(5)" coords="1035,132,1099,370" shape="rect">
-      <area alt="kirja1" id="hit-book1" onclick="popup(6)" coords="443,134,458,196" shape="rect">
-      <area alt="kirja2" id="hit-book2" onclick="popup(7)" coords="464,130,477,196" shape="rect">
-      <area alt="kirja3" id="hit-book3" onclick="popup(8)" coords="483,132,493,196" shape="rect">
-      <area alt="kirja4" id="hit-book4" onclick="popup(9)" coords="500,140,515,198" shape="rect">
-      <area alt="kirja5" id="hit-book5" onclick="popup(10)" coords="501,253,514,323" shape="rect">
-      <area alt="kirja6" id="hit-book6" onclick="popup(11)" coords="520,261,536,323" shape="rect">
-      <area alt="kirja7" id="hit-book7" onclick="popup(12)" coords="540,245,560,322" shape="rect">
-      <area alt="kirja8" id="hit-book8" onclick="popup(13)" coords="563,254,586,324" shape="rect">
+      <area alt="ovi" id="hit-door" onclick="dialogi('doorClosed')" coords="46,112,263,569" shape="rect">
+      <area alt="kehys" id="hit-frame" onclick="dialogi('picture')" coords="439,263,480,323" shape="rect">
+      <area alt="kello" id="hit-clock" onclick="dialogi('clock')" coords="792,155,41" shape="circle">
+      <area alt="naytto" id="hit-monitor" onclick="dialogi('monitor')" coords="756,319,849,384" shape="rect">
+      <area alt="pc" id="hit-pc" onclick="dialogi('pc')" coords="867,292,921,408" shape="rect">
+      <area alt="ikkuna" id="hit-window" onclick="dialogi('window')" coords="1035,132,1099,370" shape="rect">
+      <area alt="kirja1" id="hit-book1" onclick="dialogi('book1')" coords="443,134,458,196" shape="rect">
+      <area alt="kirja2" id="hit-book2" onclick="dialogi('book2')" coords="464,130,477,196" shape="rect">
+      <area alt="kirja3" id="hit-book3" onclick="dialogi('book3')" coords="483,132,493,196" shape="rect">
+      <area alt="kirja4" id="hit-book4" onclick="dialogi('book4')" coords="500,140,515,198" shape="rect">
+      <area alt="kirja5" id="hit-book5" onclick="dialogi('book5')" coords="501,253,514,323" shape="rect">
+      <area alt="kirja6" id="hit-book6" onclick="dialogi('book6')" coords="520,261,536,323" shape="rect">
+      <area alt="kirja7" id="hit-book7" onclick="dialogi('book7')" coords="540,245,560,322" shape="rect">
+      <area alt="kirja8" id="hit-book8" onclick="dialogi('book8')" coords="563,254,586,324" shape="rect">
     </map>
 
     <!--ERILLISTEN OBJEKTIEN HITBOXIT -->
 
     <map name="key-map">
-      <area alt="avain" id="hit-key" onclick="popup(14)" coords="46,83,12,4" shape="rect">
+      <area alt="avain" id="hit-key" onclick="dialogi('key')" coords="46,83,12,4" shape="rect">
     </map>
     <map name="box-map">
-      <area alt="laatikko" id="hit-box" onclick="popup(15)" coords="107,23,13,109" shape="rect">
+      <area alt="laatikko" id="hit-box" onclick="dialogi('box')" coords="107,23,13,109" shape="rect">
     </map>
     <map name="lock-key-map">
-      <area alt="lukko_avain" id="hit-lock-key" onclick="popup(16)" coords="59,14,21,71" shape="rect">
+      <area alt="lukko_avain" id="hit-lock-key" onclick="dialogi('keyLock')" coords="59,14,21,71" shape="rect">
     </map>
     <map name="lock-code-map">
-      <area alt="lukko_koodi" id="hit-lock-code" onclick="popup(17)" coords="7,63,45,5" shape="rect">
+      <area alt="lukko_koodi" id="hit-lock-code" onclick="dialogi('codLock')" coords="7,63,45,5" shape="rect">
     </map>
     <map name="lock-elec-map">
-      <area alt="lukko_sahko" id="hit-lock-elec" onclick="popup(18)" coords="12,70,50,12" shape="rect">
+      <area alt="lukko_sahko" id="hit-lock-elec" onclick="dialogi('eleLock')" coords="12,70,50,12" shape="rect">
     </map>
     <map name="note-map">
-      <area alt="muistilappu" id="hit-note" onclick="popup(19)" coords="62,1,-1,83" shape="rect">
+      <area alt="muistilappu" id="hit-note" onclick="dialogi('note')" coords="62,1,-1,83" shape="rect">
     </map>
     <map name="door-open-map">
-      <area alt="ovi_auki" id="hit-door-open" onclick="popup(20)" coords="26,487,245,28" shape="rect">
+      <area alt="ovi_auki" id="hit-door-open" onclick="dialogi('openDoor')" coords="26,487,245,28" shape="rect">
     </map>
     <map name="curtain-map">
       <area alt="verho" id="hit-curtain" onclick="curtainOff()" coords="24,484,138,42" shape="rect">
@@ -288,7 +292,7 @@
       <area alt="ruukku" id="hit-pot" onclick="movePot()" coords="69,14,12,111" shape="rect">
     </map>
     <map name="pc-broken-map">
-    <area alt="" id="hit-pc-broken" onclick="popup(21)" coords="0,0,57,212" shape="rect">
+    <area alt="" id="hit-pc-broken" onclick="dialogi('pcSolved')" coords="0,0,57,212" shape="rect">
     </map>
 
     <script type="text/javascript" src="peli.js">

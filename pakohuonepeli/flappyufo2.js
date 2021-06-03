@@ -79,10 +79,10 @@ let startBtn = {width: 76,
                 height: 40,
                 x: 408,
                 y: 344};
-let continueBtn = {width: 150,
-                  height: 64,
-                  x: cvs.width/2-75,
-                  y: 260};
+let continueBtn = {width: 120,
+                  height: 44,
+                  x: 375,
+                  y: 350};
 
 //const ufoInfo = {w: 51, h: 41};
 let fufoSpeed = 0;
@@ -112,21 +112,25 @@ let fufo = {width: 42,
                   this.speed = 0;
                 }
                 if(gameState.current === gameState.play) {
-
-                  this.speed += this.gravity;
-                  this.y += this.speed;
-                  this.hitboxTopX = this.x+21;
-                  this.hitboxTopY = this.y+11;
-                  this.hitboxBottomX = this.x+2;
-                  this.hitboxBottomY = this.y+15;
-
-                  if (frames%25 === 0) {
-                    this.animFrame = ++this.animFrame % this.cols;
-                    this.sX = this.animFrame * this.width;
+                  if(passes>0) {
+                    this.speed += this.gravity;
+                    this.y += this.speed;
+                    this.hitboxTopX = this.x+21;
+                    this.hitboxTopY = this.y+11;
+                    this.hitboxBottomX = this.x+2;
+                    this.hitboxBottomY = this.y+15;
+                    if (frames%25 === 0) {
+                      this.animFrame = ++this.animFrame % this.cols;
+                      this.sX = this.animFrame * this.width;
+                    }
+                  } else {
+                    if (frames%40 === 0) {
+                      this.animFrame = ++this.animFrame % this.cols;
+                      this.sX = this.animFrame * this.width;
+                    }
                   }
 
                   if(this.y+this.height > cvs.height-18) {
-                    console.log('hep');
                     explosion.play();
                     tries++;
                     //this.y = cvs.height - this.height;
@@ -161,7 +165,6 @@ let bgScroll = {x: 0,
                     }
                   if(this.x === -cvs.width) {
                     this.x = 0;
-                    console.log('RESET');
                   }
                 },
                 draw: function() {
@@ -176,7 +179,6 @@ let fgScroll = {x: 0,
                     }
                   if(this.x === -cvs.width) {
                     this.x = 0;
-                    console.log('RESET');
                   }
                 },
                 draw: function() {
@@ -317,7 +319,7 @@ let keyTentacle = {x: cvs.width,
                     if (this.x <= cvs.width-this.width) {
                       gameState.current = gameState.solved;
                     } else {
-                      this.x -= 1.5;
+                      this.x -= 1.7;
                     }
                   },
                   draw: function() {
@@ -415,8 +417,10 @@ cvs.addEventListener('click', function(e) {
       break;
 
     case gameState.play:
-      fufo.fly();
-      flySound.play();
+      if(passes>0) {
+        fufo.fly();
+        flySound.play();
+      }
     break;
 
     case gameState.end:
@@ -453,38 +457,6 @@ function drawDesktop() {
   ctx.closePath();*/
 }
 
-function drawSquare() {
-  ctx.beginPath();
-  ctx.rect(fufo.x+2, fufo.y+15, fufo.width-4, 13);
-  ctx.fillStyle = '#f00';
-  ctx.fill();
-  ctx.closePath();
-}
-
-function drawTSquare() {
-  ctx.beginPath();
-  ctx.rect(tentacleNInfo.x+38, tentacleNInfo.y, 30, tentacleNInfo.height);
-  ctx.fillStyle = '#f00';
-  ctx.fill();
-  ctx.closePath();
-}
-
-function drawEllipse() {
-  ctx.beginPath();
-  ctx.ellipse(100, 100, 17, 27, Math.PI/2, 0, 2 * Math.PI);
-  //ctx.stroke();
-  ctx.fillStyle = '#f00';
-  ctx.fill();
-  ctx.closePath();
-}
-
-function drawBall() {
-  ctx.beginPath();
-  ctx.arc(fufo.x+21, fufo.y+11, 11, 0, Math.PI*2);
-  ctx.fillStyle = '#f00';
-  ctx.fill();
-  ctx.closePath();
-}
 
 function spawnTentacles() {
   if (frames%100 === 0) {
@@ -499,15 +471,18 @@ function spawnTentacles() {
 }
 
 function newApproach() {
-  console.log('new appr');
   bgMusic.pause();
   fuSmash.play();
   shatter.play();
   thinkingThoughts.innerHTML = '';
+  pcSolutions.style.display = 'block';
+  dialogue.innerHTML = '...';
   gameState.current = gameState.extraSolved;
   setTimeout(function() {
     unlockSound.play();
     pcLock = true;
+    lockElec.style.display = 'none';
+    dialogue.innerHTML = 'I guess that worked too?';
   }, 1600);
 }
 /*
@@ -521,7 +496,7 @@ function drawGame() {
   if (tries === 5 && !thoughts) {
     thoughts = true;
     thinkingThoughts.innerHTML =
-    '<span onclick="newApproach()">Perhaps I should try another approach...?</span>';
+    '<span onclick="newApproach()" class="interact">Perhaps I should try another approach...?</span>';
   }
   if (gameState.current === gameState.desktop) {
     ctx.clearRect(0, 0, cvs.width, cvs.height);
@@ -602,8 +577,8 @@ function drawGame() {
   if (gameState.current === gameState.end) {
     ctx.drawImage(fusplosion, fufo.x, fufo.y-19);
     ctx.drawImage(fuGameOver, cvs.width/2-167.5, 50);
-    ctx.drawImage(fuContinue, continueBtn.x, continueBtn.y);
-    console.log(continueBtn.x);
+    ctx.drawImage(fuContinue, continueBtn.x, continueBtn.y,
+                  continueBtn.width, continueBtn.height);
     //requestAnimationFrame(drawGame);
   }
   if (gameState.current === gameState.solved) {
@@ -633,6 +608,8 @@ function drawGame() {
       setTimeout(function() {
         unlockSound.play();
         pcLock = true;
+        lockElec.style.display = 'none';
+        dialogue.innerHTML = 'Who designed these locks?';
       }, 1500);
     }, 2550);
   }
@@ -658,7 +635,6 @@ function drawGame() {
       break;
     }*/
     if(!gameEnd) {
-      console.log(gameState.current);
     requestAnimationFrame(drawGame);
   }
 }
