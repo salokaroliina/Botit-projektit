@@ -44,7 +44,9 @@ let pcLock = false;
 function popup(x) {
   modal[x].style.display = 'block';
   if (x===2 && !monitorChecked) {
-    dialogue.innerHTML = '"Tentacles have the key"...?'
+    setTimeout(function() {
+      dialogue.innerHTML = '"Tentacles have the key"...?'
+    }, 1500);
     monitorChecked = true;
   }
   if(x===11) {
@@ -84,17 +86,17 @@ function dialogi(d) {
     case 'monitor':
       if (gameState.current === gameState.solved) {
         dialogue.innerHTML =
-        'I really spent too much time on that<br><span class="interact" onclick="popup(2)">Gaze wistfully</span>';
+        'I really should get going<br><span class="interact" onclick="popup(2)">Gaze wistfully</span>';
       } else if (gameState.current === gameState.extraSolved) {
         dialogue.innerHTML =
         '...<br><span class="interact" onclick="popup(2)">Mourn</span>';
       } else {
         if (!monitorChecked) {
           dialogue.innerHTML =
-          'I\'m in a hurry...<br><span class="interact" onclick="popup(2)">(Maybe just one round)</span>';
+          'I\'m in a hurry...<br><span class="interact" onclick="popup(2)">(But a second can\'t hurt, can it?)</span>';
         } else {
           dialogue.innerHTML =
-          'I think I have to beat the game to open a lock?<br><span class="interact" onclick="popup(2)">Play the game (guilt-free)</span>';
+          'What was that about the tentacles?<br><span class="interact" onclick="popup(2)">Alas, I guess I have no other choice than to mess around on my computer some more</span>';
         }
       }
     break;
@@ -147,7 +149,7 @@ function dialogi(d) {
 
     case 'key':
       dialogue.innerHTML =
-      'It\'s a key';
+      'It\'s a key<br>I can\'t pick it up. It\'s breaking the fourth wall, thus out of my reach<br>AAAGH!';
     break;
     case 'box':
       dialogue.innerHTML =

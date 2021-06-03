@@ -68,7 +68,8 @@ body{
 
 .close {
   float: right;
-  background-color: #e1e3d9;
+  background-color: #ccda96;
+  color: #384c3a;
   border: 0;
   width: 35px;
   height: 35px;

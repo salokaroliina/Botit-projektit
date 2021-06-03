@@ -2,11 +2,6 @@ const cvs = document.getElementById('flappyufo');
 const ctx = cvs.getContext('2d');
 const thinkingThoughts = document.getElementById('newApproach');
 
-/*let fuFont = new FontFace('VT323', 'url(https://fonts.googleapis.com/css?family=VT323)');
-  fuFont.load().then((font) => {
-    document.fonts.add(font);
-  });*/
-
 const desktop = new Image();
 const titleScreen = new Image();
 const extraSolved = new Image();
@@ -71,25 +66,22 @@ unlockSound.src = 'sound/UnlockDoor.wav';
 
 
 let fuExe = {width: 42,
-              height: 66,
-              x: 15,
-              y: 14};
+             height: 66,
+             x: 15,
+             y: 14};
 
 let startBtn = {width: 76,
                 height: 40,
                 x: 408,
                 y: 344};
 let continueBtn = {width: 120,
-                  height: 44,
-                  x: 375,
-                  y: 350};
+                   height: 44,
+                   x: 375,
+                   y: 350};
 
-//const ufoInfo = {w: 51, h: 41};
-let fufoSpeed = 0;
 let fufo = {width: 42,
               height: 31,
               sheetW: 168,
-              //sheetH: 0,
               animFrame: 0,
               cols: 4,
               x: 100,
@@ -133,7 +125,6 @@ let fufo = {width: 42,
                   if(this.y+this.height > cvs.height-18) {
                     explosion.play();
                     tries++;
-                    //this.y = cvs.height - this.height;
                     gameState.current = gameState.end;
                   }
                 }
@@ -144,16 +135,6 @@ let fufo = {width: 42,
               draw: function() {
                 ctx.drawImage(fufoSprite, this.sX, this.sY, this.width, this.height,
                               this.x, this.y, this.width, this.height);
-                /*ctx.beginPath();
-                ctx.arc(this.hitboxTopX, this.hitboxTopY, this.hitboxTopRad, 0, Math.PI*2);
-                ctx.fillStyle = '#f00';
-                ctx.fill();
-                ctx.closePath();
-                ctx.beginPath();
-                ctx.rect(this.hitboxBottomX, this.hitboxBottomY, this.hitboxBottomW, this.hitboxBottomH);
-                ctx.fillStyle = '#f00';
-                ctx.fill();
-                ctx.closePath();*/
               }
             };
 
@@ -213,7 +194,7 @@ let fuCountdown = {x: 470,
                         }
                     }
                     };
-//const tentacleInfo = {w: 30, h: 333};
+
 let tentacleList = [];
 class Tentacles {
   constructor() {
@@ -229,8 +210,6 @@ class Tentacles {
   draw() {
     ctx.drawImage(tentacleN, this.x, this.top);
     ctx.drawImage(tentacleS, this.x, this.bottom);
-    //console.log(this.top);
-    //console.log(tentacleList.length);
   }
   update() {
     this.x -= gamespeed;
@@ -243,7 +222,6 @@ class Tentacles {
 
     if(this.x+this.spriteWidth <= fufo.x && !this.counted) {
       this.counted = true;
-      //bleep.play();
       passes--;
       if (passes>0) {
         bleep.play();
@@ -290,25 +268,6 @@ class Tentacles {
              tries++;
              gameState.current = gameState.end;
            }
-
-      //console.log(fufo.hitboxTopY);
-    /* VANHA HITBOXLOGIIKKA
-    if(fufo.x < this.x+this.width &&
-       fufo.x + fufo.width > this.x &&
-       fufo.y < this.top+this.height &&
-       fufo.y+fufo.height > this.top) {
-         explosion.play();
-         gameState.current = gameState.end;
-         console.log('HIT TOP');
-       }
-    if(fufo.x < this.x+this.width &&
-      fufo.x + fufo.width > this.x &&
-      fufo.y < this.bottom+this.height &&
-      fufo.y+fufo.height > this.bottom) {
-        explosion.play();
-        gameState.current = gameState.end;
-        console.log('HIT BOTTOM');
-      }*/
   }
 }
 
@@ -336,8 +295,6 @@ const gameState = {current: 0,
                    solved: 5,
                    extraSolved: 6};
 
-//let keyPressed = false;
-//let esto = false;
 let gamespeed = 3;
 let frames = 0;
 let passes = 10;
@@ -351,19 +308,8 @@ let didWeWin = false;
 let thoughts = false;
 
 
-
-/*
-let x = 100;
-let y = 150;
-let dx = 3;
-let dy = -3;
-let gravity = 3;
-let ballRadius = 20;
-
-*/
-
-
 //cvs.tabIndex = '1';
+//^^ sitkun aikaa, kokeile saako chrome mustamaalauksen pois
 
 //EVENT LISTENERI
 //ON TÄSSÄ!!!!!!!!!!
@@ -448,18 +394,6 @@ cvs.addEventListener('click', function(e) {
   }
 });
 
-//drawGame();
-//desktop.onload = drawDesktop();
-//drawDesktop();
-function drawDesktop() {
-  ctx.drawImage(desktop, 0, 0);
-  /*ctx.beginPath();
-  ctx.rect(15, 14, 42, 66);
-  ctx.fillStyle = '#f00';
-  ctx.fill();
-  ctx.closePath();*/
-}
-
 
 function spawnTentacles() {
   if (frames%100 === 0) {
@@ -487,17 +421,15 @@ function newApproach() {
     unlockSound.play();
     pcLock = true;
     lockElec.style.display = 'none';
-    dialogue.innerHTML = 'I guess that worked too?';
+    dialogue.innerHTML = 'I heard something unlock?';
   }, 1600);
 }
-/*
-function fly() {
-  y -= 20;
+
+function drawDesktop() {
+  ctx.drawImage(desktop, 0, 0);
 }
-*/
+
 function drawGame() {
-  //ctx.clearRect(0, 0, cvs.width, cvs.height);
-  //ctx.drawImage(bg, 0, 0);
   if (tries === 5 && !thoughts) {
     thoughts = true;
     thinkingThoughts.innerHTML =
@@ -512,11 +444,6 @@ function drawGame() {
   if (gameState.current === gameState.title) {
     ctx.clearRect(0, 0, cvs.width, cvs.height);
     ctx.drawImage(titleScreen, 0, 0);
-    /*ctx.beginPath();
-    ctx.rect(408, 344, startBtn.width, startBtn.height);
-    ctx.fillStyle = '#f00';
-    ctx.fill();
-    ctx.closePath();*/
   }
   if (gameState.current === gameState.start) {
     ctx.clearRect(0, 0, cvs.width, cvs.height);
@@ -540,23 +467,6 @@ function drawGame() {
       }
     }
     frames++;
-    /*if (firstTimeOpen) {
-      titleTune.play();
-      firstTimeOpen = false;
-    }*/
-    //drawBall();
-    //drawSquare();
-    //drawEllipse();
-
-    /*
-    frames = 0;
-    passes = 0;
-    tentacleList = [];
-    bgScroll.x = 0;
-    fgScroll.x = 0;
-    keyTentacle.x = cvs.width;
-    */
-    //requestAnimationFrame(drawGame);
   }
   if (gameState.current === gameState.play) {
     ctx.clearRect(0, 0, cvs.width, cvs.height);
@@ -570,21 +480,17 @@ function drawGame() {
 
     spawnTentacles();
     fuCountdown.update();
-    //console.log('passes '+passes+' tentaakkelit '+tentacleList.length);
     if (passes===0 && tentacleList.length === 0) {
       keyTentacle.update();
       keyTentacle.draw();
     }
     fufo.draw();
-    //frames++;
-    //requestAnimationFrame(drawGame);
   }
   if (gameState.current === gameState.end) {
     ctx.drawImage(fusplosion, fufo.x, fufo.y-19);
     ctx.drawImage(fuGameOver, cvs.width/2-167.5, 50);
     ctx.drawImage(fuContinue, continueBtn.x, continueBtn.y,
                   continueBtn.width, continueBtn.height);
-    //requestAnimationFrame(drawGame);
   }
   if (gameState.current === gameState.solved) {
     if(thoughts) {
@@ -595,28 +501,14 @@ function drawGame() {
     gameEnd = true;
     setTimeout(function() {
       ctx.drawImage(fuWin, 0, 0);
-      /*ctx.beginPath();
-      ctx.rect(0, 0, cvs.width, cvs.height);
-      ctx.fillStyle = '#8bac0f';
-      ctx.fill();
-      ctx.closePath();
-      ctx.beginPath();
-      ctx.rect(25, 25, 450, 350);
-      ctx.fillStyle = '#9bbc0f';
-      ctx.fill();
-      ctx.closePath();
-      ctx.drawImage(fukFound, cvs.width/2-22.5, cvs.height/2-54, 45, 108);
-      ctx.font = '50px VT323';
-      ctx.fillStyle = '#0f380f';
-      ctx.textAlign = 'center';
-      ctx.fillText('You Got The Key!', cvs.width/2, 100);*/
       setTimeout(function() {
         unlockSound.play();
         pcLock = true;
         lockElec.style.display = 'none';
         monitorGame.style.display = 'none';
         monitorWin.style.display = 'block';
-        dialogue.innerHTML = 'Who designed these locks?';
+        dialogue.innerHTML =
+        'I heard something unlock<br>Who designed these locks?';
       }, 1500);
     }, 2550);
   }
@@ -624,23 +516,6 @@ function drawGame() {
     ctx.drawImage(extraSolved, 0, 0);
     gameEnd = true;
   }
-  /*switch(gameState.current) {
-    case gameState.start:
-      ctx.drawImage(fufoSprite, x, y);
-      console.log('tut');
-      requestAnimationFrame(drawGame);
-      break;
-    case gameState.play:
-      //ctx.drawImage(bg, 0, 0);
-      ctx.drawImage(fufoSprite, x, y);
-      spawnTentacles();
-        console.log(tentacleList);
-      //x += dx;
-      y += gravity;
-      frames++;
-      requestAnimationFrame(drawGame);
-      break;
-    }*/
     if(!gameEnd) {
     requestAnimationFrame(drawGame);
   }
