@@ -40,15 +40,19 @@ let inventory = [];
 let noteRead = false;
 let monitorChecked = false;
 let pcLock = false;
+let codeReset = false;
 
 // Unna teki nämä -->
 function popup(x) {
   modal[x].style.display = 'block';
   if (x===2 && !monitorChecked) {
     setTimeout(function() {
-      dialogue.innerHTML = '"Tentacles have the key"...?'
+      if(modal[2].style.display === 'block'){
+        dialogue.innerHTML = '"Tentacles have the key"...?'
+        monitorChecked = true;
+      }
     }, 1500);
-    monitorChecked = true;
+
   }
   if(x===11) {
     dialogue.innerHTML = 'Hmm...';
@@ -64,12 +68,22 @@ window.onclick = function(event) {
   for(let i=0;i<modal.length;i++) {
     if (event.target == modal[i] || event.target == modalVankila[i]) {
       modal[i].style.display = 'none';
+      if (i === 11) {
+        if (codeReset) {
+          document.getElementById('locked').innerHTML = "This lock needs a code";
+          codeReset = false;
+        }
+      }
     }
   }
 }
 
 function shut(button) {
   button.parentNode.parentNode.parentNode.style.display = 'none';
+  if (codeReset) {
+    document.getElementById('locked').innerHTML = "This lock needs a code";
+    codeReset = false;
+  }
 }
 
 function dialogi(d) {
@@ -201,14 +215,17 @@ function codeLock(){
     document.getElementById('locked').innerHTML = "The code is wrong!";
     button.disabled = false;
     code.disabled = false;
+    if (!codeReset) {
+      codeReset = true;
+    }
   }
     // 'klick' -näppäimen painalluksen jälkeen input-alue tyhjenee
     document.getElementById('codeinput').reset();
   }
   // koodilukon teksti muuttuu takaisin alkuperäiseksi x:n painalluksen jälkeen -K
   function reset(button) {
-    button.parentNode.parentNode.style.display = 'none';
-    document.getElementById('locked').innerHTML = "This lock needs a code";
+    button.parentNode.parentNode.parentNode.style.display = 'none';
+
   }
 
 
