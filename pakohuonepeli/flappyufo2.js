@@ -121,7 +121,9 @@ let fufo = {width: 42,
                       this.sX = this.animFrame * this.width;
                     }
                   }
-
+                  if (this.y <= 0) {
+                    this.y = 0;
+                  }
                   if(this.y+this.height > cvs.height-18) {
                     explosion.play();
                     tries++;
