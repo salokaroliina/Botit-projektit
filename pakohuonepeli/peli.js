@@ -68,11 +68,9 @@ window.onclick = function(event) {
   for(let i=0;i<modal.length;i++) {
     if (event.target == modal[i] || event.target == modalVankila[i]) {
       modal[i].style.display = 'none';
-      if (i === 11) {
-        if (codeReset) {
-          document.getElementById('locked').innerHTML = "This lock needs a code";
-          codeReset = false;
-        }
+      if (codeReset) {
+        document.getElementById('locked').innerHTML = "This lock needs a code";
+        codeReset = false;
       }
     }
   }
