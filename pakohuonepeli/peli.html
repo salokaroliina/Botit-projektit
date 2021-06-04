@@ -13,115 +13,141 @@
 
       <!--KEHYS -->
       <div class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <img src="grafiikka/mom.png" class="kuva">
+        <div class="modal-content_vankila">
+          <div class="modal-content">
+            <button class="close" onclick="shut(this)">&times;</button>
+            <img src="grafiikka/mom.png" class="kuva">
+          </div>
         </div>
       </div>
       <!--KELLO -->
       <div class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <img src="grafiikka/kello.png">
-          <p>It's stopped...</p>
+        <div class="modal-content_vankila">
+          <div class="modal-content">
+            <button class="close" onclick="shut(this)">&times;</button>
+            <img src="grafiikka/kello.png">
+            <p>It's stopped...</p>
+          </div>
         </div>
       </div>
       <!--NÄYTTÖ -->
       <div class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <canvas width="500" height="400" id="flappyufo"></canvas>
-          <div id="newApproach"></div>
-          </div>
+        <div class="modal-content_vankila">
+          <div class="modal-content">
+            <button class="close" onclick="shut(this)">&times;</button>
+            <canvas width="500" height="400" id="flappyufo"></canvas>
+            <div id="newApproach"></div>
+            </div>
+        </div>
       </div>
 
       <!--KIRJA 1-->
       <div class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <img src="grafiikka/book1.png" alt="" class= "kuva">
+        <div class="modal-content_vankila">
+          <div class="modal-content">
+            <button class="close" onclick="shut(this)">&times;</button>
+            <img src="grafiikka/book1.png" alt="" class= "kuva">
+          </div>
         </div>
       </div>
       <!--KIRJA 2 -->
       <!--Kirja 2 antaa vihjeen oven koodista (6174)-->
       <div class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <img src="grafiikka/page2.png">
-          <p>The page is torn...</p>
-          <p>But I remember this book was about an Indian mathematician!</p>
+        <div class="modal-content_vankila">
+          <div class="modal-content">
+            <button class="close" onclick="shut(this)">&times;</button>
+            <img src="grafiikka/page2.png">
+            <p>The page is torn...</p>
+            <p>But I remember this book was about an Indian mathematician!</p>
+          </div>
         </div>
       </div>
       <!--KIRJA 3 -->
       <div class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <img src="grafiikka/book2.png" class="kuva">
+        <div class="modal-content_vankila">
+          <div class="modal-content">
+            <button class="close" onclick="shut(this)">&times;</button>
+            <img src="grafiikka/book2.png" class="kuva">
+          </div>
         </div>
       </div>
       <!-- KIRJA 4-->
       <div class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <img src="grafiikka/book3.png" class="kuva">
+        <div class="modal-content_vankila">
+          <div class="modal-content">
+            <button class="close" onclick="shut(this)">&times;</button>
+            <img src="grafiikka/book3.png" class="kuva">
+          </div>
         </div>
       </div>
       <!-- KIRJA 5-->
       <div class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <div id="codeCred" class="credits">Code credits:</div>
+        <div class="modal-content_vankila">
+          <div class="modal-content">
+            <button class="close" onclick="shut(this)">&times;</button>
+            <div id="codeCred" class="credits">Code credits:</div>
+          </div>
         </div>
       </div>
       <!-- KIRJA 6-->
       <div class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <div id="graphCred" class="credits">Graphics credits:</div>
+        <div class="modal-content_vankila">
+          <div class="modal-content">
+            <button class="close" onclick="shut(this)">&times;</button>
+            <div id="graphCred" class="credits">Graphics credits:</div>
+          </div>
         </div>
       </div>
       <!-- KIRJA 7-->
       <div class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <div id="soundCred" class="credits">Sound credits:</div>
+        <div class="modal-content_vankila">
+          <div class="modal-content">
+            <button class="close" onclick="shut(this)">&times;</button>
+            <div id="soundCred" class="credits">Sound credits:</div>
+          </div>
         </div>
       </div>
 
       <!-- KIRJA 8-->
       <div class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <div id="botit" class="credits">This game was developed by <br>Team Botit <br>2021</div>
+        <div class="modal-content_vankila">
+          <div class="modal-content">
+            <button class="close" onclick="shut(this)">&times;</button>
+            <div id="botit" class="credits">This game was developed by <br>Team Botit <br>2021</div>
+          </div>
         </div>
-        </div>
+      </div>
 
       <!--LUKKO(koodi) -->
       <div class="modal" id="modal-lock-code">
-        <div class="modal-content">
-          <button class="close" onclick="reset(this)">&times;</button>
-          <form id="codeinput">
-          <p id="locked">This lock needs a code</p>
-            <input id="lockbutton" type="text" maxlength="4">
-          </form>
-          <button id="codebutton" type="button" onclick="codeLock()">Click!</button>
+        <div class="modal-content_vankila">
+          <div class="modal-content">
+            <button class="close" onclick="reset(this)">&times;</button>
+            <form id="codeinput">
+            <p id="locked">This lock needs a code</p>
+              <input id="lockbutton" type="text" maxlength="4">
+            </form>
+            <button id="codebutton" type="button" onclick="codeLock()">Click!</button>
+          </div>
         </div>
       </div>
 
       <!--MUISTIO -->
       <div class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="shut(this)">&times;</button>
-          <div id="momNote">
-          <p>Dear Ufojorma. You locked yourself up again after reading those stories
-          about humans last night. <br>
-          I couldn't find the way to open the door so I went
-          through the window.
-          <br>But you need to get the door open. <br><br>
-          Take care, <br>
-          mom</p>
-          <p>P.S. Don't forget your bag and jacket!</p>
-        </div>
+        <div class="modal-content_vankila">
+          <div class="modal-content">
+            <button class="close" onclick="shut(this)">&times;</button>
+            <div id="momNote">
+              <p>Dear Ufojorma. You locked yourself up again after reading those stories
+              about humans last night. <br>
+              I couldn't find the way to open the door so I went
+              through the window.
+              <br>But you need to get the door open. <br><br>
+              Take care, <br>
+              mom</p>
+              <p>P.S. Don't forget your bag and jacket!</p>
+            </div>
+          </div>
         </div>
       </div>
 

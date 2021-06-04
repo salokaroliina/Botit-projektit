@@ -229,6 +229,9 @@ class Tentacles {
         bleep.play();
       } else {
         lastBleep.play();
+        if(thoughts) {
+          thinkingThoughts.innerHTML = '';
+          }
       }
     }
     //YLÄLONKERO HITBOXIT
@@ -495,9 +498,6 @@ function drawGame() {
                   continueBtn.width, continueBtn.height);
   }
   if (gameState.current === gameState.solved) {
-    if(thoughts) {
-      thinkingThoughts.innerHTML = '';
-      }
     bgMusic.pause();
     victorySong.play();
     gameEnd = true;

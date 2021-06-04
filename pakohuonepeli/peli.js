@@ -1,5 +1,6 @@
 // modal & sulje-näppäin -K
 const modal = document.getElementsByClassName('modal');
+const modalVankila = document.getElementsByClassName('modal-content_vankila');
 //const x = document.getElementsByClassName('close');
 // erilliset objektit -K
 const lockKey = document.getElementById('lock-key');
@@ -61,14 +62,14 @@ function popup(x) {
 
 window.onclick = function(event) {
   for(let i=0;i<modal.length;i++) {
-    if (event.target == modal[i]) {
+    if (event.target == modal[i] || event.target == modalVankila[i]) {
       modal[i].style.display = 'none';
     }
   }
 }
 
 function shut(button) {
-  button.parentNode.parentNode.style.display = 'none';
+  button.parentNode.parentNode.parentNode.style.display = 'none';
 }
 
 function dialogi(d) {
