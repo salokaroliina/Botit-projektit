@@ -222,11 +222,6 @@ function codeLock(){
     // 'klick' -näppäimen painalluksen jälkeen input-alue tyhjenee
     document.getElementById('codeinput').reset();
   }
-  // koodilukon teksti muuttuu takaisin alkuperäiseksi x:n painalluksen jälkeen -K
-  function reset(button) {
-    button.parentNode.parentNode.parentNode.style.display = 'none';
-
-  }
 
 
 // klikkaus siirtää laukun inventoryyn -K
