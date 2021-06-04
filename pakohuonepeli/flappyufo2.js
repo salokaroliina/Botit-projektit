@@ -22,8 +22,10 @@ const fuWin = new Image();
 
 const exeClick = new Audio();
 const titleTune = new Audio();
+const startSound = new Audio();
 const bgMusic = new Audio();
 const explosion = new Audio();
+const contSound = new Audio();
 const flySound = new Audio();
 const bleep = new Audio();
 const lastBleep = new Audio();
@@ -53,9 +55,11 @@ fuWin.src = 'grafiikka/fu/fuwin.png';
 
 exeClick.src = 'sound/fu/click_003.ogg';
 titleTune.src = 'sound/fu/title.mp3';
+startSound.src = 'sound/fu/start.wav';
 bgMusic.src = 'sound/fu/bgmusic.wav';
 bgMusic.loop = true;
 explosion.src = 'sound/fu/explosion.wav';
+contSound.src = 'sound/fu/continue.wav';
 flySound.src = 'sound/fu/fly2.wav';
 bleep.src = 'sound/fu/bleep.wav';
 lastBleep.src = 'sound/fu/lastbleep.wav';
@@ -360,6 +364,7 @@ cvs.addEventListener('click', function(e) {
       if(clickX >= startBtn.x && clickX <= startBtn.x+startBtn.width &&
         clickY >= startBtn.y && clickY <= startBtn.y + startBtn.height) {
           titleTune.pause();
+          startSound.play();
           bgMusic.play();
           gameState.current = gameState.start;
         }
@@ -394,6 +399,7 @@ cvs.addEventListener('click', function(e) {
           bgScroll.x = 0;
           fgScroll.x = 0;
           keyTentacle.x = cvs.width;
+          contSound.play();
         }
     break;
   }
