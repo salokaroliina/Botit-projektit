@@ -33,6 +33,7 @@ const monitorDesktop = document.getElementById('monitor-desktop');
 const monitorGame = document.getElementById('monitor-game');
 const monitorWin = document.getElementById('monitor-win');
 const monitorBroken = document.getElementById('monitor-broken');
+const sound = new Audio('sound/UnlockDoor.wav');
 // inventaario on pelissä vain array -K
 // fyysiselle inventaariolle ei ollut tarvetta -K
 let inventory = [];
@@ -201,6 +202,7 @@ function codeLock(){
   if (code.value == '6174') {
     //console.log("Oikein");
     lockCode.remove();
+    sound.play();
     document.getElementById('locked').innerHTML = "The lock opened!";
     // jos koodi on oikein, nappia ei voi enää käyttää
     // eikä uutta tekstiä syöttää
