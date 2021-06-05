@@ -85,7 +85,11 @@
         <div class="modal-content_vankila">
           <div class="modal-content">
             <button class="close" onclick="shut(this)">&times;</button>
-            <div id="codeCred" class="credits">Code credits:</div>
+            <div id="codeCred" class="credits">Code<br>
+              Key Lock Puzzle: Simo<br>
+              Code Lock Puzzle: Karoliina<br>
+              Electic Lock Puzzle: Unna
+            </div>
           </div>
         </div>
       </div>
@@ -94,16 +98,82 @@
         <div class="modal-content_vankila">
           <div class="modal-content">
             <button class="close" onclick="shut(this)">&times;</button>
-            <div id="graphCred" class="credits">Graphics credits:</div>
+            <div id="graphCred" class="credits">Graphics<br>
+            Main Game: Karoliina<br>
+            Flappy UFO 2: Unna</div>
           </div>
         </div>
       </div>
       <!-- KIRJA 7-->
       <div class="modal">
         <div class="modal-content_vankila">
-          <div class="modal-content">
+          <div class="modal-content" id="soundCredMod">
             <button class="close" onclick="shut(this)">&times;</button>
-            <div id="soundCred" class="credits">Sound credits:</div>
+            <div id="soundCred" class="credits">
+            All music and sounds have been taken from
+            <a href="https://opengameart.org/">OpenGameArt.org</a>
+            <br>
+            <table class="soundTable"><tr><th colspan="2">General Sounds</th></tr>
+              <tr><td colspan="2" class="soundName">Unlock <span class="soundOrigName">(UnlockDoor.wav)</span></td></tr>
+              <tr class="artistInfo"><td>Artist</td><td>License</td></tr>
+              <tr><td><a href="https://opengameart.org/content/door-lock-sounds">Cough-E</a>
+              </td><td><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></td></tr>
+            </table>
+
+            <table class="soundTable"><tr><th colspan="2">FU2 Music</th></tr>
+              <tr><td colspan="2" class="soundName">Title screen <span class="soundOrigName">(8Bit Title Screen.mp3)</span></td></tr>
+              <tr class="artistInfo"><td>Artist</td><td>License</td></tr>
+              <tr><td><a href="https://opengameart.org/content/8bit-title-screen">Joth</a>
+              </td><td><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></td></tr>
+
+              <tr><td colspan="2" class="soundName">Background music <span class="soundOrigName">(Epic1x.wav)</span></td></tr>
+              <tr class="artistInfo"><td>Artist</td><td>License</td></tr>
+              <tr><td><a href="https://opengameart.org/content/8-bit-theme-intensity">Wolfgang</a>
+              </td><td><a href="https://creativecommons.org/licenses/by/3.0/">CC-BY 3.0</a></td></tr>
+
+              <tr><td colspan="2" class="soundName">Victory Fanfare <span class="soundOrigName">(Victory.wav)</span></td></tr>
+              <tr class="artistInfo"><td>Artist</td><td>License</td></tr>
+              <tr><td><a href="https://opengameart.org/content/victory">celestialghost8</a>
+              </td><td><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></td></tr>
+            </table>
+
+          <table class="soundTable"><tr><th colspan="2">FU2 Sounds</th></tr>
+            <tr><td colspan="2" class="soundName">Click <span class="soundOrigName">(click_003.ogg)</span></td></tr>
+            <tr class="artistInfo"><td>Artist</td><td>License</td></tr>
+            <tr><td><a href="https://opengameart.org/content/interface-sounds">Kenney.nl</a>
+            </td><td><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></td></tr>
+
+            <tr><td colspan="2" class="soundName">Start & Continue <span class="soundOrigName">(SFX_Powerup_03.wav/SFX_Powerup_49.wav)</span></td></tr>
+            <tr class="artistInfo"><td>Artist</td><td>License</td></tr>
+            <tr><td><a href="https://opengameart.org/content/8-bit-powerup-1">Jesús Lastra</a>
+            </td><td><a href="https://creativecommons.org/licenses/by/3.0/">CC-BY 3.0</a></td></tr>
+
+            <tr><td colspan="2" class="soundName">Fly <span class="soundOrigName">(vgmenuselect.wav)</span></td></tr>
+            <tr class="artistInfo"><td>Artist</td><td>License</td></tr>
+            <tr><td><a href="https://opengameart.org/content/interface-sounds">Fupi</a>
+            </td><td><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></td></tr>
+
+            <tr><td colspan="2" class="soundName">Explosion <span class="soundOrigName">(explosion.wav)</span></td></tr>
+            <tr class="artistInfo"><td>Artist</td><td>License</td></tr>
+            <tr><td><a href="https://opengameart.org/content/explosion-0">TinyWorlds</a>
+            </td><td><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></td></tr>
+
+            <tr><td colspan="2" class="soundName">Passing tentacles <span class="soundOrigName">(coin10.wav/coin2.wav)</span></td></tr>
+            <tr class="artistInfo"><td>Artist</td><td>License</td></tr>
+            <tr><td><a href="https://opengameart.org/content/10-8bit-coin-sounds">Luke.RUSTLTD</a>
+            </td><td><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></td></tr>
+
+            <tr><td colspan="2" class="soundName">Punch <span class="soundOrigName">(hit22.mp3.flac)</span></td></tr>
+            <tr class="artistInfo"><td>Artist</td><td>License</td></tr>
+            <tr><td><a href="https://opengameart.org/content/37-hitspunches">Independent.nu</a>
+            </td><td><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></td></tr>
+
+            <tr><td colspan="2" class="soundName">Shatter <span class="soundOrigName">(Bottle Break.wav)</span></td></tr>
+            <tr class="artistInfo"><td>Artist</td><td>License</td></tr>
+            <tr><td><a href="https://opengameart.org/content/breaking-bottle">spookymodem</a>
+            </td><td><a href="https://creativecommons.org/licenses/by/3.0/">CC-BY 3.0</a></td></tr>
+          </table>
+            </div>
           </div>
         </div>
       </div>
@@ -113,7 +183,9 @@
         <div class="modal-content_vankila">
           <div class="modal-content">
             <button class="close" onclick="shut(this)">&times;</button>
-            <div id="botit" class="credits">This game was developed by <br>Team Botit <br>2021</div>
+            <div id="botit" class="credits">This game was developed as a student project by
+              <br>Team Botit <br>2021
+            <br><br><span id="ty4playing">Thank you for playing!</span></div>
           </div>
         </div>
       </div>

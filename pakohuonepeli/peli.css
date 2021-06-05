@@ -74,6 +74,52 @@ body{
   border: 1px solid #e1e3d9;
 }
 
+#soundCredMod {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.soundTable {
+  table-layout: fixed;
+  width: 450px;
+  margin: auto;
+  margin-top: 10px;
+  border: 1px solid #c7c7b0;
+  border-collapse: collapse;
+  text-align: left;
+}
+th {
+  text-align: center;
+  background-color: #c7c7b0;
+
+}
+tr, th, td {
+/*  border: 1px solid #000;
+  border-collapse: collapse;*/
+  /*padding-top: 7px;
+  padding-left: 3px;*/
+  padding: 7px 3px 3px 5px;
+}
+.soundName {
+  background-color: #dfdfd2;
+  color: #654d42;
+}
+.soundOrigName {
+  font-size: 10px;
+}
+.artistInfo {
+  font-size: 13px;
+  color: #4c3b32;
+}
+.credits {
+  background-color: #e5e5e2;
+    color: #2f2f28;
+  font-family: Georgia, serif;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 2px 2px 10px;
+}
 .close {
   float: right;
   background-color: #ccda96;
@@ -89,6 +135,12 @@ body{
 }
 .close:hover {
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+    color: #384c3a;
 }
 
 #momNote {
@@ -197,6 +249,8 @@ map{
 .movePot{
   left: 450px;
 }
+
+
 /*
 #soundCred{
   position: absolute;

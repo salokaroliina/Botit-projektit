@@ -150,7 +150,7 @@ function dialogi(d) {
     break;
     case 'book6':
       dialogue.innerHTML =
-      'Graphic credits<br><span class="interact" onclick="popup(8)">Take a closer look</span>';
+      'Graphics credits<br><span class="interact" onclick="popup(8)">Take a closer look</span>';
     break;
     case 'book7':
       dialogue.innerHTML =
