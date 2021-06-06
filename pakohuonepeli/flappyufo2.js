@@ -216,8 +216,8 @@ let fgScroll = {x: 0,
                   }
                 },
                 draw: function() {
-                  ctx.drawImage(fg, this.x, 382);
-                  ctx.drawImage(fg, this.x+cvs.width, 382);
+                  ctx.drawImage(fg, this.x, 364);
+                  ctx.drawImage(fg, this.x+cvs.width, 364);
                 }};
 
 //Countdown-elementin funktio
