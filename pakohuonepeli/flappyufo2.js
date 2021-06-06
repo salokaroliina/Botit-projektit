@@ -385,8 +385,11 @@ let keyTentacle = {x: cvs.width,
                   y: 21,
                   width: 372,
                   update: function() {
+                    //Jos tämä kuva on tullut kokonaisuudessaan esille
                     if (this.x <= cvs.width-this.width) {
+                      //Pelitila vaihdetaan ratkaistuksi
                       gameState.current = gameState.solved;
+                    //Muuten tämä liikkuu cinemaattista vauhtia eteenpäin
                     } else {
                       this.x -= 1.7;
                     }
@@ -396,233 +399,288 @@ let keyTentacle = {x: cvs.width,
                   }
                 };
 
-const gameState = {current: 0,
-                   desktop: 0,
-                   title: 1,
-                   start: 2,
-                   play: 3,
-                   end: 4,
-                   solved: 5,
-                   extraSolved: 6};
+//Määritellään pelitilat
+const gameState = {current: 0, //<--tämä on se jota vaihdellaan
+                   desktop: 0, //Default alkutila
+                   title: 1, //Title-ruutu
+                   start: 2, //Get Ready-tila
+                   play: 3, //Pelitila
+                   end: 4, //Game Over
+                   solved: 5, //Ratkaistu / hyvä loppu
+                   extraSolved: 6}; //EXTRA ratkaistu / huono loppu
 
-let gamespeed = 3;
-let frames = 0;
-let passes = 10;
-let tries = 0;
-let stopped = false;
-let gameStarted = false;
-let goOn = false;
-let firstTimeOpen = true;
-let gameEnd = false;
-let didWeWin = false;
-let thoughts = false;
+let gamespeed = 3; //Pelivauhti
+let frames = 0; //..framet
+let passes = 10; //Kuinka monta ohitusta tarvitaan hyvään loppuun
+let tries = 0; //Yritykset
+let gameStarted = false; //Onko peli aloitettu
+let goOn = false; //GO-viestin animaatiot varten
+let gameEnd = false; //Onko peli loppunut
+let thoughts = false; //Onko huono loppu-linkki aktivoitu
 
-//EVENT LISTENERI
-//ON TÄSSÄ!!!!!!!!!!
+//EVENT LISTENERIT
+//Nämä muuttujat on sitä varten että klikattavat hitboxit pysyy
+//oikeilla paikoilla vaikka sivua scrollaa
 let rect;
 let clickX;
 let clickY;
 
+//Tuplaklikkaus tapahtumakuuntelija
 cvs.addEventListener('dblclick', function(e) {
+  //Toimii vain jos peliä ei ole vielä aloitettu
+  //... Nytkun ajattelen, olisin voinut vain laittaa
+  //if gameState.current === gameState.desktop
+  //Katso jos jaksan korjata
   if(!gameStarted) {
+    //Scrolli-turva systeemit asetettu
     rect = cvs.getBoundingClientRect();
     clickX = e.clientX - rect.left;
     clickY = e.clientY - rect.top;
 
+    //Tuplaklikattava hitboxi
     if(clickX >= fuExe.x && clickX <= fuExe.x+fuExe.width &&
       clickY >= fuExe.y && clickY <= fuExe.y + fuExe.height) {
-        drawGame();
-        titleTune.play();
-        gameState.current = gameState.title;
+        drawGame(); //Kutsutaan pelin pääfunktiota ja aloitetaan peli
+        titleTune.play(); //Soitetaan lyhyt ja pirteä kappale
+        gameState.current = gameState.title; //Pelitila Title screen
+        //Pistetään desktop näkymä pääpelin monitorista piiloon
         monitorDesktop.style.display = 'none';
+        //Tuodaan FU2 title screen näkymä pääpelin monitorille
         monitorGame.style.display = 'block';
-        gameStarted = true;
+        gameStarted = true; //Tää oikeesti on turha, korjaa huomenna
       }
-
   }
 });
+//Yksöisklikkaus tapahtumakuuntelija canvasille
 cvs.addEventListener('click', function(e) {
+  //Switch-case pelitiloille
   switch (gameState.current){
+    //Jos desktop
     case gameState.desktop:
+    //Scrollisuoja taas
     rect = cvs.getBoundingClientRect();
     clickX = e.clientX - rect.left;
     clickY = e.clientY - rect.top;
 
+    //FU2 kuvakkeen hitboxi työpöydällä taas
     if(clickX >= fuExe.x && clickX <= fuExe.x+fuExe.width &&
       clickY >= fuExe.y && clickY <= fuExe.y + fuExe.height) {
-        exeClick.play();
+        exeClick.play(); //Soitetaan klikkaus-ääni
       }
     break;
+
+    //Jos ollaan title screenis
     case gameState.title:
       rect = cvs.getBoundingClientRect();
       clickX = e.clientX - rect.left;
       clickY = e.clientY - rect.top;
 
+      //Starttinapin hitboxi
       if(clickX >= startBtn.x && clickX <= startBtn.x+startBtn.width &&
         clickY >= startBtn.y && clickY <= startBtn.y + startBtn.height) {
-          titleTune.pause();
-          startSound.play();
-          bgMusic.play();
-          gameState.current = gameState.start;
+          titleTune.pause(); //Pysäytetään title musiikki jos se vielä soi
+          startSound.play(); //Soitetaan startti-napin ääni
+          bgMusic.play(); //Aloitetaan looppaava taustamusiikki
+          gameState.current = gameState.start; //Asetetaan pelitila Get Readyyn
         }
     break;
 
+    //Get Ready-tila
     case gameState.start:
-        frames = 0;
-        gameState.current = gameState.play;
+        frames = 0; //Resetoidaan framet
+        gameState.current = gameState.play; //Vaihdetaan peli play-tilaan
       break;
 
+    //Play-tila
     case gameState.play:
+      //Jos on vielä lonkeroita ohitettavana
       if(passes>0) {
-        fufo.fly();
-        flySound.play();
+        fufo.fly(); //Kutsutaan UFO (avaruus)olion fly-funktiota
+        flySound.play(); //Soitetaan pieni äänitehoste
       }
     break;
 
+    //Game Over
     case gameState.end:
       rect = cvs.getBoundingClientRect();
       clickX = e.clientX - rect.left;
       clickY = e.clientY - rect.top;
 
+      //Continue-napin hitboxi
       if(clickX >= continueBtn.x && clickX <= continueBtn.x+continueBtn.width &&
         clickY >= continueBtn.y && clickY <= continueBtn.y + continueBtn.height) {
-          gameState.current = gameState.start;
-          frames = 0;
-          passes = 10;
-          fufo.animFrame = 0;
-          fufo.sX = 0;
-          goOn = false;
-          tentacleList = [];
-          bgScroll.x = 0;
-          fgScroll.x = 0;
+          gameState.current = gameState.start; //Vaihdetaan tila Get Ready-näkymään
+          frames = 0; //Resetoidaan framet
+          passes = 10; //Resetoidaan ohitukset
+          fufo.animFrame = 0; //Resetoidaan UFOn animaatioframet
+          fufo.sX = 0; //Edelleen UFOn animaatioframeresetointia
+          goOn = false; //Resetoidaan GO-ilmoitus
+          tentacleList = []; //Resetoidaan lonkerolista
+          bgScroll.x = 0; //Resetoidaan scrollaava tausta
+          fgScroll.x = 0; //Resetoidaan scrollaava foregroundi
+          //Resetoidaan iso lonkero
+          //Tämä on jäännös versiosta jossa en vielä ottanut pelaajan
+          //kontrollia pois viimeisen lonkeron jälkeen.
+          //Jätän sen silti tänne. Se ei tee pahaa
+          //Ja mitä jos jotain odottamatonta sattuu ja pelaaja kuolee sen
+          //jälkeen kun iso lonkero on aloittanut scrollaamisen???
+          //Tämä tuo minulle mielenrauhan.
           keyTentacle.x = cvs.width;
-          contSound.play();
+          contSound.play(); //Soitetaan äänitehoste
         }
     break;
   }
 });
 
-
+//Lonkerojen kutsu
 function spawnTentacles() {
+  //Jos framet jaollinen sadalla ja ohituksia jäljellä enemmän kuin yksi
   if (frames%100 === 0 && passes>1) {
+    //Luodaan uusi lonkero constructorista lonkerolistaan
     tentacleList.unshift(new Tentacles);
   }
+  //Käydään läpi lonkerolista ja päivitetään jokainen lonkero
   for(let i=0;tentacleList.length>i;i++) {
     tentacleList[i].update();
   }
-  frames++;
+  frames++; //Lisätään framei yhdellä
 }
 
+//Huono Loppu funktio
 function newApproach() {
-  bgMusic.pause();
-  fuSmash.play();
-  shatter.play();
-  thinkingThoughts.innerHTML = '';
-  pcSolutions.style.display = 'block';
-  dialogue.innerHTML = '...';
-  monitorGame.style.display = 'none';
-  monitorBroken.style.display = 'block';
-  gameState.current = gameState.extraSolved;
+  bgMusic.pause(); //Lopetetaan musiikki
+  fuSmash.play(); //Soitetaan lyönti-ääni
+  shatter.play(); //Soitetaan lasin rikkoutumisääni
+  thinkingThoughts.innerHTML = ''; //Tyhjennetään ajatus-kenttä pahoista ajatuksista
+  pcSolutions.style.display = 'block'; //Tuodaan näkyviin rikkoutunut PC pääpeliin
+  dialogue.innerHTML = '...'; //Päivitetään dialogiboxi
+  monitorGame.style.display = 'none'; //Piiloitetaan pääpelin monitorista title ruutu
+  monitorBroken.style.display = 'block'; //Tuodaan rikkinäinen ruutu pääpelin monitoriksi
+  gameState.current = gameState.extraSolved; //Pelitila on extra ratkaistu
+  //Ajastin
   setTimeout(function() {
-    unlockSound.play();
-    pcLock = true;
-    lockElec.style.display = 'none';
-    dialogue.innerHTML = 'I heard something unlock?';
+    unlockSound.play(); //Soitetaan lukon avautumisääni
+    pcLock = true; //Aktivoidaan pääpelin yksi voittokriteereistä
+    lockElec.style.display = 'none'; //Piiloitetaan elektroninen lukko ovesta
+    dialogue.innerHTML = 'I heard something unlock?'; //Päivitetään dialogiboxi
   }, 1600);
 }
 
+//Desktopin piirto-funktio
+//peli.html body kutsuu tätä onload
 function drawDesktop() {
+  //Piirretään desktop näkymä canvasiin
   ctx.drawImage(desktop, 0, 0);
 }
 
+//Pelin pääfunktio
 function drawGame() {
+  //Jos yrityksiä on viisi ja pahoja ajatuksia ei ole aktivoitu
+  //... Oiskohan tämän kohdan voinut heittää muualle
+  //Varmaan
+  //Katso jos jaksat korjata sen huomenna
   if (tries === 5 && !thoughts) {
-    thoughts = true;
+    thoughts = true; //Pahat ajatukset
+    //Tuodaan pahat ajatukset canvasin alle näkyväksi
+    //onclick kutsuu newApproach()-funktiota
     thinkingThoughts.innerHTML =
     '<span onclick="newApproach()" class="interact" id="solutions">Perhaps I should try another approach...?</span>';
   }
-  if (gameState.current === gameState.desktop) {
-    ctx.clearRect(0, 0, cvs.width, cvs.height);
-    ctx.drawImage(desktop, 0, 0);
 
-  }
-
+  //Pelitila Title Screen
   if (gameState.current === gameState.title) {
-    ctx.clearRect(0, 0, cvs.width, cvs.height);
-    ctx.drawImage(titleScreen, 0, 0);
+    ctx.clearRect(0, 0, cvs.width, cvs.height); //Tyhjennetään canvas
+    ctx.drawImage(titleScreen, 0, 0); //Piirretään titlecard canvasiin
   }
 
+  //Pelitila Get Ready
   if (gameState.current === gameState.start) {
-    ctx.clearRect(0, 0, cvs.width, cvs.height);
-    ctx.drawImage(bgSky, 0, 0);
+    ctx.clearRect(0, 0, cvs.width, cvs.height); //Canvasin tyhjennys
+    ctx.drawImage(bgSky, 0, 0); //Piirretään taustalle taivas
     bgScroll.update();
-    bgScroll.draw();
+    bgScroll.draw(); //Taustascrolli päivitys ja piirto
     fgScroll.update();
-    fgScroll.draw();
+    fgScroll.draw(); //Foregroundscrolli päivitys ja piirto
     fufo.update();
-    fufo.draw();
-    fuCountdown.update();
+    fufo.draw(); //UFOn päivitys ja piirto
+    fuCountdown.update(); //Tuodaan numerot oikeaan yläkulmaan
 
+    //Jos GO on epätosi
     if(!goOn) {
+      //ja framet jaollinen 55
       if(frames%55 === 0) {
-        goOn = true;
+        goOn = true; //GO on tosi
       }
+    //Jos GO on tosi
     } else {
-      ctx.drawImage(fuGO, cvs.width/2-72.5, 50);
+      ctx.drawImage(fuGO, cvs.width/2-72.5, 50); //Piirretään GO-viesti
+      //framet jaollinen 55
       if(frames%55 === 0) {
-        goOn = false;
+        goOn = false; //GO on epätosi
       }
     }
-    frames++;
+    frames++; //Framet kasvatetaan yhdellä
   }
 
+  //Play-tila
   if (gameState.current === gameState.play) {
-    ctx.clearRect(0, 0, cvs.width, cvs.height);
-    ctx.drawImage(bgSky, 0, 0);
+    ctx.clearRect(0, 0, cvs.width, cvs.height); //Canvasin tyhjennys
+    ctx.drawImage(bgSky, 0, 0); //Taivas
     bgScroll.update();
-    bgScroll.draw();
+    bgScroll.draw(); //Taustascroll
     fgScroll.update();
-    fgScroll.draw();
-    fufo.update();
-    spawnTentacles();
-    fuCountdown.update();
+    fgScroll.draw(); //Foregroundscroll
+    fufo.update(); //UFO päivitys
+    spawnTentacles(); //Kutsutaan lonkeroita
+    fuCountdown.update(); //Tuodaan numerot oikeaan yläkulmaan
+    //Jos kaikki lonkerot on ohitettu ja lonkerolistalla ei ole lonkeron lonkeroa
     if (passes===0 && tentacleList.length === 0) {
       keyTentacle.update();
-      keyTentacle.draw();
+      keyTentacle.draw(); //Tuodaan iso lonkero
     }
-    fufo.draw();
+    fufo.draw(); //Piirretään UFO
   }
 
+  //Game Over
   if (gameState.current === gameState.end) {
-    ctx.drawImage(fusplosion, fufo.x, fufo.y-19);
-    ctx.drawImage(fuGameOver, cvs.width/2-167.5, 50);
+    ctx.drawImage(fusplosion, fufo.x, fufo.y-19); //Piirretään räjähdys-efekti UFOn päälle
+    ctx.drawImage(fuGameOver, cvs.width/2-167.5, 50); //Piirretään Game Over-viesti
+    //Piirretään Continue-nappi ja asetetaan sille uusi leveys ja korkeus
+    //Alkuperäinen koko oli liian iso ja ruma
     ctx.drawImage(fuContinue, continueBtn.x, continueBtn.y,
                   continueBtn.width, continueBtn.height);
   }
 
+  //Ratkaistu
   if (gameState.current === gameState.solved) {
-    bgMusic.pause();
-    victorySong.play();
-    gameEnd = true;
+    bgMusic.pause(); //Pysäytetään taustamusiikki
+    victorySong.play(); //Soitetaan voittofanfaari
+    gameEnd = true; //Asetetaan peli loppuneeksi jotta drawGame() ei enää looppaisi
+    //Ajastin
     setTimeout(function() {
-      ctx.drawImage(fuWin, 0, 0);
+      ctx.drawImage(fuWin, 0, 0); //Piirretään canvasiin voittoviesti
+      //Toinen ajastin
       setTimeout(function() {
-        unlockSound.play();
-        pcLock = true;
-        lockElec.style.display = 'none';
-        monitorGame.style.display = 'none';
-        monitorWin.style.display = 'block';
+        unlockSound.play(); //Lukon avaus ääni
+        pcLock = true; //Aktivoidaan pääpelin yksi voittokriteereistä
+        lockElec.style.display = 'none'; //Piiloitetaan elektroninen lukko pääpelistä
+        monitorGame.style.display = 'none'; //Piiloitetaan pääpelin monitorista title-ruutu
+        monitorWin.style.display = 'block'; //Tuodaan pääpelin monitorille voitto-ruutu
+        //Päivitetään dialogiboxi
         dialogue.innerHTML =
         'I heard something unlock<br><br>Who designed these locks?';
       }, 1500);
     }, 2550);
   }
 
+  //Jos peli on extra-ratkaistu
   if (gameState.current === gameState.extraSolved) {
-    ctx.drawImage(extraSolved, 0, 0);
-    gameEnd = true;
+    ctx.drawImage(extraSolved, 0, 0); //Piirretään rikkinäinen näyttö canvasiin
+    gameEnd = true; //Flagataan peli loppuneeksi
   }
+    //Jos peliä ei ole flagattu loppuneeksi
     if(!gameEnd) {
+    //drawGame()-funktion looppaus
     requestAnimationFrame(drawGame);
   }
 }
