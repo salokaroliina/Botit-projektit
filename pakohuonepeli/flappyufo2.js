@@ -1,7 +1,9 @@
-const cvs = document.getElementById('flappyufo');
-const ctx = cvs.getContext('2d');
+const cvs = document.getElementById('flappyufo'); //Haetaan canvas
+const ctx = cvs.getContext('2d'); //Konteksti 2d
+//Paikka mihin tulee teksti huonoa loppua varten
 const thinkingThoughts = document.getElementById('newApproach');
 
+//Määritellään kuvien nimet
 const desktop = new Image();
 const titleScreen = new Image();
 const extraSolved = new Image();
@@ -20,6 +22,7 @@ const fuk = new Image();
 const fukFound = new Image();
 const fuWin = new Image();
 
+//Määritellään äänien nimet
 const exeClick = new Audio();
 const titleTune = new Audio();
 const startSound = new Audio();
@@ -34,7 +37,11 @@ const fuSmash = new Audio();
 const shatter = new Audio();
 const unlockSound = new Audio();
 
-
+//Kuvien osoitteet
+//Nämä kai voisi laittaa new Image('tähän'); kohtaan
+//Mutta kaikki tutoriaalit on pistäny ne erikseen
+//¯\_(ツ)_/¯
+//Jos jää aikaa ja energiaa tutkin onko sillä väliä
 desktop.src = 'grafiikka/fu/fudesktop.png';
 titleScreen.src = 'grafiikka/fu/futitlecard.png';
 extraSolved.src = 'grafiikka/fu/fusmash.png';
@@ -53,11 +60,12 @@ fuk.src = 'grafiikka/fu/fukey.png';
 fukFound.src = 'grafiikka/fu/fuendkey.png';
 fuWin.src = 'grafiikka/fu/fuwin.png';
 
+//Äänten osoitteet
 exeClick.src = 'sound/fu/click_003.ogg';
 titleTune.src = 'sound/fu/title.mp3';
 startSound.src = 'sound/fu/start.wav';
 bgMusic.src = 'sound/fu/bgmusic.wav';
-bgMusic.loop = true;
+bgMusic.loop = true; //Taustamusiikin looppaus
 explosion.src = 'sound/fu/explosion.wav';
 contSound.src = 'sound/fu/continue.wav';
 flySound.src = 'sound/fu/fly.wav';
@@ -68,12 +76,13 @@ fuSmash.src = 'sound/fu/hit.mp3.flac';
 shatter.src = 'sound/fu/shatter.wav';
 unlockSound.src = 'sound/UnlockDoor.wav';
 
-
+//Määritellään Flappy UFO 2 desktop ikonin hitbox
 let fuExe = {width: 42,
              height: 66,
              x: 15,
              y: 14};
 
+//Start- ja Continue-nappien hitboxit
 let startBtn = {width: 76,
                 height: 40,
                 x: 408,
@@ -83,81 +92,119 @@ let continueBtn = {width: 120,
                    x: 375,
                    y: 350};
 
+//Pelaaja-hahmo (avaruus)olio
 let fufo = {width: 42,
-              height: 31,
-              sheetW: 168,
-              animFrame: 0,
-              cols: 4,
-              x: 100,
-              y: 150,
+              height: 31, //Yhden framen leveys ja korkeus
+              sheetW: 168, //Spritesheet leveys
+              animFrame: 0, //Animaatio frame
+              cols: 4, //Spritesheet sarakkeiden määrä
+              x: 100, //UFOn sijainti leveys-suunnassa
+              y: 150, //UFOn alku-sijainti pituus-suunnassa
               sX: 0,
-              sY: 0,
-              hitboxTopRad: 11,
+              sY: 0, //Leveys ja pituus sheet-animaatiota varten
+              hitboxTopRad: 11, //Ylä-hitboxin ympärysmitta
               hitboxTopX: 0,
-              hitboxTopY: 0,
+              hitboxTopY: 0, //Määritellään ylä-hitboxin sijainti-muuttujat
               hitboxBottomW: 38,
-              hitboxBottomH: 13,
+              hitboxBottomH: 13, //Ala-hitboxin leveys ja korkeus
               hitboxBottomX: 0,
-              hitboxBottomY: 0,
-              speed: 0,
-              gravity: 0.25,
-              jump: -4.6,
+              hitboxBottomY: 0, //Määritellään ala-hitboxin sijainti-muuttujat
+              speed: 0, //Aloitus-vauhti
+              gravity: 0.25, //Painovoima
+              jump: -4.6, //Hyppy lento-funktiota varten
+              //Päivitys-funktio joka määrittelee UFOn sijainnin ja animaation
               update: function() {
+                //y-sijainti ja nopeus Get Ready-näkymässä
                 if(gameState.current === gameState.start) {
                   this.y = 150;
                   this.speed = 0;
                 }
+                //Päivitetään sijainti ja animaatio play-tilassa
                 if(gameState.current === gameState.play) {
+                  //Jos läpi lennettäviä lonkeroita on vielä jäljellä
                   if(passes>0) {
-                    this.speed += this.gravity;
-                    this.y += this.speed;
+                    this.speed += this.gravity; //Nopeutta lisätään painovoimalla
+                    this.y += this.speed; //Sijainti y-suunnassa määritetään nopeuden mukaan
+                    //Määritellään ylä-hitboxin sijainti niin että se tulee ohjaamon päälle
                     this.hitboxTopX = this.x+21;
                     this.hitboxTopY = this.y+11;
+                    //Ala-hitboxi tulee ala-osan päälle
                     this.hitboxBottomX = this.x+2;
                     this.hitboxBottomY = this.y+15;
+                    //Määritellään animaatio-nopeus
+                    //Jos framet on jaolliset 25, vaihdetaan animaatio framee
                     if (frames%25 === 0) {
+                      //Lisää animaatio frameen +1
+                      //Haetaan modulo-operaattorilla ja sarakkeilla jakojäännös
+                      //eli 1%4=1, 2%4=2 ja niin edespäin
                       this.animFrame = ++this.animFrame % this.cols;
+                      //Sen kanssa sitten kerrotaan UFOn Leveys
+                      //Näin saadaan x mistä aletaan piirtämään kuvaa spritesheetista
                       this.sX = this.animFrame * this.width;
                     }
+                    //Jos kaikki lonkerot on ohitettu, lopetetaan UFOn y:n päivitys
+                    //Samalla tehdään animaatiosta asteen hitaampi
                   } else {
                     if (frames%40 === 0) {
+                      //Sama periaate kuin ylhäällä
                       this.animFrame = ++this.animFrame % this.cols;
                       this.sX = this.animFrame * this.width;
                     }
                   }
+                  //Jos tämän y on yhtä suuri tai pienempi kuin canvasin yläreuna
+                  //niin pidetään y nollassa
+                  //Että pelaaja ei pääse lentämään canvasista pois
                   if (this.y <= 0) {
                     this.y = 0;
                   }
+                  //Jos UFOn alareuna koskee foreground-elementtiä
                   if(this.y+this.height > cvs.height-18) {
-                    explosion.play();
-                    tries++;
-                    gameState.current = gameState.end;
+                    explosion.play(); //Soitetaan räjähdys-äänitehoste
+                    tries++; //Lisätään yritys-laskuria yhdellä
+                    gameState.current = gameState.end; //Mennään Game Over-tilaan
                   }
                 }
               },
+              //Lento-funktio
               fly: function() {
-                this.speed = this.jump;
+                this.speed = this.jump; //Nopeudeksi asetetaan ylempänä määritelty arvo, -4.6
               },
+              //Piirto-funktio
               draw: function() {
+                //Ensin kerrotaan mitä piirretään, elikkä haetaan UFO spritesheet
+                //Sitten määritetään kohdan mistä lähdetään piirtämään x- ja y-arvot
+                //Seuraavaksi kerrotaan kuinka leveä&korkea pala sheetistä piirretään
+                //Sitten määritellään mihin paikkaan canvasista sprite piirretään
+                //Viimeiseksi vielä kerrotaan kuinka suurena kuva piirretään
                 ctx.drawImage(fufoSprite, this.sX, this.sY, this.width, this.height,
                               this.x, this.y, this.width, this.height);
               }
             };
 
-let bgScroll = {x: 0,
-                speed: 1,
+//Scrollaavan taustaelementin olio
+let bgScroll = {x: 0, //Ei tarvi määrittää kuin x koska y on aina sama
+                speed: 1, //Scrollaus nopeus
+                //Päivitys-funktio joka määrittää mihin kuva piirretään
                 update: function() {
+                  //Jos peli on play-tilassa
                   if (gameState.current === gameState.play){
-                    this.x -= this.speed;
+                    this.x -= this.speed; //Vähennetään x nopeudella
                     }
+                  //Jos x on sama kuin negatiivinen canvasin leveys
                   if(this.x === -cvs.width) {
-                    this.x = 0;
+                    this.x = 0; //Asetetaan x takaisin nollaan
                   }
                 },
+                //Piirto-funktio
                 draw: function() {
+                  //Piirretään samaan aikaan kaksi samaa kuvaa
+                  //Ekan x on sama kuin tämän x
                   ctx.drawImage(bgCity, this.x, 0);
+                  //Toisen x on tämän x plus canvasin leveys
                   ctx.drawImage(bgCity, this.x+cvs.width, 0);
                 }};
+//Scrollaava foreground elementti
+//Tismalleen sama kuin edellinen olio paitsi nopeus on asteen hitaampi
 let fgScroll = {x: 0,
                 speed: 2,
                 update: function() {
@@ -173,82 +220,134 @@ let fgScroll = {x: 0,
                   ctx.drawImage(fg, this.x+cvs.width, 382);
                 }};
 
+//Countdown-elementin funktio
+//Käyttää myös spritesheet animaatiota jonka aiemmin selitin
+//Paitsi että ei tarvi käyttää modulaatiota koska se mitä halutaan piirtää
+//perustuu kuinka monta lonkeroa on ohitettu framejen laskemisen sijaan
 let fuCountdown = {x: 470,
                     y: 10,
                     sx: 0,
                     sy: 0,
                     width: 40,
-                    height: 68,
+                    height: 68, //Spriten oikea leveys ja korkeus
+                    //Mutta koska me halutaan piirtää kuvat pienempänä kuin
+                    //ne oikeasti on, alla määritellään minkä kokoisina
+                    //haluamme kuvat piirtää
                     drawW: 20,
                     drawH: 48,
+                    //Päivitys-funktio
                     update: function() {
+                      //Kerrotaan ohitukset tämän leveydellä että saadaan
+                      //kohta josta haluamme alkaa piirtämään spritesheetista
                       this.sx = passes * this.width;
+                      //Kutsutaan tämän piirto-funktiota
                       this.draw();
                     },
+                    //Piirto-funktio
                     draw: function() {
+                      //Jos yhtään ohitusta ei ole vielä tehty
                       if(passes===10) {
+                        //Haetaan spritesheetiltä numero 1
                         ctx.drawImage(numSheet, this.width, this.sy,
                           this.width, this.height,
                           450, this.y, this.drawW, this.drawH);
+                        //Haetaan spritesheetiltä numero 0 ja piirretään se ykkösen jälkeen
                         ctx.drawImage(numSheet, 0, this.sy,
                           this.width, this.height,
                           470, this.y, this.drawW, this.drawH);
+                        //Muuten jos ohituksia on vielä jäljellä, piirretään vain
+                        //yksi numero
                       } else if (passes>0){
                         ctx.drawImage(numSheet, this.sx, this.sy,
                           this.width, this.height,
                           this.x, this.y, this.drawW, this.drawH);
+                          //Ja kaikki tämä vaiva koska en saanut Google fontseja
+                          //toimimaan Chromessa
+                          //Ironista
+                          //Firefoxilla se sujui niin vaivatta
+                          //Mielummin piirsin omat numerot kuin aloin jahtaamaan
+                          //oikeaa vastausta netistä
+                          //goddamn.
+                          //Tulipa spritesheet animaatio harjoitusta
                         }
                     }
                     };
 
+//Lista lonkeroille
 let tentacleList = [];
+//Lonkero constructor
 class Tentacles {
   constructor() {
-    this.x = cvs.width;
-    this.maxY = -120;
-    this.width = 35;
-    this.spriteWidth = 55;
-    this.height = 297;
-    this.top = this.maxY * (Math.random() +1);
+    this.x = cvs.width; //Aloitus x on canvasin leveys
+    this.maxY = -120; //Maximi y-arvo
+    this.width = 35; //Hitbox-leveys
+    this.spriteWidth = 55; //Kuvan oikea leveys
+    this.height = 297; //Kuvan pituus
+    this.top = this.maxY * (Math.random() +1); //Arvotaan randomi y-arvo ylälonkerolle
+    //Alalonkeron y perustuu ylälonkeron y-arvoon
+    //Kummatkin ovat saman pituisia, niin lasketaan ylälonkeron x plus tämän pituus
+    //PLUS 87, joka on se hajurako joka lonkeroiden väliin tulee
     this.bottom = this.top + this.height+87;
+    //Lisätään booleani niin että tätä ei laskettaisi kahdesti
     this.counted = false;
   }
+  //Piirto-funktio
   draw() {
     ctx.drawImage(tentacleN, this.x, this.top);
     ctx.drawImage(tentacleS, this.x, this.bottom);
   }
+  //Päivitys
   update() {
+    //Lonkeroiden x määrittyy pelivauhti muuttujan mukaan
     this.x -= gamespeed;
+    //Koska hitboxin ja kuvan leveydet ovat eri, asetetaan hitboxin x
+    //niin että se olisi mahdollisimman reilusti lonkero-kuvan päällä
     this.hitboxX = this.x+10;
+    //Piirto-funktion kutsu
     this.draw();
+    //Jos kuva on hävinnyt canvasista piiloon, poistetaan se lonkerolistasta
     if(this.x <= -this.spriteWidth) {
       tentacleList.pop();
-
     }
 
+    //Jos UFO on päässyt lonkeron ohi ja tätä ei ole vielä laskettu
     if(this.x+this.spriteWidth <= fufo.x && !this.counted) {
+      //Vaihdetaan boolean-arvo ettei tätä enää lasketa uusiksi
       this.counted = true;
+      //Miinustetaan ohituksista yksi
       passes--;
+      //Jos ohituksia on vielä jäljellä
       if (passes>0) {
+        //Soitetaan kolikko-ääni
         bleep.play();
+      //Jos ei ole enää ohituksia, eli tämä on viimeinen lonkeropari
       } else {
+        //Soitetaan vähän korkeampi kolikko-ääni
         lastBleep.play();
+        //Jos canvasin alle on aktivoitunut huono loppu-vaihtoehto
         if(thoughts) {
+          //Otetaan se pois
           thinkingThoughts.innerHTML = '';
           }
       }
     }
+
     //YLÄLONKERO HITBOXIT
-    //ufon yläosa
+    //UFOn yläosa
+    //Minulla ei ole tarpeeksi voimavaroja että alan selittään yksityiskohtaisesti
+    //Ymmärrän tämän vain harmaasti
+    //Elikkä tässä jos UFOn ylähitboxi osuu ylälonkeroon
     if(fufo.hitboxTopX + fufo.hitboxTopRad > this.hitboxX &&
       fufo.hitboxTopX - fufo.hitboxTopRad < this.hitboxX+this.width &&
       fufo.hitboxTopY + fufo.hitboxTopRad > this.top &&
       fufo.hitboxTopY - fufo.hitboxTopRad < this.top+this.height) {
-        explosion.play();
-        tries++;
-        gameState.current = gameState.end;
+        explosion.play(); //Soitetaan räjähdys-ääni
+        tries++; //Lisätään yrityksiä yhdellä
+        gameState.current = gameState.end; //Siirretään pelitila Game Overiin
       }
-      //ufon alaosa
+      //UFOn alaosa
+      //Kaikissa näissä toistuu sama
+      //Paitsi UFOn alahitbox on nelikulmainen eikä ympyrä
       if(fufo.hitboxBottomX < this.hitboxX+this.width &&
          fufo.hitboxBottomX + fufo.hitboxBottomW > this.hitboxX &&
          fufo.hitboxBottomY < this.top+this.height &&
@@ -259,7 +358,7 @@ class Tentacles {
          }
 
       //ALALONKERO HITBOXIT
-      //ufon yläosa
+      //UFOn yläosa
       if(fufo.hitboxTopX + fufo.hitboxTopRad > this.hitboxX &&
         fufo.hitboxTopX - fufo.hitboxTopRad < this.hitboxX+this.width &&
         fufo.hitboxTopY + fufo.hitboxTopRad > this.bottom &&
@@ -268,7 +367,7 @@ class Tentacles {
           tries++;
           gameState.current = gameState.end;
         }
-        //ufon alaosa
+        //UFOn alaosa
         if(fufo.hitboxBottomX < this.hitboxX+this.width &&
            fufo.hitboxBottomX + fufo.hitboxBottomW > this.hitboxX &&
            fufo.hitboxBottomY < this.bottom+this.height &&
@@ -280,6 +379,8 @@ class Tentacles {
   }
 }
 
+//Megalonkeron olio
+//Hänellä on avain
 let keyTentacle = {x: cvs.width,
                   y: 21,
                   width: 372,
@@ -315,10 +416,6 @@ let firstTimeOpen = true;
 let gameEnd = false;
 let didWeWin = false;
 let thoughts = false;
-
-
-//cvs.tabIndex = '1';
-//^^ sitkun aikaa, kokeile saako chrome mustamaalauksen pois
 
 //EVENT LISTENERI
 //ON TÄSSÄ!!!!!!!!!!
@@ -407,10 +504,8 @@ cvs.addEventListener('click', function(e) {
 
 
 function spawnTentacles() {
-  if (frames%100 === 0) {
-    if (passes>1) {
-      tentacleList.unshift(new Tentacles);
-    }
+  if (frames%100 === 0 && passes>1) {
+    tentacleList.unshift(new Tentacles);
   }
   for(let i=0;tentacleList.length>i;i++) {
     tentacleList[i].update();
@@ -456,6 +551,7 @@ function drawGame() {
     ctx.clearRect(0, 0, cvs.width, cvs.height);
     ctx.drawImage(titleScreen, 0, 0);
   }
+
   if (gameState.current === gameState.start) {
     ctx.clearRect(0, 0, cvs.width, cvs.height);
     ctx.drawImage(bgSky, 0, 0);
@@ -479,6 +575,7 @@ function drawGame() {
     }
     frames++;
   }
+
   if (gameState.current === gameState.play) {
     ctx.clearRect(0, 0, cvs.width, cvs.height);
     ctx.drawImage(bgSky, 0, 0);
@@ -487,8 +584,6 @@ function drawGame() {
     fgScroll.update();
     fgScroll.draw();
     fufo.update();
-
-
     spawnTentacles();
     fuCountdown.update();
     if (passes===0 && tentacleList.length === 0) {
@@ -497,12 +592,14 @@ function drawGame() {
     }
     fufo.draw();
   }
+
   if (gameState.current === gameState.end) {
     ctx.drawImage(fusplosion, fufo.x, fufo.y-19);
     ctx.drawImage(fuGameOver, cvs.width/2-167.5, 50);
     ctx.drawImage(fuContinue, continueBtn.x, continueBtn.y,
                   continueBtn.width, continueBtn.height);
   }
+
   if (gameState.current === gameState.solved) {
     bgMusic.pause();
     victorySong.play();
@@ -520,6 +617,7 @@ function drawGame() {
       }, 1500);
     }, 2550);
   }
+
   if (gameState.current === gameState.extraSolved) {
     ctx.drawImage(extraSolved, 0, 0);
     gameEnd = true;

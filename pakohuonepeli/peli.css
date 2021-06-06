@@ -336,3 +336,14 @@ map{
   font-size: 23px;
   border-radius: 1px;
 }
+
+/*Estetään Chromea mustamaalaamasta tekstejä kun klikataan canvasii -Unna*/
+canvas {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
