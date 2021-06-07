@@ -38,3 +38,23 @@
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 }
+
+/*Potentiaalinen toinen voittoruutu
+#voittotesti {
+  position: fixed;
+  z-index: 1;
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+#voittotsis {
+  position: absolute;
+
+  text-align: center;
+  width: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+*/
