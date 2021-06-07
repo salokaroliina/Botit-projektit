@@ -71,6 +71,7 @@ function popup(x) {
 window.onclick = function(event) {
   ambient.play();
   ambient.loop = true;
+  ambient.volume = 0.2;
 
   for(let i=0;i<modal.length;i++) {
     if (event.target == modal[i] || event.target == modalVankila[i]) {
