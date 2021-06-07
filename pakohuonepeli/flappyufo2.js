@@ -573,8 +573,8 @@ function drawDesktop() {
 
 //Pelin pääfunktio
 function drawGame() {
-  //Jos yrityksiä on viisi ja pahoja ajatuksia ei ole aktivoitu
-  if (tries === 5 && !thoughts) {
+  //Jos yrityksiä on kymmenen ja pahoja ajatuksia ei ole aktivoitu
+  if (tries === 10 && !thoughts) {
     thoughts = true; //Pahat ajatukset
     //Tuodaan pahat ajatukset canvasin alle näkyväksi
     //onclick kutsuu newApproach()-funktiota
