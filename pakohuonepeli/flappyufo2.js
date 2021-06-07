@@ -435,6 +435,7 @@ cvs.addEventListener('dblclick', function(e) {
     if(clickX >= fuExe.x && clickX <= fuExe.x+fuExe.width &&
       clickY >= fuExe.y && clickY <= fuExe.y + fuExe.height) {
         drawGame(); //Kutsutaan pelin pääfunktiota ja aloitetaan peli
+        ambient.pause(); //Pysäytetään pääpelin musiikki
         titleTune.play(); //Soitetaan lyhyt ja pirteä kappale
         gameState.current = gameState.title; //Pelitila Title screen
         //Pistetään desktop näkymä pääpelin monitorista piiloon
@@ -556,6 +557,10 @@ function newApproach() {
     eleLockOpen = true; //Aktivoidaan pääpelin yksi voittokriteereistä
     lockElec.style.display = 'none'; //Piiloitetaan elektroninen lukko ovesta
     dialogue.innerHTML = 'I heard something unlock?'; //Päivitetään dialogiboxi
+    //Vielä yksi ajastin joka aloittaa pääpelin taustamusiikin uudelleen
+    setTimeout(function() {
+      ambient.play();
+    }, 2700);
   }, 1600);
 }
 
@@ -659,6 +664,10 @@ function drawGame() {
         //Päivitetään dialogiboxi
         dialogue.innerHTML =
         'I heard something unlock<br><br>Who designed these locks?';
+        //Ajasin jonka jälkeen aloitetaan pelin taustamusiikki uudelleen
+        setTimeout(function() {
+          ambient.play();
+        }, 1700);
       }, 1500);
     }, 2550);
   }
