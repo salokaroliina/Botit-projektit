@@ -35,7 +35,6 @@ const lastBleep = new Audio();
 const victorySong = new Audio();
 const fuSmash = new Audio();
 const shatter = new Audio();
-const unlockSound = new Audio();
 
 //Kuvien osoitteet
 //Nämä kai voisi laittaa new Image('tähän'); kohtaan
@@ -74,7 +73,6 @@ lastBleep.src = 'sound/fu/lastbleep.wav';
 victorySong.src = 'sound/fu/victory.wav';
 fuSmash.src = 'sound/fu/hit.mp3.flac';
 shatter.src = 'sound/fu/shatter.wav';
-unlockSound.src = 'sound/UnlockDoor.wav';
 
 //Määritellään Flappy UFO 2 desktop ikonin hitbox
 let fuExe = {width: 42,
@@ -204,7 +202,7 @@ let bgScroll = {x: 0, //Ei tarvi määrittää kuin x koska y on aina sama
                   ctx.drawImage(bgCity, this.x+cvs.width, 0);
                 }};
 //Scrollaava foreground elementti
-//Tismalleen sama kuin edellinen olio paitsi nopeus on asteen hitaampi
+//Tismalleen sama kuin edellinen olio paitsi nopeus on asteen nopeampi
 let fgScroll = {x: 0,
                 speed: 2,
                 update: function() {
@@ -413,7 +411,6 @@ let gamespeed = 3; //Pelivauhti
 let frames = 0; //..framet
 let passes = 10; //Kuinka monta ohitusta tarvitaan hyvään loppuun
 let tries = 0; //Yritykset
-let gameStarted = false; //Onko peli aloitettu
 let goOn = false; //GO-viestin animaatiot varten
 let gameEnd = false; //Onko peli loppunut
 let thoughts = false; //Onko huono loppu-linkki aktivoitu
@@ -427,11 +424,8 @@ let clickY;
 
 //Tuplaklikkaus tapahtumakuuntelija
 cvs.addEventListener('dblclick', function(e) {
-  //Toimii vain jos peliä ei ole vielä aloitettu
-  //... Nytkun ajattelen, olisin voinut vain laittaa
-  //if gameState.current === gameState.desktop
-  //Katso jos jaksan korjata
-  if(!gameStarted) {
+  //Jos pelitila on desktop-tilassa
+  if(gameState.current === gameState.desktop) {
     //Scrolli-turva systeemit asetettu
     rect = cvs.getBoundingClientRect();
     clickX = e.clientX - rect.left;
@@ -447,7 +441,6 @@ cvs.addEventListener('dblclick', function(e) {
         monitorDesktop.style.display = 'none';
         //Tuodaan FU2 title screen näkymä pääpelin monitorille
         monitorGame.style.display = 'block';
-        gameStarted = true; //Tää oikeesti on turha, korjaa huomenna
       }
   }
 });
@@ -560,7 +553,7 @@ function newApproach() {
   //Ajastin
   setTimeout(function() {
     unlockSound.play(); //Soitetaan lukon avautumisääni
-    pcLock = true; //Aktivoidaan pääpelin yksi voittokriteereistä
+    eleLockOpen = true; //Aktivoidaan pääpelin yksi voittokriteereistä
     lockElec.style.display = 'none'; //Piiloitetaan elektroninen lukko ovesta
     dialogue.innerHTML = 'I heard something unlock?'; //Päivitetään dialogiboxi
   }, 1600);
@@ -576,9 +569,6 @@ function drawDesktop() {
 //Pelin pääfunktio
 function drawGame() {
   //Jos yrityksiä on viisi ja pahoja ajatuksia ei ole aktivoitu
-  //... Oiskohan tämän kohdan voinut heittää muualle
-  //Varmaan
-  //Katso jos jaksat korjata sen huomenna
   if (tries === 5 && !thoughts) {
     thoughts = true; //Pahat ajatukset
     //Tuodaan pahat ajatukset canvasin alle näkyväksi
@@ -662,7 +652,7 @@ function drawGame() {
       //Toinen ajastin
       setTimeout(function() {
         unlockSound.play(); //Lukon avaus ääni
-        pcLock = true; //Aktivoidaan pääpelin yksi voittokriteereistä
+        eleLockOpen = true; //Aktivoidaan pääpelin yksi voittokriteereistä
         lockElec.style.display = 'none'; //Piiloitetaan elektroninen lukko pääpelistä
         monitorGame.style.display = 'none'; //Piiloitetaan pääpelin monitorista title-ruutu
         monitorWin.style.display = 'block'; //Tuodaan pääpelin monitorille voitto-ruutu
