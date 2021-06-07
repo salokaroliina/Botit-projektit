@@ -40,6 +40,8 @@
   transform: translate(-50%, 0);
 }
 
+
+
 .close {
   float: right;
   background-color: #ccda96;
@@ -55,4 +57,23 @@
 }
 .close:hover {
   cursor: pointer;
+}
+
+/*Voittomodalien mutoilua. Kävin hakeen netistä röyhkeesti koodit
+gradiantteja varten. Kiitos css-tricks*/
+.gotOutMod {
+  background-color: #000;
+  border-image-slice: 1;
+  border-width: 1px;
+  border-image-source: linear-gradient(to left, #f10ce5, #0cf1de);
+}
+.gotOutModBtn {
+  background: -webkit-linear-gradient(#f10ce5, #0cf1de);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gotOutModBtn:hover {
+  background: #f10ce5;
+  -webkit-text-fill-color: #000;
+  background-image: linear-gradient(to bottom right, #f10ce5, #0cf1de);
 }

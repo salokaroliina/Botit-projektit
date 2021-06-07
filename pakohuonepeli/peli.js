@@ -42,6 +42,7 @@ const ambient = new Audio('sound/Etirwer.ogg');
 let inventory = [];
 
 let noteRead = false; //Muistilappu luettu?
+let codeLockChecked = false; //Koodilukko avattu?
 let monitorChecked = false; //Desktop-näkymän lonkerodialogi aktivoitu?
 let eleLockOpen = false;
 let keyLockOpen = false;
@@ -72,6 +73,9 @@ function popup(x) {
   }
   //Jos on koodilukko modal
   if(x===11) {
+    if (!codeLockChecked) {
+      codeLockChecked = true;
+    }
     dialogue.innerHTML = 'Hmm...';
   }
   //Jos on muistilappu modal
@@ -220,8 +224,13 @@ function dialogi(d) {
       'This lock needs a key';
     break;
     case 'codLock':
-      dialogue.innerHTML =
-      'This lock needs a code<br><span class="interact" onclick="popup(11)">Take a closer look</span>';
+      //Jos koodilukko-modalia ei ole vielä avattu kertaakaan
+      if (!codeLockChecked) {
+        dialogue.innerHTML =
+        'This lock needs a code<br><span class="interact" onclick="popup(11)">Take a closer look</span>';
+      } else {
+        popup(11);
+      }
     break;
     case 'eleLock':
       dialogue.innerHTML =
