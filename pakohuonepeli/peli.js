@@ -37,6 +37,7 @@ const unlockSound = new Audio('sound/UnlockDoor.wav');
 const ambient = new Audio('sound/Etirwer.ogg');
       ambient.loop = true;
       ambient.volume = 0.2;
+      ambient.play();
 // inventaario on pelissä vain array -K
 // fyysiselle inventaariolle ei ollut tarvetta -K
 let inventory = [];
@@ -72,8 +73,6 @@ function popup(x) {
 }
 
 window.onclick = function(event) {
-  ambient.play();
-
   if (!musicStarted) {
     ambient.play();
     musicStarted = true;
