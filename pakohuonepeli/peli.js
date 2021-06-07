@@ -41,64 +41,85 @@ const ambient = new Audio('sound/Etirwer.ogg');
 // fyysiselle inventaariolle ei ollut tarvetta -K
 let inventory = [];
 
-let noteRead = false;
-let monitorChecked = false;
+let noteRead = false; //Muistilappu luettu?
+let monitorChecked = false; //Desktop-näkymän lonkerodialogi aktivoitu?
 let eleLockOpen = false;
 let keyLockOpen = false;
 let codeLockOpen = false;
 let codeReset = false;
 let musicStarted = false;
-let gamePlaying = false;
+let gamePlaying = false; //Onko Flappy UFO 2 aktiivinen
 
 // Unna teki nämä -->
+//Modal-kutsu funktio
 function popup(x) {
+  //Hakee classlistiltä määritellyn modalin
   modal[x].style.display = 'block';
+  //Jos monitorin modal on päällä, ja tätä funktiota ei ole aiemmin aktivoitu
   if (x===2 && !monitorChecked) {
+    //Ajastin simuloimaan aikaa mikä pelaaja-hahmolla kestää lukea
+    //On ehkä pitkä aika koska koodari käytti vertailukohtana omaa lukunopeutta
     setTimeout(function() {
+      //Jos modal on näkyvissa, JA gameState desktop-tilassa
       if(modal[2].style.display === 'block' &&
         gameState.current === gameState.desktop){
+        //Dialogi
         dialogue.innerHTML = '"Tentacles have the key"...?'
-        monitorChecked = true;
+        monitorChecked = true; //Merkitään tämä funktio aktivoituneeksi
       }
     }, 1500);
 
   }
+  //Jos on koodilukko modal
   if(x===11) {
     dialogue.innerHTML = 'Hmm...';
   }
+  //Jos on muistilappu modal
   if(x===12) {
+    //Lappu merkataan luetuksi
     if(!noteRead) {
       noteRead = true;
     }
   }
 }
 
+//Ikkunalle onclickki
 window.onclick = function(event) {
+  //Karoliina lisäsi musiikin tähän
+  //Jos musiikkia ei ole aloitettu
   if (!musicStarted) {
-    ambient.play();
-    musicStarted = true;
+    ambient.play(); //Soitetaan tausta ambient
+    musicStarted = true; //Merkataan musiikki aloitetuksi
   }
 
+  //Looppi joka käy modalit läpi
   for(let i=0;i<modal.length;i++) {
+    //Jos klikkauksen kohde on modal tai modal-contentin käärijä
     if (event.target == modal[i] || event.target == modalVankila[i]) {
-      modal[i].style.display = 'none';
+      modal[i].style.display = 'none'; //Piiloitetaan klikattu modal
+      //Jos koodilukon numero on arvattu väärin
       if (codeReset) {
+        //Resetoidaan koodilukkomodalin dialogi
         document.getElementById('locked').innerHTML = "This lock needs a code";
-        codeReset = false;
+        codeReset = false; //Otetaan resetti pois päältä
       }
     }
   }
 }
-
+//Modalin sulku-nappi
 function shut(button) {
+  //Piiloitetaan tämän isovanhemman vanhempi
   button.parentNode.parentNode.parentNode.style.display = 'none';
+  //Jos koodilukon numero on arvattu väärin
   if (codeReset) {
+    //Resetoidaan koodilukkomodalin dialogi
     document.getElementById('locked').innerHTML = "This lock needs a code";
-    codeReset = false;
+    codeReset = false; //Otetaan resetti pois päältä
   }
 }
-
+//Dialogi
 function dialogi(d) {
+  //Kirjoittaa dialogia pelin dialogilaatikkoon riippuen siitä mitä tutkitaan
   switch (d) {
     case 'doorClosed':
       dialogue.innerHTML = 'The door is locked';
@@ -111,22 +132,29 @@ function dialogi(d) {
       dialogue.innerHTML = 'Our old clock<br><span class="interact" onclick="popup(1)">Take a closer look</span>';
     break;
     case 'monitor':
+      //Jos FU2-peli ei ole tällä hetkellä päällä
       if (!gamePlaying) {
+        //Jos ollaan saavutettu FU2 hyvä loppu
         if (gameState.current === gameState.solved) {
           dialogue.innerHTML =
           'I really should get going<br><span class="interact" onclick="popup(2)">Gaze wistfully</span>';
+        //Jos ollaan saavutettu FU2 huono loppu
         } else if (gameState.current === gameState.extraSolved) {
           dialogue.innerHTML =
           '...<br><span class="interact" onclick="popup(2)">Mourn</span>';
         } else {
+          //Muuten
+          //Jos peli ei ole aktivoinut desktop lonkero-dialogia
           if (!monitorChecked) {
             dialogue.innerHTML =
             'I\'m in a hurry...<br><span class="interact" onclick="popup(2)">(But a second can\'t hurt, can it?)</span>';
+          //Jos lonkerodialogi on aktivoitu
           } else {
             dialogue.innerHTML =
             'What was that about the tentacles?<br><span class="interact" onclick="popup(2)">Alas, I guess I have no other choice than to mess around on my computer some more</span>';
           }
         }
+      //Jos peli on päällä, avataan suoraan monitor modal ilman dialogia
       } else {
         popup(2);
       }
@@ -138,8 +166,10 @@ function dialogi(d) {
       dialogue.innerHTML = 'I broke my computer...';
     break;
     case 'window':
+      //Jos muistilappua ei ole vielä luettu
       if(!noteRead) {
         dialogue.innerHTML = 'The drop is too high, I can\'t escape through the window';
+      //Jos muistilappu on luettu
       } else {
         dialogue.innerHTML =
         'How did she do it??';
@@ -177,7 +207,6 @@ function dialogi(d) {
       dialogue.innerHTML =
       'The gamedev team<br><span class="interact" onclick="popup(10)">Take a closer look</span>';
     break;
-
     case 'key':
       dialogue.innerHTML =
       'It\'s a key<br>I can\'t pick it up. It\'s breaking the fourth wall, thus out of my reach<br>AAAGH!';
