@@ -36,6 +36,7 @@ const monitorBroken = document.getElementById('monitor-broken');
 const unlockSound = new Audio('sound/UnlockDoor.wav');
 const ambient = new Audio('sound/Etirwer.ogg');
       ambient.loop = true;
+      ambient.volume = 0.2;
 // inventaario on pelissä vain array -K
 // fyysiselle inventaariolle ei ollut tarvetta -K
 let inventory = [];
@@ -72,7 +73,6 @@ function popup(x) {
 
 window.onclick = function(event) {
   ambient.play();
-  ambient.volume = 0.5;
 
   if (!musicStarted) {
     ambient.play();
