@@ -48,13 +48,15 @@ let keyLockOpen = false;
 let codeLockOpen = false;
 let codeReset = false;
 let musicStarted = false;
+let gamePlaying = false;
 
 // Unna teki nämä -->
 function popup(x) {
   modal[x].style.display = 'block';
   if (x===2 && !monitorChecked) {
     setTimeout(function() {
-      if(modal[2].style.display === 'block'){
+      if(modal[2].style.display === 'block' &&
+        gameState.current === gameState.desktop){
         dialogue.innerHTML = '"Tentacles have the key"...?'
         monitorChecked = true;
       }
@@ -109,20 +111,24 @@ function dialogi(d) {
       dialogue.innerHTML = 'Our old clock<br><span class="interact" onclick="popup(1)">Take a closer look</span>';
     break;
     case 'monitor':
-      if (gameState.current === gameState.solved) {
-        dialogue.innerHTML =
-        'I really should get going<br><span class="interact" onclick="popup(2)">Gaze wistfully</span>';
-      } else if (gameState.current === gameState.extraSolved) {
-        dialogue.innerHTML =
-        '...<br><span class="interact" onclick="popup(2)">Mourn</span>';
-      } else {
-        if (!monitorChecked) {
+      if (!gamePlaying) {
+        if (gameState.current === gameState.solved) {
           dialogue.innerHTML =
-          'I\'m in a hurry...<br><span class="interact" onclick="popup(2)">(But a second can\'t hurt, can it?)</span>';
+          'I really should get going<br><span class="interact" onclick="popup(2)">Gaze wistfully</span>';
+        } else if (gameState.current === gameState.extraSolved) {
+          dialogue.innerHTML =
+          '...<br><span class="interact" onclick="popup(2)">Mourn</span>';
         } else {
-          dialogue.innerHTML =
-          'What was that about the tentacles?<br><span class="interact" onclick="popup(2)">Alas, I guess I have no other choice than to mess around on my computer some more</span>';
+          if (!monitorChecked) {
+            dialogue.innerHTML =
+            'I\'m in a hurry...<br><span class="interact" onclick="popup(2)">(But a second can\'t hurt, can it?)</span>';
+          } else {
+            dialogue.innerHTML =
+            'What was that about the tentacles?<br><span class="interact" onclick="popup(2)">Alas, I guess I have no other choice than to mess around on my computer some more</span>';
+          }
         }
+      } else {
+        popup(2);
       }
     break;
     case 'pc':

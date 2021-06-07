@@ -442,6 +442,10 @@ cvs.addEventListener('dblclick', function(e) {
         monitorDesktop.style.display = 'none';
         //Tuodaan FU2 title screen näkymä pääpelin monitorille
         monitorGame.style.display = 'block';
+        //Ilmoitetaan peli.js tiedostolle että peli on päällä
+        gamePlaying = true;
+        //Dialogiboxi päivitys
+        dialogue.innerHTML = 'Oh I absolutely have time for a round or two!';
       }
   }
 });
@@ -557,6 +561,7 @@ function newApproach() {
     eleLockOpen = true; //Aktivoidaan pääpelin yksi voittokriteereistä
     lockElec.style.display = 'none'; //Piiloitetaan elektroninen lukko ovesta
     dialogue.innerHTML = 'I heard something unlock?'; //Päivitetään dialogiboxi
+    gamePlaying = false; //Ilmoitetaan peli.js tiedostolle että peli on loppunut
     //Vielä yksi ajastin joka aloittaa pääpelin taustamusiikin uudelleen
     setTimeout(function() {
       ambient.play();
@@ -664,10 +669,11 @@ function drawGame() {
         //Päivitetään dialogiboxi
         dialogue.innerHTML =
         'I heard something unlock<br><br>Who designed these locks?';
+        gamePlaying = false; //Ilmoitetaan peli.js tiedostolle että peli on loppunut
         //Ajasin jonka jälkeen aloitetaan pelin taustamusiikki uudelleen
         setTimeout(function() {
           ambient.play();
-        }, 1700);
+        }, 1900);
       }, 1500);
     }, 2550);
   }
