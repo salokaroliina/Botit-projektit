@@ -75,5 +75,5 @@ gradiantteja varten. Kiitos css-tricks*/
 .gotOutModBtn:hover {
   background: #f10ce5;
   -webkit-text-fill-color: #000;
-  background-image: linear-gradient(to bottom right, #f10ce5, #0cf1de);
+  background-image: linear-gradient(to bottom left, #f10ce5, #0cf1de);
 }
