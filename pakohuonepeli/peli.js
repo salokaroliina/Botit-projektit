@@ -34,6 +34,7 @@ const monitorGame = document.getElementById('monitor-game');
 const monitorWin = document.getElementById('monitor-win');
 const monitorBroken = document.getElementById('monitor-broken');
 const sound = new Audio('sound/UnlockDoor.wav');
+const ambient = new Audio('sound/Etirwer.ogg');
 // inventaario on pelissä vain array -K
 // fyysiselle inventaariolle ei ollut tarvetta -K
 let inventory = [];
