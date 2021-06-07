@@ -70,6 +70,7 @@ function popup(x) {
 
 window.onclick = function(event) {
   ambient.play();
+  ambient.loop = true;
 
   for(let i=0;i<modal.length;i++) {
     if (event.target == modal[i] || event.target == modalVankila[i]) {
@@ -207,7 +208,7 @@ function codeLock(){
   if (code.value == '6174') {
     //console.log("Oikein");
     lockCode.remove();
-    unclockSound.play();
+    unlockSound.play();
     document.getElementById('locked').innerHTML = "The lock opened!";
     // jos koodi on oikein, nappia ei voi enää käyttää
     // eikä uutta tekstiä syöttää
