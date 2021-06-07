@@ -29,3 +29,12 @@
   font-size: 23px;
   border-radius: 1px;
 }
+
+#youGotOUT {
+  display: inline-block;
+  font-size: 70px;
+  margin-bottom: 50px;
+  background: -webkit-linear-gradient(#f10ce5, #0cf1de);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
