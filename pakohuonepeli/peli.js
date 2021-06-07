@@ -263,6 +263,8 @@ function codeLock(){
     // eikä uutta tekstiä syöttää
     button.disabled = true;
     code.disabled = true;
+    //vvv Unna lisäsi dialogin tähän
+    dialogue.innerHTML = 'I did it!';
   }
   else {
     // jos koodi on väärin, modaaliin tulee teksti joka kertoo koodin olevan väärä

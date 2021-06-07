@@ -601,8 +601,11 @@ function drawGame() {
     bgScroll.draw(); //Taustascrolli päivitys ja piirto
     fgScroll.update();
     fgScroll.draw(); //Foregroundscrolli päivitys ja piirto
+    //UFOn päivitys ja piirto
+    //En pistänyt fufo.drawia fufo.updaten sisään koska ne tuntuu
+    //toimivan paremmin erillään?
     fufo.update();
-    fufo.draw(); //UFOn päivitys ja piirto
+    fufo.draw();
     fuCountdown.update(); //Tuodaan numerot oikeaan yläkulmaan
 
     //Jos GO on epätosi
@@ -628,8 +631,6 @@ function drawGame() {
     ctx.drawImage(bgSky, 0, 0); //Taivas
     bgScroll.update();
     bgScroll.draw(); //Taustascroll
-    fgScroll.update();
-    fgScroll.draw(); //Foregroundscroll
     fufo.update(); //UFO päivitys
     spawnTentacles(); //Kutsutaan lonkeroita
     fuCountdown.update(); //Tuodaan numerot oikeaan yläkulmaan
@@ -638,6 +639,8 @@ function drawGame() {
       keyTentacle.update();
       keyTentacle.draw(); //Tuodaan iso lonkero
     }
+    fgScroll.update();
+    fgScroll.draw(); //Foregroundscroll
     fufo.draw(); //Piirretään UFO
   }
 
