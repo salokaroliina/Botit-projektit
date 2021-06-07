@@ -35,6 +35,7 @@ const monitorWin = document.getElementById('monitor-win');
 const monitorBroken = document.getElementById('monitor-broken');
 const unlockSound = new Audio('sound/UnlockDoor.wav');
 const ambient = new Audio('sound/Etirwer.ogg');
+      ambient.loop = true;
 // inventaario on pelissä vain array -K
 // fyysiselle inventaariolle ei ollut tarvetta -K
 let inventory = [];
@@ -45,6 +46,7 @@ let eleLockOpen = false;
 let keyLockOpen = false;
 let codeLockOpen = false;
 let codeReset = false;
+let musicStarted = false;
 
 // Unna teki nämä -->
 function popup(x) {
@@ -70,8 +72,12 @@ function popup(x) {
 
 window.onclick = function(event) {
   ambient.play();
-  ambient.loop = true;
   ambient.volume = 0.2;
+
+  if (!musicStarted) {
+    bgMusic.play();
+    musicStarted = true;
+  }
 
   for(let i=0;i<modal.length;i++) {
     if (event.target == modal[i] || event.target == modalVankila[i]) {
