@@ -72,10 +72,10 @@ function popup(x) {
 
 window.onclick = function(event) {
   ambient.play();
-  ambient.volume = 0.2;
+  ambient.volume = 0.5;
 
   if (!musicStarted) {
-    bgMusic.play();
+    ambient.play();
     musicStarted = true;
   }
 
