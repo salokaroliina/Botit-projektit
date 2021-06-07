@@ -2,7 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="peli.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/pelialue.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/modalcontents.css">
+    <link rel="stylesheet" href="css/credits.css">
     <link href='https://fonts.googleapis.com/css?family=VT323|Allura' rel='stylesheet'>
     <title>Escape the room</title>
   </head>
@@ -83,12 +87,41 @@
       <!-- KIRJA 5-->
       <div class="modal">
         <div class="modal-content_vankila">
-          <div class="modal-content">
+          <div class="modal-content credMod">
             <button class="close" onclick="shut(this)">&times;</button>
-            <div id="codeCred" class="credits">Code<br>
-              Key Lock Puzzle: Simo<br>
-              Code Lock Puzzle: Karoliina<br>
-              Electic Lock Puzzle: Unna
+            <div id="codeCred" class="credits"><h2>Code</h2><br>
+              <table class="codeCredT">
+                <tr><th class="codeName">Key Lock</th></tr>
+                <tr><td class="coderName">Simo</td></tr>
+              </table>
+              <table class="codeCredT">
+                <tr><th class="codeName">Code Lock</th></tr>
+                <tr><td class="coderName">Karoliina</td></tr>
+              </table>
+              <table class="codeCredT">
+                <tr><th class="codeName">Electric Lock</th></tr>
+                <tr><td class="coderName">Unna</td></tr>
+              </table>
+              <table class="codeCredT">
+                <tr><th class="codeName">Game Area</th></tr>
+                <tr><td class="coderName">Karoliina</td></tr>
+              </table>
+              <table class="codeCredT">
+                <tr><th class="codeName">Modals</th></tr>
+                <tr><td class="coderName">Unna</td></tr>
+              </table>
+              <table class="codeCredT">
+                <tr><th class="codeName">Dialogue box</th></tr>
+                <tr><td class="coderName">Unna</td></tr>
+              </table>
+              <table class="codeCredT">
+                <tr><th class="codeName">Inventory</th></tr>
+                <tr><td class="coderName">Karoliina</td></tr>
+              </table>
+              <table class="codeCredT">
+                <tr><th class="codeName">Win logic</th></tr>
+                <tr><td class="coderName">???</td></tr>
+              </table>
             </div>
           </div>
         </div>
@@ -98,20 +131,28 @@
         <div class="modal-content_vankila">
           <div class="modal-content">
             <button class="close" onclick="shut(this)">&times;</button>
-            <div id="graphCred" class="credits">Graphics<br>
-            Main Game: Karoliina<br>
-            Flappy UFO 2: Unna</div>
+            <div id="graphCred" class="credits">
+              <h2>Graphics</h2>
+              <table class="codeCredT">
+                <tr><th class="codeName">Main Game</th></tr>
+                <tr><td class="coderName">Karoliina</td></tr>
+              </table>
+              <table class="codeCredT">
+                <tr><th class="codeName">Flappy UFO 2</th></tr>
+                <tr><td class="coderName">Unna</td></tr>
+              </table>
+            </div>
           </div>
         </div>
       </div>
       <!-- KIRJA 7-->
       <div class="modal">
         <div class="modal-content_vankila">
-          <div class="modal-content" id="soundCredMod">
+          <div class="modal-content credMod">
             <button class="close" onclick="shut(this)">&times;</button>
-            <div id="soundCred" class="credits">
-            All music and sounds have been taken from
-            <a href="https://opengameart.org/">OpenGameArt.org</a>
+            <div id="soundCred1" class="credits">
+            <span class="credInfo">All music and sounds have been taken from
+            <a href="https://opengameart.org/">OpenGameArt.org</a></span>
             <br>
             <table class="soundTable"><tr><th colspan="2">General Sounds</th></tr>
               <tr><td colspan="2" class="soundName">Unlock <span class="soundOrigName">(UnlockDoor.wav)</span></td></tr>
@@ -119,7 +160,9 @@
               <tr><td><a href="https://opengameart.org/content/door-lock-sounds">Cough-E</a>
               </td><td><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></td></tr>
             </table>
+          </div>
 
+          <div id="soundCred2" class="credits">
             <table class="soundTable"><tr><th colspan="2">FU2 Music</th></tr>
               <tr><td colspan="2" class="soundName">Title screen <span class="soundOrigName">(8Bit Title Screen.mp3)</span></td></tr>
               <tr class="artistInfo"><td>Artist</td><td>License</td></tr>
@@ -136,7 +179,9 @@
               <tr><td><a href="https://opengameart.org/content/victory">celestialghost8</a>
               </td><td><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></td></tr>
             </table>
+          </div>
 
+          <div id="soundCred3" class="credits">
           <table class="soundTable"><tr><th colspan="2">FU2 Sounds</th></tr>
             <tr><td colspan="2" class="soundName">Click <span class="soundOrigName">(click_003.ogg)</span></td></tr>
             <tr class="artistInfo"><td>Artist</td><td>License</td></tr>
@@ -173,6 +218,7 @@
             <tr><td><a href="https://opengameart.org/content/breaking-bottle">spookymodem</a>
             </td><td><a href="https://creativecommons.org/licenses/by/3.0/">CC-BY 3.0</a></td></tr>
           </table>
+        </div>
             </div>
           </div>
         </div>
@@ -183,8 +229,9 @@
         <div class="modal-content_vankila">
           <div class="modal-content">
             <button class="close" onclick="shut(this)">&times;</button>
-            <div id="botit" class="credits">This game was developed as a student project by
-              <br>Team Botit <br>2021
+            <div id="botit" class="credits">
+              <h4>This game was developed as a student project by
+              <br>Team Botit <br>2021</h4>
             <br><br><span id="ty4playing">Thank you for playing!</span></div>
           </div>
         </div>

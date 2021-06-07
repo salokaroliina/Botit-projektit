@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: #000;
+  color: #d6f172;
+  font-family: 'VT323';
+  font-size: 25px;
+}
+
+#dialogiBoxi {
+  margin: auto;
+
+  width: 1102px;
+  height: 150px;
+  border-top: 2px solid #e1e3d9;
+  border-right: 100px solid #e1e3d9;
+  border-left: 100px solid #e1e3d9;
+  border-bottom: 10px solid #e1e3d9;
+  padding: 20px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+    color: #384c3a;
+}
+
+map{
+  cursor: pointer;
+}
+
+.interact {
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 17px;
+  color: #fff;
+  font-weight: bold;
+}
+.interact:hover {
+  color: #c9ff00;
+}
+
+/*Estetään Chromea mustamaalaamasta tekstejä kun klikataan canvasii -Unna*/
+canvas {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
