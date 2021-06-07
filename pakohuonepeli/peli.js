@@ -33,7 +33,7 @@ const monitorDesktop = document.getElementById('monitor-desktop');
 const monitorGame = document.getElementById('monitor-game');
 const monitorWin = document.getElementById('monitor-win');
 const monitorBroken = document.getElementById('monitor-broken');
-const sound = new Audio('sound/UnlockDoor.wav');
+const unlockSound = new Audio('sound/UnlockDoor.wav');
 const ambient = new Audio('sound/Etirwer.ogg');
 // inventaario on pelissä vain array -K
 // fyysiselle inventaariolle ei ollut tarvetta -K
@@ -69,6 +69,8 @@ function popup(x) {
 }
 
 window.onclick = function(event) {
+  ambient.play();
+
   for(let i=0;i<modal.length;i++) {
     if (event.target == modal[i] || event.target == modalVankila[i]) {
       modal[i].style.display = 'none';
@@ -205,7 +207,7 @@ function codeLock(){
   if (code.value == '6174') {
     //console.log("Oikein");
     lockCode.remove();
-    sound.play();
+    unclockSound.play();
     document.getElementById('locked').innerHTML = "The lock opened!";
     // jos koodi on oikein, nappia ei voi enää käyttää
     // eikä uutta tekstiä syöttää
