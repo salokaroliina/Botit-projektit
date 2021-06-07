@@ -40,7 +40,9 @@ let inventory = [];
 
 let noteRead = false;
 let monitorChecked = false;
-let pcLock = false;
+let eleLock = false;
+let keyLock = false;
+let codeLock = false;
 let codeReset = false;
 
 // Unna teki nämä -->
