@@ -34,12 +34,14 @@ const monitorGame = document.getElementById('monitor-game');
 const monitorWin = document.getElementById('monitor-win');
 const monitorBroken = document.getElementById('monitor-broken');
 const unlockSound = new Audio('sound/UnlockDoor.wav');
+const lockedSound = new Audio('sound/LockedDoorHandleJiggle.ogg');
 const ambient = new Audio('sound/Etirwer.ogg');
       ambient.loop = true;
-      ambient.volume = 1;
+      ambient.volume = 0.2;
 const opening = new Audio('sound/Chest Creak.wav');
 const curtainSound = new Audio('sound/492619__khanyi-190188__curtain-on-rail.wav');
       curtainSound.playbackRate = 3;
+const takeItem = new Audio('sound/jump.wav');
 // inventaario on pelissä vain array -K
 // fyysiselle inventaariolle ei ollut tarvetta -K
 let inventory = [];
@@ -130,6 +132,7 @@ function dialogi(d) {
   switch (d) {
     case 'doorClosed':
       dialogue.innerHTML = 'The door is locked';
+      lockedSound.play();
     break;
     case 'picture':
       dialogue.innerHTML =
@@ -286,6 +289,7 @@ function codeLock(){
 
 // klikkaus siirtää laukun inventoryyn -K
 function takeBag(){
+  takeItem.play();
   // laukku poistuu ruudulta
   bag.remove();
   // laukku siirtyy inventoryyn
@@ -303,6 +307,7 @@ function curtainOff(){
 
 // klikkaus siirtää takin inventoryyn -K
 function takeJacket(){
+  takeItem.play();
   // takki poistuu ruudulta
   jacket.remove();
   // takki siirtyy inventoryyn
