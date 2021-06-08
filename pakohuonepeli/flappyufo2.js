@@ -62,6 +62,7 @@ fuWin.src = 'grafiikka/fu/fuwin.png';
 //Äänten osoitteet
 exeClick.src = 'sound/fu/click_003.ogg';
 titleTune.src = 'sound/fu/title.mp3';
+titleTune.volume = 0.85;
 startSound.src = 'sound/fu/start.wav';
 startSound.volume = 0.6;
 bgMusic.src = 'sound/fu/bgmusic.wav';
