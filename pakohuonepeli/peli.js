@@ -36,7 +36,10 @@ const monitorBroken = document.getElementById('monitor-broken');
 const unlockSound = new Audio('sound/UnlockDoor.wav');
 const ambient = new Audio('sound/Etirwer.ogg');
       ambient.loop = true;
-      ambient.volume = 0.2;
+      ambient.volume = 1;
+const opening = new Audio('sound/Chest Creak.wav');
+const curtainSound = new Audio('sound/492619__khanyi-190188__curtain-on-rail.wav');
+      curtainSound.playbackRate = 3;
 // inventaario on pelissä vain array -K
 // fyysiselle inventaariolle ei ollut tarvetta -K
 let inventory = [];
@@ -294,6 +297,7 @@ function takeBag(){
 
 // klikkaus poistaa verhon -K
 function curtainOff(){
+  curtainSound.play();
   curtain.remove();
 }
 
