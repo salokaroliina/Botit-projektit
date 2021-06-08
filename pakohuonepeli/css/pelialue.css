@@ -67,7 +67,7 @@
   position: absolute;
   top: 84px;
   left: 21px;
-  visibility: hidden;
+  display: none;
 }
 
 #pc-broken{
