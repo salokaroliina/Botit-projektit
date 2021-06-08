@@ -293,7 +293,7 @@ function takeBag(){
   // laukku poistuu ruudulta
   bag.remove();
   // laukku siirtyy inventoryyn
-  inventory.push(bag);
+  inventory.push('bag');
   //console.log(inventory);
   dialogue.innerHTML =
   'Can\'t forget to take this with me!';
@@ -311,7 +311,7 @@ function takeJacket(){
   // takki poistuu ruudulta
   jacket.remove();
   // takki siirtyy inventoryyn
-  inventory.push(jacket);
+  inventory.push('jacket');
   //console.log(inventory);
   dialogue.innerHTML =
   'My favourite jacket';
