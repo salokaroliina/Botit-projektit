@@ -261,6 +261,7 @@ function codeLock(){
   // jos koodi on 6174, lukko poistuu ja modaaliin tulee teksti joka kertoo
   // lukon olevan auki
   if (code.value == '6174') {
+    codeLockOpen = true;
     //console.log("Oikein");
     lockCode.remove();
     unlockSound.play();
