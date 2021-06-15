@@ -19,7 +19,6 @@ const tentacleS = new Image();
 const fuGameOver = new Image();
 const fuContinue = new Image();
 const fuk = new Image();
-const fukFound = new Image();
 const fuWin = new Image();
 
 //Määritellään äänien nimet
@@ -56,7 +55,6 @@ tentacleS.src = 'grafiikka/fu/gbt2.png';
 fuGameOver.src = 'grafiikka/fu/fugo.png';
 fuContinue.src = 'grafiikka/fu/fucontinue.png';
 fuk.src = 'grafiikka/fu/fukey.png';
-fukFound.src = 'grafiikka/fu/fuendkey.png';
 fuWin.src = 'grafiikka/fu/fuwin.png';
 
 //Äänten osoitteet
